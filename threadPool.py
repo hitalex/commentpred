@@ -37,11 +37,14 @@ class Worker(Thread):
                 continue
             try:
                 self.threadPool.increaseRunsNum() 
+                # I suppose func, i.e. _taskHandler always return none
                 result = func(*args, **kargs) 
                 self.threadPool.decreaseRunsNum()
                 if result:
+                    #the func, i.e. _taskHandler always returns none, so putTaskResult will never be called
+                    assert(True)
                     self.threadPool.putTaskResult(*result)
-                self.threadPool.taskDone()
+                self.threadPool.taskDone() # 通知Queue一个任务已经执行完毕
             except Exception, e:
                 log.critical(traceback.format_exc())
 
@@ -54,9 +57,12 @@ class ThreadPool(object):
         self.lock = Lock() #线程锁
         self.running = 0    #正在run的线程数
         self.taskQueue = Queue() #任务队列
-        self.resultQueue = Queue() #结果队列
+        self.resultQueue = Queue() #结果队列, but never used here
     
     def startThreads(self):
+        """Create a certain number of threads and started to run 
+        All Workers share the same ThreadPool
+        """
         for i in range(self.threadNum): 
             self.pool.append(Worker(self))
     
@@ -74,6 +80,8 @@ class ThreadPool(object):
         return task
 
     def taskJoin(self, *args, **kargs):
+        """Queue.join: Blocks until all items in the queue have been gotten and processed.
+        """
         self.taskQueue.join()
 
     def taskDone(self, *args, **kargs):

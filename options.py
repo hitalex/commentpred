@@ -11,7 +11,7 @@ import argparse
 
 _default = dict(
     logfile = 'spider.log',
-    dbFile = 'data.sql',
+    dbFile = 'data.db',
     loglevel = 3,
     threadNum = 10,
     keyword = '',
@@ -29,6 +29,7 @@ def positiveInt(rawValue):
         return value
 
 def url(rawValue):
+    value = rawValue
     if not rawValue.startswith('http'):
         value = 'http://' + rawValue
     return value

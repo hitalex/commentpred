@@ -8,6 +8,9 @@ crawler
 * Support logging.  
 * Support self-testing.  
 
+#### 注意：
+目前已经修改了原来的代码，现在用于抓取豆瓣小组的信息，包括小组ID、创建时间、组内人数等。
+
 
 
 usage

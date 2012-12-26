@@ -17,7 +17,8 @@ log = logging.getLogger('Main.WebPage')
 
 
 class WebPage(object):
-
+    """根据指定的url，抓取网页内容
+    """
     def __init__(self, url):
         self.url = url
         self.pageSource = None
@@ -27,10 +28,13 @@ class WebPage(object):
         '''获取html源代码'''
         try:
             #设置了prefetch=False，当访问response.text时才下载网页内容,避免下载非html文件
-            response = requests.get(self.url, headers=self.headers, timeout=10, prefetch=False, proxies=proxies)
+            # prefetch参数已经不可用
+            response = requests.get(self.url, headers=self.headers, timeout=10, proxies=proxies)
             if self._isResponseAvaliable(response):
                 self._handleEncoding(response)
                 self.pageSource = response.text
+                #print "Response text:", self.pageSource
+                #print "Response cookes:", response.cookies
                 return True
             else:
                 log.warning('Page not avaliable. Status code:%d URL: %s \n' % (
