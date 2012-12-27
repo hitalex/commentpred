@@ -9,6 +9,7 @@ crawler.py
 
 from urlparse import urljoin,urlparse
 from collections import deque
+from threading import Lock
 import re
 import traceback
 from locale import getdefaultlocale
@@ -41,6 +42,8 @@ class Crawler(object):
         self.visitedGroups = set()   
         #待访问的小组id
         self.unvisitedGroups = deque()
+        
+        self.lock = Lock() #线程锁
 
         #标记爬虫是否开始执行任务
         self.isCrawling = False
@@ -51,6 +54,13 @@ class Crawler(object):
         print args.url
         assert(match_obj != None)
         self.unvisitedGroups.append(match_obj.group(1))
+        
+        # 一分钟内允许的最大访问次数
+        self.MAX_VISITS_PER_MINUTE = 10
+        # 当前周期内已经访问的网页数量
+        self.currentPeriodVisits = 0
+        # 将一分钟当作一个访问周期，记录当前周期的开始时间
+        self.periodStart = time.time() # 使用当前时间初始化
 
     def start(self):
         print '\nStart Crawling\n'
@@ -59,13 +69,15 @@ class Crawler(object):
         else:
             self.isCrawling = True
             self.threadPool.startThreads() 
+            self.periodStart = time.time() # 当前周期开始
+            # 按照depth来抓取网页
             while self.currentDepth < self.depth+1:
                 #分配任务,线程池并发下载当前深度的所有页面（该操作不阻塞）
                 self._assignCurrentDepthTasks ()
                 #等待当前线程池完成所有任务,当池内的所有任务完成时，即代表爬完了一个网页深度
                 #self.threadPool.taskJoin()可代替以下操作，可无法Ctrl-C Interupt
-                while self.threadPool.getTaskLeft():
-                    time.sleep(8)
+                while self.threadPool.getTaskLeft() <= 0:
+                    time.sleep(1)
                 print 'Depth %d Finish. Totally visited %d links. \n' % (
                     self.currentDepth, len(self.visitedGroups))
                 log.info('Depth %d Finish. Total visited Links: %d\n' % (
@@ -81,14 +93,27 @@ class Crawler(object):
     def getAlreadyVisitedNum(self):
         #visitedGroups保存已经分配给taskQueue的链接，有可能链接还在处理中。
         #因此真实的已访问链接数为visitedGroups数减去待访问的链接数
-        return len(self.visitedGroups) - self.threadPool.getTaskLeft()
+        if len(self.visitedGroups) == 0:
+            return 0
+        else:
+            return len(self.visitedGroups) - self.threadPool.getTaskLeft()
 
     def _assignCurrentDepthTasks(self):
         """取出一个线程，并为这个线程分配任务，即抓取网页
         """
-        # TODO unvisitedGroups may contain no elements
-        # TODO Shold control how many pages you cat get in one minute
-        while self.unvisitedGroups:
+        # 判断当前周期内访问的网页数目是否大于最大数目
+        if self.currentPeriodVisits > self.MAX_VISITS_PER_MINUTE - 1:
+            # 等待所有的网页处理完毕
+            while self.threadPool.getTaskLeft > 0:
+                time.sleep(1)
+            timeNow = time.time()
+            seconds = self.periodStart - timeNow
+            if  seconds < 60: # 如果当前还没有过一分钟,则sleep
+                time.sleep(seconds + 3)
+            self.periodStart = time.time() # 重新设置开始时间
+            self.currentPeriodVisits = 0
+        # 从未访问的列表中抽出，并为其分配thread
+        while len(self.unvisitedGroups) > 0:
             group_id = self.unvisitedGroups.popleft()
             #向任务队列分配任务
             url = "http://www.douban.com/group/" + group_id + "/"
@@ -103,14 +128,15 @@ class Crawler(object):
         webPage = WebPage(url)
         # 抓取页面内容
         if webPage.fetch():
+            self.lock.acquire() #锁住该变量,保证操作的原子性
+            self.currentPeriodVisits += 1
+            self.lock.release()
             #self._saveTaskResults(webPage)
             self._addUnvisitedGroups(webPage)
-        """
-        match_obj = self.pattern.match(url)
-        if match_obj != None:
-            # Get the Douban group name
-            self.DoubanGroupSet.add(match_ojb.group(1))
-        """
+            return True
+            
+        # if page reading fails
+        return False
 
     def _saveTaskResults(self, webPage):
         """将小组信息写入数据库
@@ -136,13 +162,17 @@ class Crawler(object):
         url, pageSource = webPage.getDatas()
         hrefs = self._getAllHrefsFromPage(url, pageSource)
         for href in hrefs:
-            print "URLs in page: ", href
+            #print "URLs in page: ", href
             match_obj = self.pattern.match(url)
             # 只有满足小组主页链接格式的链接才会被处理
-            if self._isHttpOrHttpsProtocol(href) and (match_obj != None):
-                if not self._isHrefRepeated(href):
+            if self._isHttpOrHttpsProtocol(href) and (match_obj is not None):
+                # TODO 一些非常奇怪的错误...
+                group_id = match_obj.group(1)
+                print "Group link: " + href
+                if not self._isGroupRepeated(group_id):
                     # 将小组id放入待访问的小组列表中去
-                    self.unvisitedGroups.append(match_obj.group(1))
+                    print "Add group id:", group_id
+                    self.unvisitedGroups.append(group_id)
 
     def _getAllHrefsFromPage(self, url, pageSource):
         '''解析html源码，获取页面所有链接。返回链接列表'''
@@ -164,8 +194,8 @@ class Crawler(object):
             return True
         return False
 
-    def _isHrefRepeated(self, href):
-        if (href in self.visitedGroups) or (href in self.unvisitedGroups):
+    def _isGroupRepeated(self, group_id):
+        if (group_id in self.visitedGroups) or (group_id in self.unvisitedGroups):
             return True
         return False
 

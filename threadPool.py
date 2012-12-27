@@ -40,10 +40,12 @@ class Worker(Thread):
                 # I suppose func, i.e. _taskHandler always return none
                 result = func(*args, **kargs) 
                 self.threadPool.decreaseRunsNum()
+                # TODO : 搞清楚如何利用 resultQueue
+                """
                 if result:
                     #the func, i.e. _taskHandler always returns none, so putTaskResult will never be called
-                    assert(True)
                     self.threadPool.putTaskResult(*result)
+                """
                 self.threadPool.taskDone() # 通知Queue一个任务已经执行完毕
             except Exception, e:
                 log.critical(traceback.format_exc())

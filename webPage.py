@@ -34,11 +34,12 @@ class WebPage(object):
                 self._handleEncoding(response)
                 self.pageSource = response.text
                 #print "Response text:", self.pageSource
-                #print "Response cookes:", response.cookies
+                print "Response cookes:", response.cookies
                 return True
             else:
-                log.warning('Page not avaliable. Status code:%d URL: %s \n' % (
-                    response.status_code, self.url) )
+                status = requests.status_codes._codes[response.status_code]
+                log.warning('Page not avaliable. Status code: %d with Status: %s URL: %s \n' % (
+                    response.status_code, status, self.url) )
         except Exception,e:
             if retry>0: #超时重试
                 return self.fetch(retry-1)
