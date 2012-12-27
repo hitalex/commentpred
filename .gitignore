@@ -1,4 +1,4 @@
-*.py[co]
+*.py[co~]
 
 # Packages
 *.egg
@@ -31,4 +31,6 @@ pip-log.txt
 *.db
 
 # backup files
-*.*~
+*.gitignore~
+*.md~
+*.py~
