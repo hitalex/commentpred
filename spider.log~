@@ -1,0 +1,187 @@
+2012-12-26 11:05:56,102 Thread-11 DEBUG request() got an unexpected keyword argument 'prefetch' URL: http://www.douban.com 
+
+2012-12-26 11:06:04,106 MainThread INFO Depth 1 Finish. Total visited Links: 1
+
+2012-12-26 11:06:04,107 MainThread INFO Depth 2 Finish. Total visited Links: 1
+
+2012-12-26 11:09:37,703 MainThread INFO Depth 1 Finish. Total visited Links: 1
+
+2012-12-26 11:09:45,723 MainThread INFO Depth 2 Finish. Total visited Links: 44
+
+2012-12-26 11:17:55,542 MainThread INFO Depth 1 Finish. Total visited Links: 1
+
+2012-12-26 16:06:10,997 MainThread INFO Depth 1 Finish. Total visited Links: 0
+
+2012-12-26 16:12:50,795 Thread-2 WARNING Page not avaliable. Status code:403 URL: http://www.douban.com/group/insidestory/ 
+
+2012-12-26 16:12:58,718 MainThread INFO Depth 1 Finish. Total visited Links: 1
+
+2012-12-26 16:12:58,718 MainThread INFO Depth 2 Finish. Total visited Links: 1
+
+2012-12-26 16:21:42,147 Thread-11 WARNING Page not avaliable. Status code:403 URL: http://www.douban.com/group/insidestory/ 
+
+2012-12-26 16:21:50,077 MainThread INFO Depth 1 Finish. Total visited Links: 1
+
+2012-12-26 16:21:50,078 MainThread INFO Depth 2 Finish. Total visited Links: 1
+
+2012-12-26 16:25:24,704 Thread-2 WARNING Page not avaliable. Status code:403 URL: http://www.douban.com/group/insidestory/ 
+
+2012-12-26 16:25:32,601 MainThread INFO Depth 1 Finish. Total visited Links: 1
+
+2012-12-26 16:25:32,601 MainThread INFO Depth 2 Finish. Total visited Links: 1
+
+2012-12-27 14:14:17,680 MainThread INFO Depth 1 Finish. Total visited Links: 1
+
+2012-12-27 14:17:44,294 MainThread INFO Depth 1 Finish. Total visited Links: 1
+
+2012-12-27 14:18:08,708 Thread-4 WARNING Page not avaliable. Status code:403 URL: http://www.douban.com/group/151159/ 
+
+2012-12-27 14:18:10,198 Thread-4 WARNING Page not avaliable. Status code:403 URL: http://www.douban.com/group/151159/ 
+
+2012-12-27 14:54:06,849 MainThread INFO Depth 1 Finish. Total visited Links: 1
+
+2012-12-27 14:54:06,849 MainThread INFO Depth 2 Finish. Total visited Links: 1
+
+2012-12-27 14:54:06,849 MainThread INFO Depth 3 Finish. Total visited Links: 1
+
+2012-12-27 14:54:08,000 Thread-2 WARNING Page not avaliable. Status code:403 URL: http://www.douban.com/group/151159/ 
+
+2012-12-27 15:07:21,393 MainThread INFO Depth 1 Finish. Total visited Links: 1
+
+2012-12-27 15:07:21,393 MainThread INFO Depth 2 Finish. Total visited Links: 1
+
+2012-12-27 15:07:21,394 MainThread INFO Depth 3 Finish. Total visited Links: 1
+
+2012-12-27 15:07:21,508 Thread-2 WARNING Page not avaliable. Status code:403 URL: http://www.douban.com/group/151159/ 
+
+2012-12-27 15:38:53,715 MainThread INFO Depth 1 Finish. Total visited Links: 1
+
+2012-12-27 15:38:53,715 MainThread INFO Depth 2 Finish. Total visited Links: 1
+
+2012-12-27 15:38:53,715 MainThread INFO Depth 3 Finish. Total visited Links: 1
+
+2012-12-27 15:38:53,954 Thread-2 DEBUG global name 'request' is not defined URL: http://www.douban.com/group/151159/ 
+
+2012-12-27 15:39:19,869 MainThread INFO Depth 1 Finish. Total visited Links: 1
+
+2012-12-27 15:39:19,870 MainThread INFO Depth 2 Finish. Total visited Links: 1
+
+2012-12-27 15:39:19,871 MainThread INFO Depth 3 Finish. Total visited Links: 1
+
+2012-12-27 15:39:19,941 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/151159/ 
+
+2012-12-27 17:11:51,168 MainThread INFO Depth 1 Finish. Total visited Links: 1
+
+2012-12-27 17:11:51,168 MainThread INFO Depth 2 Finish. Total visited Links: 1
+
+2012-12-27 17:11:51,169 MainThread INFO Depth 3 Finish. Total visited Links: 1
+
+2012-12-27 17:11:54,958 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/151159/ 
+
+2012-12-27 17:12:50,182 MainThread INFO Depth 1 Finish. Total visited Links: 1
+
+2012-12-27 17:12:50,182 MainThread INFO Depth 2 Finish. Total visited Links: 1
+
+2012-12-27 17:12:50,182 MainThread INFO Depth 3 Finish. Total visited Links: 1
+
+2012-12-27 17:12:50,265 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/ustv/ 
+
+2012-12-27 17:13:27,221 MainThread INFO Depth 1 Finish. Total visited Links: 1
+
+2012-12-27 17:13:27,221 MainThread INFO Depth 2 Finish. Total visited Links: 1
+
+2012-12-27 17:13:27,222 MainThread INFO Depth 3 Finish. Total visited Links: 1
+
+2012-12-27 17:13:27,323 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/ustv/ 
+
+2012-12-27 17:14:47,102 MainThread INFO Depth 1 Finish. Total visited Links: 1
+
+2012-12-27 17:14:47,102 MainThread INFO Depth 2 Finish. Total visited Links: 1
+
+2012-12-27 17:14:47,103 MainThread INFO Depth 3 Finish. Total visited Links: 1
+
+2012-12-27 17:14:47,197 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/ustv/ 
+
+2012-12-27 21:51:42,885 MainThread INFO Depth 1 Finish. Total visited Links: 1
+
+2012-12-27 21:51:42,885 MainThread INFO Depth 2 Finish. Total visited Links: 1
+
+2012-12-27 21:51:42,885 MainThread INFO Depth 3 Finish. Total visited Links: 1
+
+2012-12-27 21:51:43,019 Thread-2 CRITICAL Traceback (most recent call last):
+  File "/home/kqc/github/crawler/threadPool.py", line 41, in run
+    result = func(*args, **kargs)
+  File "/home/kqc/github/crawler/crawler.py", line 128, in _taskHandler
+    self.lock.acquire() #锁住该变量,保证操作的原子性
+AttributeError: 'Crawler' object has no attribute 'lock'
+
+2012-12-27 21:54:23,488 MainThread INFO Depth 1 Finish. Total visited Links: 1
+
+2012-12-27 21:54:23,488 MainThread INFO Depth 2 Finish. Total visited Links: 1
+
+2012-12-27 21:54:23,488 MainThread INFO Depth 3 Finish. Total visited Links: 1
+
+2012-12-27 21:54:24,052 Thread-2 CRITICAL Traceback (most recent call last):
+  File "/home/kqc/github/crawler/threadPool.py", line 45, in run
+    self.threadPool.putTaskResult(*result)
+TypeError: putTaskResult() argument after * must be a sequence, not bool
+
+2012-12-27 21:55:59,421 MainThread INFO Depth 1 Finish. Total visited Links: 1
+
+2012-12-27 21:55:59,421 MainThread INFO Depth 2 Finish. Total visited Links: 1
+
+2012-12-27 21:55:59,421 MainThread INFO Depth 3 Finish. Total visited Links: 1
+
+2012-12-27 21:58:31,145 MainThread INFO Depth 1 Finish. Total visited Links: 1
+
+2012-12-27 21:58:31,145 MainThread INFO Depth 2 Finish. Total visited Links: 1
+
+2012-12-27 21:58:31,146 MainThread INFO Depth 3 Finish. Total visited Links: 1
+
+2012-12-27 22:01:55,174 MainThread INFO Depth 1 Finish. Total visited Links: 1
+
+2012-12-27 22:01:55,174 MainThread INFO Depth 2 Finish. Total visited Links: 1
+
+2012-12-27 22:01:55,174 MainThread INFO Depth 3 Finish. Total visited Links: 1
+
+2012-12-27 22:04:41,040 MainThread INFO Depth 1 Finish. Total visited Links: 1
+
+2012-12-27 22:04:41,041 MainThread INFO Depth 2 Finish. Total visited Links: 1
+
+2012-12-27 22:04:41,041 MainThread INFO Depth 3 Finish. Total visited Links: 1
+
+2012-12-27 22:07:22,605 MainThread INFO Depth 1 Finish. Total visited Links: 1
+
+2012-12-27 22:07:22,607 MainThread INFO Depth 2 Finish. Total visited Links: 1
+
+2012-12-27 22:07:22,607 MainThread INFO Depth 3 Finish. Total visited Links: 1
+
+2012-12-28 09:13:12,466 MainThread INFO Depth 1 Finish. Total visited Links: 1
+
+2012-12-28 09:13:12,466 MainThread INFO Depth 2 Finish. Total visited Links: 1
+
+2012-12-28 09:13:12,467 MainThread INFO Depth 3 Finish. Total visited Links: 1
+
+2012-12-28 09:15:18,037 Thread-2 CRITICAL Traceback (most recent call last):
+  File "/home/kqc/github/crawler/threadPool.py", line 41, in run
+    result = func(*args, **kargs)
+  File "/home/kqc/github/crawler/crawler.py", line 136, in _taskHandler
+    self._addUnvisitedGroups(webPage)
+  File "/home/kqc/github/crawler/crawler.py", line 172, in _addUnvisitedGroups
+    group_id = match_obj.group(1)
+  File "/home/kqc/github/crawler/crawler.py", line 172, in _addUnvisitedGroups
+    group_id = match_obj.group(1)
+  File "/usr/lib/python2.7/bdb.py", line 49, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/usr/lib/python2.7/bdb.py", line 68, in dispatch_line
+    if self.quitting: raise BdbQuit
+BdbQuit
+
+2012-12-28 09:19:20,731 MainThread INFO Depth 1 Finish. Total visited Links: 1
+
+2012-12-28 09:19:22,733 MainThread INFO Depth 2 Finish. Total visited Links: 10
+
+2012-12-28 09:23:10,617 MainThread INFO Depth 1 Finish. Total visited Links: 1
+
+2012-12-28 09:23:22,630 MainThread INFO Depth 2 Finish. Total visited Links: 10
+

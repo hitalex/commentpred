@@ -15,6 +15,7 @@ import traceback
 from locale import getdefaultlocale
 import logging
 import time
+import pdb
 
 from bs4 import BeautifulSoup 
 
@@ -76,14 +77,17 @@ class Crawler(object):
                 self._assignCurrentDepthTasks ()
                 #等待当前线程池完成所有任务,当池内的所有任务完成时，即代表爬完了一个网页深度
                 #self.threadPool.taskJoin()可代替以下操作，可无法Ctrl-C Interupt
-                while self.threadPool.getTaskLeft() <= 0:
-                    time.sleep(1)
+                while self.threadPool.getTaskLeft() > 0:
+                    print "Task left: ", self.threadPool.getTaskLeft()
+                    time.sleep(3)
                 print 'Depth %d Finish. Totally visited %d links. \n' % (
                     self.currentDepth, len(self.visitedGroups))
                 log.info('Depth %d Finish. Total visited Links: %d\n' % (
                     self.currentDepth, len(self.visitedGroups)))
                 self.currentDepth += 1
             self.stop()
+            assert(self.threadPool.getTaskLeft() == 0)
+            print "Main Crawling procedure finished!"
 
     def stop(self):
         self.isCrawling = False
@@ -104,12 +108,13 @@ class Crawler(object):
         # 判断当前周期内访问的网页数目是否大于最大数目
         if self.currentPeriodVisits > self.MAX_VISITS_PER_MINUTE - 1:
             # 等待所有的网页处理完毕
-            while self.threadPool.getTaskLeft > 0:
+            while self.threadPool.getTaskLeft() > 0:
+                print "Waiting period ends..."
                 time.sleep(1)
             timeNow = time.time()
-            seconds = self.periodStart - timeNow
+            seconds = timeNow - self.periodStart
             if  seconds < 60: # 如果当前还没有过一分钟,则sleep
-                time.sleep(seconds + 3)
+                time.sleep(int(seconds + 3))
             self.periodStart = time.time() # 重新设置开始时间
             self.currentPeriodVisits = 0
         # 从未访问的列表中抽出，并为其分配thread
@@ -163,12 +168,12 @@ class Crawler(object):
         hrefs = self._getAllHrefsFromPage(url, pageSource)
         for href in hrefs:
             #print "URLs in page: ", href
-            match_obj = self.pattern.match(url)
+            match_obj = self.pattern.match(href)
             # 只有满足小组主页链接格式的链接才会被处理
             if self._isHttpOrHttpsProtocol(href) and (match_obj is not None):
-                # TODO 一些非常奇怪的错误...
+                #pdb.set_trace()
                 group_id = match_obj.group(1)
-                print "Group link: " + href
+                #print "Group link: " + href
                 if not self._isGroupRepeated(group_id):
                     # 将小组id放入待访问的小组列表中去
                     print "Add group id:", group_id

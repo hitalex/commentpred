@@ -34,7 +34,7 @@ class WebPage(object):
                 self._handleEncoding(response)
                 self.pageSource = response.text
                 #print "Response text:", self.pageSource
-                print "Response cookes:", response.cookies
+                #print "Response cookes:", response.cookies
                 return True
             else:
                 status = requests.status_codes._codes[response.status_code]
