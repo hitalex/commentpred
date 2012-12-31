@@ -17,7 +17,7 @@ def congifLogger(logFile, logLevel):
         2:logging.ERROR,
         3:logging.WARNING,
         4:logging.INFO,
-        5:logging.DEBUG,#数字最大记录最详细
+        5:logging.DEBUG,#数字越大记录越详细
         }
     formatter = logging.Formatter(
         '%(asctime)s %(threadName)s %(levelname)s %(message)s')

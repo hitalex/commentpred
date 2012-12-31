@@ -1,187 +1,626 @@
-2012-12-26 11:05:56,102 Thread-11 DEBUG request() got an unexpected keyword argument 'prefetch' URL: http://www.douban.com 
+2012-12-28 09:57:22,930 MainThread INFO Depth 1 Finish. Total visited Links: 1
 
-2012-12-26 11:06:04,106 MainThread INFO Depth 1 Finish. Total visited Links: 1
+2012-12-28 09:57:25,934 MainThread INFO Depth 2 Finish. Total visited Links: 10
 
-2012-12-26 11:06:04,107 MainThread INFO Depth 2 Finish. Total visited Links: 1
+2012-12-28 10:02:33,738 MainThread INFO Depth 1 Finish. Total visited Links: 1
 
-2012-12-26 11:09:37,703 MainThread INFO Depth 1 Finish. Total visited Links: 1
+2012-12-28 10:02:36,741 MainThread INFO Depth 2 Finish. Total visited Links: 10
 
-2012-12-26 11:09:45,723 MainThread INFO Depth 2 Finish. Total visited Links: 44
+2012-12-28 10:03:56,372 MainThread INFO Depth 1 Finish. Total visited Links: 1
 
-2012-12-26 11:17:55,542 MainThread INFO Depth 1 Finish. Total visited Links: 1
+2012-12-28 10:03:59,376 MainThread INFO Depth 2 Finish. Total visited Links: 10
 
-2012-12-26 16:06:10,997 MainThread INFO Depth 1 Finish. Total visited Links: 0
+2012-12-28 10:08:34,240 MainThread INFO Depth 1 Finish. Total visited Links: 1
 
-2012-12-26 16:12:50,795 Thread-2 WARNING Page not avaliable. Status code:403 URL: http://www.douban.com/group/insidestory/ 
+2012-12-28 10:08:37,244 MainThread INFO Depth 2 Finish. Total visited Links: 10
 
-2012-12-26 16:12:58,718 MainThread INFO Depth 1 Finish. Total visited Links: 1
+2012-12-28 10:08:55,303 MainThread INFO Depth 3 Finish. Total visited Links: 51
 
-2012-12-26 16:12:58,718 MainThread INFO Depth 2 Finish. Total visited Links: 1
+2012-12-28 10:10:35,867 MainThread INFO Depth 1 Finish. Total visited Links: 1
 
-2012-12-26 16:21:42,147 Thread-11 WARNING Page not avaliable. Status code:403 URL: http://www.douban.com/group/insidestory/ 
+2012-12-28 10:10:38,870 MainThread INFO Depth 2 Finish. Total visited Links: 10
 
-2012-12-26 16:21:50,077 MainThread INFO Depth 1 Finish. Total visited Links: 1
+2012-12-28 10:12:14,889 MainThread INFO Depth 1 Finish. Total visited Links: 1
 
-2012-12-26 16:21:50,078 MainThread INFO Depth 2 Finish. Total visited Links: 1
+2012-12-28 10:12:17,892 MainThread INFO Depth 2 Finish. Total visited Links: 10
 
-2012-12-26 16:25:24,704 Thread-2 WARNING Page not avaliable. Status code:403 URL: http://www.douban.com/group/insidestory/ 
+2012-12-28 10:16:03,146 MainThread INFO Depth 1 Finish. Total visited Links: 1
 
-2012-12-26 16:25:32,601 MainThread INFO Depth 1 Finish. Total visited Links: 1
+2012-12-28 10:16:06,147 MainThread INFO Depth 2 Finish. Total visited Links: 10
 
-2012-12-26 16:25:32,601 MainThread INFO Depth 2 Finish. Total visited Links: 1
+2012-12-28 16:59:30,713 MainThread INFO Depth 1 Finish. Total visited Links: 1
 
-2012-12-27 14:14:17,680 MainThread INFO Depth 1 Finish. Total visited Links: 1
+2012-12-28 16:59:33,717 MainThread INFO Depth 2 Finish. Total visited Links: 10
 
-2012-12-27 14:17:44,294 MainThread INFO Depth 1 Finish. Total visited Links: 1
+2012-12-28 16:59:57,759 MainThread INFO Depth 3 Finish. Total visited Links: 45
 
-2012-12-27 14:18:08,708 Thread-4 WARNING Page not avaliable. Status code:403 URL: http://www.douban.com/group/151159/ 
+2012-12-28 17:00:42,856 MainThread INFO Depth 4 Finish. Total visited Links: 213
 
-2012-12-27 14:18:10,198 Thread-4 WARNING Page not avaliable. Status code:403 URL: http://www.douban.com/group/151159/ 
+2012-12-28 17:01:15,887 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/143795/ 
 
-2012-12-27 14:54:06,849 MainThread INFO Depth 1 Finish. Total visited Links: 1
+2012-12-28 17:01:22,825 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/ohmygod/ 
 
-2012-12-27 14:54:06,849 MainThread INFO Depth 2 Finish. Total visited Links: 1
+2012-12-28 17:02:08,727 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/dbggt/ 
 
-2012-12-27 14:54:06,849 MainThread INFO Depth 3 Finish. Total visited Links: 1
+2012-12-28 17:02:09,466 Thread-5 WARNING Page not avaliable. Status code: 404 with Status: ('not_found', '-o-') URL: http://www.douban.com/group/174455/ 
 
-2012-12-27 14:54:08,000 Thread-2 WARNING Page not avaliable. Status code:403 URL: http://www.douban.com/group/151159/ 
+2012-12-28 17:02:11,009 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/322597/ 
 
-2012-12-27 15:07:21,393 MainThread INFO Depth 1 Finish. Total visited Links: 1
+2012-12-28 17:02:11,098 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/ghost/ 
 
-2012-12-27 15:07:21,393 MainThread INFO Depth 2 Finish. Total visited Links: 1
+2012-12-28 17:02:11,179 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/yitengruner/ 
 
-2012-12-27 15:07:21,394 MainThread INFO Depth 3 Finish. Total visited Links: 1
+2012-12-28 17:02:11,431 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/R5A26/ 
 
-2012-12-27 15:07:21,508 Thread-2 WARNING Page not avaliable. Status code:403 URL: http://www.douban.com/group/151159/ 
+2012-12-28 17:02:11,501 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/horrormovies/ 
 
-2012-12-27 15:38:53,715 MainThread INFO Depth 1 Finish. Total visited Links: 1
+2012-12-28 17:02:11,503 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/purelandmusic/ 
 
-2012-12-27 15:38:53,715 MainThread INFO Depth 2 Finish. Total visited Links: 1
+2012-12-28 17:02:11,585 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/conspiracism/ 
 
-2012-12-27 15:38:53,715 MainThread INFO Depth 3 Finish. Total visited Links: 1
+2012-12-28 17:02:11,917 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/CowardLoveHM/ 
 
-2012-12-27 15:38:53,954 Thread-2 DEBUG global name 'request' is not defined URL: http://www.douban.com/group/151159/ 
+2012-12-28 17:02:11,994 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/18122/ 
 
-2012-12-27 15:39:19,869 MainThread INFO Depth 1 Finish. Total visited Links: 1
+2012-12-28 17:02:12,075 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/70538/ 
 
-2012-12-27 15:39:19,870 MainThread INFO Depth 2 Finish. Total visited Links: 1
+2012-12-28 17:02:12,140 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/stage8/ 
 
-2012-12-27 15:39:19,871 MainThread INFO Depth 3 Finish. Total visited Links: 1
+2012-12-28 17:02:12,222 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/yinmou/ 
 
-2012-12-27 15:39:19,941 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/151159/ 
+2012-12-28 17:02:12,587 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/102022/ 
 
-2012-12-27 17:11:51,168 MainThread INFO Depth 1 Finish. Total visited Links: 1
+2012-12-28 17:02:12,676 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/289297/ 
 
-2012-12-27 17:11:51,168 MainThread INFO Depth 2 Finish. Total visited Links: 1
+2012-12-28 17:02:12,774 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/301911/ 
 
-2012-12-27 17:11:51,169 MainThread INFO Depth 3 Finish. Total visited Links: 1
+2012-12-28 17:02:12,776 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/20349/ 
 
-2012-12-27 17:11:54,958 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/151159/ 
+2012-12-28 17:02:12,800 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/linglingtang/ 
 
-2012-12-27 17:12:50,182 MainThread INFO Depth 1 Finish. Total visited Links: 1
+2012-12-28 17:02:12,867 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/yjshe/ 
 
-2012-12-27 17:12:50,182 MainThread INFO Depth 2 Finish. Total visited Links: 1
+2012-12-28 17:02:12,869 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/54012/ 
 
-2012-12-27 17:12:50,182 MainThread INFO Depth 3 Finish. Total visited Links: 1
+2012-12-28 17:02:12,880 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/sadan666/ 
 
-2012-12-27 17:12:50,265 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/ustv/ 
+2012-12-28 17:02:12,939 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/319931/ 
 
-2012-12-27 17:13:27,221 MainThread INFO Depth 1 Finish. Total visited Links: 1
+2012-12-28 17:02:12,942 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/39459/ 
 
-2012-12-27 17:13:27,221 MainThread INFO Depth 2 Finish. Total visited Links: 1
+2012-12-28 17:02:12,947 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/psychic/ 
 
-2012-12-27 17:13:27,222 MainThread INFO Depth 3 Finish. Total visited Links: 1
+2012-12-28 17:02:13,012 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/help/ 
 
-2012-12-27 17:13:27,323 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/ustv/ 
+2012-12-28 17:02:13,022 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/pulp/ 
 
-2012-12-27 17:14:47,102 MainThread INFO Depth 1 Finish. Total visited Links: 1
+2012-12-28 17:02:13,029 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/xo/ 
 
-2012-12-27 17:14:47,102 MainThread INFO Depth 2 Finish. Total visited Links: 1
+2012-12-28 17:02:13,096 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/20317/ 
 
-2012-12-27 17:14:47,103 MainThread INFO Depth 3 Finish. Total visited Links: 1
+2012-12-28 17:02:13,098 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/238724/ 
 
-2012-12-27 17:14:47,197 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/ustv/ 
+2012-12-28 17:02:13,167 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/ourgod/ 
 
-2012-12-27 21:51:42,885 MainThread INFO Depth 1 Finish. Total visited Links: 1
+2012-12-28 17:02:13,174 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/312902/ 
 
-2012-12-27 21:51:42,885 MainThread INFO Depth 2 Finish. Total visited Links: 1
+2012-12-28 17:02:13,240 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/211425/ 
 
-2012-12-27 21:51:42,885 MainThread INFO Depth 3 Finish. Total visited Links: 1
+2012-12-28 17:02:13,314 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/ifanr/ 
 
-2012-12-27 21:51:43,019 Thread-2 CRITICAL Traceback (most recent call last):
-  File "/home/kqc/github/crawler/threadPool.py", line 41, in run
-    result = func(*args, **kargs)
-  File "/home/kqc/github/crawler/crawler.py", line 128, in _taskHandler
-    self.lock.acquire() #锁住该变量,保证操作的原子性
-AttributeError: 'Crawler' object has no attribute 'lock'
+2012-12-28 17:02:13,316 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/say/ 
 
-2012-12-27 21:54:23,488 MainThread INFO Depth 1 Finish. Total visited Links: 1
+2012-12-28 17:02:13,392 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/kernel/ 
 
-2012-12-27 21:54:23,488 MainThread INFO Depth 2 Finish. Total visited Links: 1
+2012-12-28 17:02:13,394 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/oss/ 
 
-2012-12-27 21:54:23,488 MainThread INFO Depth 3 Finish. Total visited Links: 1
+2012-12-28 17:02:13,461 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/MagicLinux/ 
 
-2012-12-27 21:54:24,052 Thread-2 CRITICAL Traceback (most recent call last):
-  File "/home/kqc/github/crawler/threadPool.py", line 45, in run
-    self.threadPool.putTaskResult(*result)
-TypeError: putTaskResult() argument after * must be a sequence, not bool
+2012-12-28 17:02:13,463 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/Philosophie/ 
 
-2012-12-27 21:55:59,421 MainThread INFO Depth 1 Finish. Total visited Links: 1
+2012-12-28 17:02:13,513 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/153768/ 
 
-2012-12-27 21:55:59,421 MainThread INFO Depth 2 Finish. Total visited Links: 1
+2012-12-28 17:02:13,541 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/YouthDeal/ 
 
-2012-12-27 21:55:59,421 MainThread INFO Depth 3 Finish. Total visited Links: 1
+2012-12-28 17:02:13,543 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/linuxsystempro/ 
 
-2012-12-27 21:58:31,145 MainThread INFO Depth 1 Finish. Total visited Links: 1
+2012-12-28 17:02:13,606 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/174749/ 
 
-2012-12-27 21:58:31,145 MainThread INFO Depth 2 Finish. Total visited Links: 1
+2012-12-28 17:02:13,626 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/245338/ 
 
-2012-12-27 21:58:31,146 MainThread INFO Depth 3 Finish. Total visited Links: 1
+2012-12-28 17:02:13,630 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/183073/ 
 
-2012-12-27 22:01:55,174 MainThread INFO Depth 1 Finish. Total visited Links: 1
+2012-12-28 17:02:13,700 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/xpmethod/ 
 
-2012-12-27 22:01:55,174 MainThread INFO Depth 2 Finish. Total visited Links: 1
+2012-12-28 17:02:13,710 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/itunes/ 
 
-2012-12-27 22:01:55,174 MainThread INFO Depth 3 Finish. Total visited Links: 1
+2012-12-28 17:02:13,713 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/145136/ 
 
-2012-12-27 22:04:41,040 MainThread INFO Depth 1 Finish. Total visited Links: 1
+2012-12-28 17:02:13,770 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/ipod/ 
 
-2012-12-27 22:04:41,041 MainThread INFO Depth 2 Finish. Total visited Links: 1
+2012-12-28 17:02:13,783 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/ipodphonepad/ 
 
-2012-12-27 22:04:41,041 MainThread INFO Depth 3 Finish. Total visited Links: 1
+2012-12-28 17:02:13,785 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/emac/ 
 
-2012-12-27 22:07:22,605 MainThread INFO Depth 1 Finish. Total visited Links: 1
+2012-12-28 17:02:13,854 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/eee/ 
 
-2012-12-27 22:07:22,607 MainThread INFO Depth 2 Finish. Total visited Links: 1
+2012-12-28 17:02:13,906 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/iradio/ 
 
-2012-12-27 22:07:22,607 MainThread INFO Depth 3 Finish. Total visited Links: 1
+2012-12-28 17:02:13,908 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/DJGarfieldJohn/ 
 
-2012-12-28 09:13:12,466 MainThread INFO Depth 1 Finish. Total visited Links: 1
+2012-12-28 17:02:13,943 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/MacOrz/ 
 
-2012-12-28 09:13:12,466 MainThread INFO Depth 2 Finish. Total visited Links: 1
+2012-12-28 17:02:13,994 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/ipodhelp/ 
 
-2012-12-28 09:13:12,467 MainThread INFO Depth 3 Finish. Total visited Links: 1
+2012-12-28 17:02:13,996 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/iphone3gs/ 
 
-2012-12-28 09:15:18,037 Thread-2 CRITICAL Traceback (most recent call last):
-  File "/home/kqc/github/crawler/threadPool.py", line 41, in run
-    result = func(*args, **kargs)
-  File "/home/kqc/github/crawler/crawler.py", line 136, in _taskHandler
-    self._addUnvisitedGroups(webPage)
-  File "/home/kqc/github/crawler/crawler.py", line 172, in _addUnvisitedGroups
-    group_id = match_obj.group(1)
-  File "/home/kqc/github/crawler/crawler.py", line 172, in _addUnvisitedGroups
-    group_id = match_obj.group(1)
-  File "/usr/lib/python2.7/bdb.py", line 49, in trace_dispatch
-    return self.dispatch_line(frame)
-  File "/usr/lib/python2.7/bdb.py", line 68, in dispatch_line
-    if self.quitting: raise BdbQuit
-BdbQuit
+2012-12-28 17:02:14,034 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/ipad/ 
 
-2012-12-28 09:19:20,731 MainThread INFO Depth 1 Finish. Total visited Links: 1
+2012-12-28 17:02:14,077 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/252749/ 
 
-2012-12-28 09:19:22,733 MainThread INFO Depth 2 Finish. Total visited Links: 10
+2012-12-28 17:02:14,086 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/ipodnano5/ 
 
-2012-12-28 09:23:10,617 MainThread INFO Depth 1 Finish. Total visited Links: 1
+2012-12-28 17:02:14,112 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/es7/ 
 
-2012-12-28 09:23:22,630 MainThread INFO Depth 2 Finish. Total visited Links: 10
+2012-12-28 17:02:14,222 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/incredibles/ 
+
+2012-12-28 17:02:14,244 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/meizu/ 
+
+2012-12-28 17:02:14,286 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/ipad2/ 
+
+2012-12-28 17:02:14,387 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/milestone2/ 
+
+2012-12-28 17:02:14,477 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/GalaxyS/ 
+
+2012-12-28 17:02:14,549 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/MTT/ 
+
+2012-12-28 17:02:14,621 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/desiree/ 
+
+2012-12-28 17:02:14,648 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/fujitsu/ 
+
+2012-12-28 17:02:14,690 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/qiaoxia/ 
+
+2012-12-28 17:02:14,737 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/AdamYoung/ 
+
+2012-12-28 17:02:14,760 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/xnmovie/ 
+
+2012-12-28 17:02:14,804 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/MRJ/ 
+
+2012-12-28 17:02:14,824 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/172675/ 
+
+2012-12-28 17:02:14,868 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/gentlesmile/ 
+
+2012-12-28 17:02:14,938 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/huiyinge/ 
+
+2012-12-28 17:02:15,004 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/337838/ 
+
+2012-12-28 17:02:15,078 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/355988/ 
+
+2012-12-28 17:02:15,193 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/marriagemadao/ 
+
+2012-12-28 17:02:15,309 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/magicshow/ 
+
+2012-12-28 17:02:15,333 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/sweethearts/ 
+
+2012-12-28 17:02:15,378 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/254658/ 
+
+2012-12-28 17:02:15,401 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/325344/ 
+
+2012-12-28 17:02:15,447 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/273534/ 
+
+2012-12-28 17:02:15,472 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/stayawayfromTC/ 
+
+2012-12-28 17:02:15,515 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/340093/ 
+
+2012-12-28 17:02:15,540 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/344412/ 
+
+2012-12-28 17:02:15,608 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/297491/ 
+
+2012-12-28 17:02:15,704 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/nonsense/ 
+
+2012-12-28 17:02:15,775 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/240309/ 
+
+2012-12-28 17:02:15,815 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/288534/ 
+
+2012-12-28 17:02:15,840 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/197528/ 
+
+2012-12-28 17:02:15,881 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/117151/ 
+
+2012-12-28 17:02:15,906 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/168629/ 
+
+2012-12-28 17:02:15,943 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/161064/ 
+
+2012-12-28 17:02:15,968 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/sauna/ 
+
+2012-12-28 17:02:16,009 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/195050/ 
+
+2012-12-28 17:02:16,037 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/guelph/ 
+
+2012-12-28 17:02:16,075 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/344897/ 
+
+2012-12-28 17:02:16,109 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/342223/ 
+
+2012-12-28 17:02:16,131 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/360976/ 
+
+2012-12-28 17:02:16,151 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/dengren/ 
+
+2012-12-28 17:02:16,176 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/wstv/ 
+
+2012-12-28 17:02:16,194 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/igame/ 
+
+2012-12-28 17:02:16,208 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/328322/ 
+
+2012-12-28 17:02:16,216 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/238299/ 
+
+2012-12-28 17:02:16,246 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/359297/ 
+
+2012-12-28 17:02:16,262 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/netenai/ 
+
+2012-12-28 17:02:16,275 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/67656/ 
+
+2012-12-28 17:02:16,316 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/losing/ 
+
+2012-12-28 17:02:16,332 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/109383/ 
+
+2012-12-28 17:02:16,353 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/56292/ 
+
+2012-12-28 17:02:16,386 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/64084/ 
+
+2012-12-28 17:02:16,398 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/160375/ 
+
+2012-12-28 17:02:16,431 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/wintersun/ 
+
+2012-12-28 17:02:16,452 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/motorola/ 
+
+2012-12-28 17:02:16,463 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/ipodtouch4/ 
+
+2012-12-28 17:02:16,496 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/itouch/ 
+
+2012-12-28 17:02:16,510 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/40316/ 
+
+2012-12-28 17:02:16,516 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/sixi330/ 
+
+2012-12-28 17:02:16,526 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/connectlens/ 
+
+2012-12-28 17:02:16,565 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/201508/ 
+
+2012-12-28 17:02:16,577 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/yesshou/ 
+
+2012-12-28 17:02:16,586 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/93611/ 
+
+2012-12-28 17:02:16,593 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/ebony/ 
+
+2012-12-28 17:02:16,646 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/prettygirl/ 
+
+2012-12-28 17:02:16,655 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/135648/ 
+
+2012-12-28 17:02:16,673 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/zhengduoyan/ 
+
+2012-12-28 17:02:16,733 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/qinmen/ 
+
+2012-12-28 17:02:16,749 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/tb/ 
+
+2012-12-28 17:02:16,803 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/buybuybuy/ 
+
+2012-12-28 17:02:16,855 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/310066/ 
+
+2012-12-28 17:02:16,860 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/354648/ 
+
+2012-12-28 17:02:16,881 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/239814/ 
+
+2012-12-28 17:02:16,968 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/318691/ 
+
+2012-12-28 17:02:17,003 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/ganxing/ 
+
+2012-12-28 17:02:17,065 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/Cassandras/ 
+
+2012-12-28 17:02:17,085 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/ganga/ 
+
+2012-12-28 17:02:17,160 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/qiguai/ 
+
+2012-12-28 17:02:17,189 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/149142/ 
+
+2012-12-28 17:02:17,286 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/147321/ 
+
+2012-12-28 17:02:17,321 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/121337/ 
+
+2012-12-28 17:02:17,388 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/225021/ 
+
+2012-12-28 17:02:17,402 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/biaohan/ 
+
+2012-12-28 17:02:17,462 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/312470/ 
+
+2012-12-28 17:02:17,473 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/129744/ 
+
+2012-12-28 17:02:17,531 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/onexway/ 
+
+2012-12-28 17:02:17,552 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/153978/ 
+
+2012-12-28 17:02:17,597 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/petal/ 
+
+2012-12-28 17:02:17,620 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/lostlostlost/ 
+
+2012-12-28 17:02:17,638 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/239910/ 
+
+2012-12-28 17:02:17,693 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/littlelittle/ 
+
+2012-12-28 17:02:17,715 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/Kidsindespair/ 
+
+2012-12-28 17:02:17,724 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/ituangou/ 
+
+2012-12-28 17:02:17,794 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/62661/ 
+
+2012-12-28 17:02:17,860 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/81562/ 
+
+2012-12-28 17:02:17,931 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/262222/ 
+
+2012-12-28 17:02:17,996 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/zhuakuang/ 
+
+2012-12-28 17:02:18,015 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/165698/ 
+
+2012-12-28 17:02:18,072 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/85104/ 
+
+2012-12-28 17:02:18,084 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/85184/ 
+
+2012-12-28 17:02:18,155 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/125411/ 
+
+2012-12-28 17:02:18,155 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/290001/ 
+
+2012-12-28 17:02:18,256 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/annbaby/ 
+
+2012-12-28 17:02:18,258 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/yuanfu/ 
+
+2012-12-28 17:02:18,336 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/334556/ 
+
+2012-12-28 17:02:18,408 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/214573/ 
+
+2012-12-28 17:02:18,478 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/215352/ 
+
+2012-12-28 17:02:18,556 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/babbittry/ 
+
+2012-12-28 17:02:18,648 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/wocaoliu/ 
+
+2012-12-28 17:02:18,667 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/shakaixin/ 
+
+2012-12-28 17:02:18,774 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/nihao8/ 
+
+2012-12-28 17:02:18,789 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/cccm/ 
+
+2012-12-28 17:02:18,844 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/63162/ 
+
+2012-12-28 17:02:18,853 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/198037/ 
+
+2012-12-28 17:02:18,861 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/maiCD/ 
+
+2012-12-28 17:02:18,921 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/156104/ 
+
+2012-12-28 17:02:18,930 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/249120/ 
+
+2012-12-28 17:02:18,967 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/rocker/ 
+
+2012-12-28 17:02:18,996 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/291491/ 
+
+2012-12-28 17:02:19,038 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/312006/ 
+
+2012-12-28 17:02:19,083 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/315014/ 
+
+2012-12-28 17:02:19,108 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/qiukudang/ 
+
+2012-12-28 17:02:19,161 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/300391/ 
+
+2012-12-28 17:02:19,197 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/buyunbuyu/ 
+
+2012-12-28 17:02:19,234 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/305100/ 
+
+2012-12-28 17:02:19,266 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/312250/ 
+
+2012-12-28 17:02:19,298 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/177855/ 
+
+2012-12-28 17:02:19,336 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/284414/ 
+
+2012-12-28 17:02:19,361 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/278688/ 
+
+2012-12-28 17:02:19,412 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/263009/ 
+
+2012-12-28 17:02:19,462 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/256948/ 
+
+2012-12-28 17:02:19,480 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/277307/ 
+
+2012-12-28 17:02:19,536 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/237827/ 
+
+2012-12-28 17:02:19,556 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/356650/ 
+
+2012-12-28 17:02:19,631 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/368232/ 
+
+2012-12-28 17:02:19,651 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/Crimina/ 
+
+2012-12-28 17:02:19,708 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/cm180/ 
+
+2012-12-28 17:02:19,723 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/240725/ 
+
+2012-12-28 17:02:19,809 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/102430/ 
+
+2012-12-28 17:02:19,812 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/198666/ 
+
+2012-12-28 17:02:19,903 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/290541/ 
+
+2012-12-28 17:02:19,924 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/axbug/ 
+
+2012-12-28 17:02:19,970 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/111829/ 
+
+2012-12-28 17:02:19,972 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/naotaitao/ 
+
+2012-12-28 17:02:19,995 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/grudges/ 
+
+2012-12-28 17:02:20,042 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/299382/ 
+
+2012-12-28 17:02:20,043 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/wearesevens/ 
+
+2012-12-28 17:02:20,109 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/35310/ 
+
+2012-12-28 17:02:20,163 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/107785/ 
+
+2012-12-28 17:02:20,165 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/niubi110/ 
+
+2012-12-28 17:02:20,191 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/277878/ 
+
+2012-12-28 17:02:20,237 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/zbwy/ 
+
+2012-12-28 17:02:20,260 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/antiuncle/ 
+
+2012-12-28 17:02:20,330 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/lvguangfans/ 
+
+2012-12-28 17:02:20,347 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/prettyboy/ 
+
+2012-12-28 17:02:20,432 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/fanjian/ 
+
+2012-12-28 17:02:20,434 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/302818/ 
+
+2012-12-28 17:02:20,501 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/jiejing/ 
+
+2012-12-28 17:02:20,503 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/fanzeyi/ 
+
+2012-12-28 17:02:20,586 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/duomoo/ 
+
+2012-12-28 17:02:20,588 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/Kongregate/ 
+
+2012-12-28 17:02:20,653 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/iftt/ 
+
+2012-12-28 17:02:20,655 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/Xtreme/ 
+
+2012-12-28 17:02:20,719 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/ibeta/ 
+
+2012-12-28 17:02:20,735 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/GoogleCalendar/ 
+
+2012-12-28 17:02:20,802 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/285238/ 
+
+2012-12-28 17:02:20,880 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/Diva/ 
+
+2012-12-28 17:02:21,443 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/fuckgly/ 
+
+2012-12-28 17:02:21,507 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/sobad/ 
+
+2012-12-28 17:02:21,572 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/venuste/ 
+
+2012-12-28 17:02:21,665 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/266432/ 
+
+2012-12-28 17:02:21,729 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/349891/ 
+
+2012-12-28 17:02:21,800 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/itvb/ 
+
+2012-12-28 17:02:21,801 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/249001/ 
+
+2012-12-28 17:02:21,873 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/336621/ 
+
+2012-12-28 17:02:21,875 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/maren/ 
+
+2012-12-28 17:02:21,940 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/329512/ 
+
+2012-12-28 17:02:21,942 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/306854/ 
+
+2012-12-28 17:02:22,018 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/209095/ 
+
+2012-12-28 17:02:22,019 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/216370/ 
+
+2012-12-28 17:02:22,111 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/jp2012/ 
+
+2012-12-28 17:02:22,255 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/badidea/ 
+
+2012-12-28 17:02:22,263 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/233356/ 
+
+2012-12-28 17:02:22,350 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/anzhuo/ 
+
+2012-12-28 17:02:22,351 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/gphone/ 
+
+2012-12-28 17:02:22,431 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/Windows7/ 
+
+2012-12-28 17:02:22,433 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/android/ 
+
+2012-12-28 17:02:22,526 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/WindowsMobile/ 
+
+2012-12-28 17:02:22,528 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/dbapi/ 
+
+2012-12-28 17:02:22,602 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/shangbuqi/ 
+
+2012-12-28 17:02:22,613 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/NexusOne/ 
+
+2012-12-28 17:02:22,617 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/geek/ 
+
+2012-12-28 17:02:22,619 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/219853/ 
+
+2012-12-28 17:02:22,676 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/WindowsPhone7/ 
+
+2012-12-28 17:02:22,688 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/loserwomen/ 
+
+2012-12-28 17:02:22,689 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/zuichunjie/ 
+
+2012-12-28 17:02:22,725 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/212322/ 
+
+2012-12-28 17:02:22,756 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/240178/ 
+
+2012-12-28 17:02:22,791 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/354504/ 
+
+2012-12-28 17:02:22,817 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/bimbalola/ 
+
+2012-12-28 17:02:22,861 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/chunjiezhisi/ 
+
+2012-12-28 17:02:22,883 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/satana/ 
+
+2012-12-28 17:02:22,943 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/huibao/ 
+
+2012-12-28 17:02:22,944 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/bluelove/ 
+
+2012-12-28 17:02:22,969 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/201241/ 
+
+2012-12-28 17:02:23,034 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/337337/ 
+
+2012-12-28 17:02:23,035 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/294637/ 
+
+2012-12-28 17:02:23,051 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/SMaf/ 
+
+2012-12-28 17:02:23,102 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/pix/ 
+
+2012-12-28 17:02:23,104 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/blogphoto/ 
+
+2012-12-28 17:02:23,124 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/174896/ 
+
+2012-12-28 17:02:23,190 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/341720/ 
+
+2012-12-28 17:02:23,192 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/222337/ 
+
+2012-12-28 17:02:23,248 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/181566/ 
+
+2012-12-28 17:02:23,294 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/sangshi/ 
+
+2012-12-28 17:02:23,294 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/youhuaxi/ 
+
+2012-12-28 17:02:23,357 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/67146/ 
+
+2012-12-28 17:02:23,359 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/91820/ 
+
+2012-12-28 17:02:23,361 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/tctuju/ 
+
+2012-12-28 17:02:23,422 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/niejun/ 
+
+2012-12-28 17:02:23,425 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/440073/ 
+
+2012-12-28 17:02:23,429 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/miniplayer/ 
+
+2012-12-28 17:02:23,484 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/musictimememory/ 
+
+2012-12-28 17:02:23,488 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/hifi/ 
+
+2012-12-28 17:02:23,493 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/WALKMAN/ 
+
+2012-12-28 17:02:23,542 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/50228/ 
+
+2012-12-28 17:02:23,554 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/Akon/ 
+
+2012-12-28 17:02:23,560 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/fortminor/ 
+
+2012-12-28 17:02:23,779 Thread-6 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/sunzimen/ 
+
+2012-12-28 17:02:25,370 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/343444/ 
+
+2012-12-28 17:02:27,976 MainThread INFO Depth 5 Finish. Total visited Links: 894
 

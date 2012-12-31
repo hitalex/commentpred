@@ -37,8 +37,8 @@ class Worker(Thread):
                 continue
             try:
                 self.threadPool.increaseRunsNum() 
-                # I suppose func, i.e. _taskHandler always return none
-                result = func(*args, **kargs) 
+                # 抓取网页
+                func(*args, **kargs) 
                 self.threadPool.decreaseRunsNum()
                 # TODO : 搞清楚如何利用 resultQueue
                 """

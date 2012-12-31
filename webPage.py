@@ -33,6 +33,7 @@ class WebPage(object):
             if self._isResponseAvaliable(response):
                 self._handleEncoding(response)
                 self.pageSource = response.text
+                #print "Page encoding: ", reponse.encoding
                 #print "Response text:", self.pageSource
                 #print "Response cookes:", response.cookies
                 return True

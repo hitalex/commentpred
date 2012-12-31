@@ -18,6 +18,12 @@ class Database(object):
                             url TEXT, 
                             pageSource TEXT,
                             keyword TEXT)''')
+            self.conn.execute('''CREATE TABLE IF NOT EXISTS
+                            Group (id INTEGER PRIMARY KEY AUTOINCREMENT, 
+                            group_id TEXT,
+                            user_id TEXT, 
+                            pubdate TEXT,
+                            description TEXT)''')
         except Exception, e:
             self.conn = None
 
@@ -31,6 +37,15 @@ class Database(object):
         if self.conn:
             sql='''INSERT INTO Webpage (url, pageSource, keyword) VALUES (?, ?, ?);'''
             self.conn.execute(sql, (url, pageSource, keyword) )
+        else :
+            raise sqlite3.OperationalError,'Database is not connected. Can not save Data!'
+            
+    def saveGrouInfo(self, dbgroup):
+        """ 保存小组信息
+        """
+        if self.conn:
+            sql='''INSERT INTO Group (group_id, user_id, pubdate, description) VALUES (?, ?, ?, ?);'''
+            self.conn.execute(sql, (dbgroup.group_id, dbgroup.user_id, str(dbgroup.pubdate), dbgroup.desc) )
         else :
             raise sqlite3.OperationalError,'Database is not connected. Can not save Data!'
 

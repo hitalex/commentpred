@@ -10,33 +10,37 @@ crawler.py
 from urlparse import urljoin,urlparse
 from collections import deque
 from threading import Lock
-import re
 import traceback
 from locale import getdefaultlocale
 import logging
 import time
 import pdb
+import codecs # for file encodings
+from database import Database
 
 from bs4 import BeautifulSoup 
 
-from database import Database
 from webPage import WebPage
 from threadPool import ThreadPool
+from models import Group
+from patterns import *
 
 log = logging.getLogger('Main.crawler')
 
 
 class Crawler(object):
 
-    def __init__(self, args):
+    def __init__(self, args, startURLs):
         #指定网页深度
         self.depth = args.depth  
         #标注初始爬虫深度，从1开始
         self.currentDepth = 1  
         #指定关键词,使用console的默认编码来解码
-        self.keyword = args.keyword.decode(getdefaultlocale()[1]) 
+        #self.keyword = args.keyword.decode(getdefaultlocale()[1]) 
         #数据库
         self.database =  Database(args.dbFile)
+        # store group ids to fils, using UTF-8
+        self.groupfile = codecs.open("GroupID.txt", "w", "UTF-8")
         #线程池,指定线程数
         self.threadPool = ThreadPool(args.threadNum)  
         #已访问的小组id
@@ -44,17 +48,19 @@ class Crawler(object):
         #待访问的小组id
         self.unvisitedGroups = deque()
         
+        # 所有的Group信息
+        self.groupInfo = []
+        
         self.lock = Lock() #线程锁
 
         #标记爬虫是否开始执行任务
         self.isCrawling = False
-        # 生成RegularExpression对象
-        self.pattern = re.compile("^http://www.douban.com/group/([0-9, a-z, A-Z]+)/$")
         # 添加尚未访问的小组首页
-        match_obj = self.pattern.match(args.url)
-        print args.url
-        assert(match_obj != None)
-        self.unvisitedGroups.append(match_obj.group(1))
+        for url in startURLs:
+            match_obj = REGroup.match(url)
+            print "Add start urls:", url
+            assert(match_obj != None)
+            self.unvisitedGroups.append(match_obj.group(1))
         
         # 一分钟内允许的最大访问次数
         self.MAX_VISITS_PER_MINUTE = 10
@@ -92,6 +98,10 @@ class Crawler(object):
     def stop(self):
         self.isCrawling = False
         self.threadPool.stopThreads()
+        # save group ids to file
+        for group_id in self.visitedGroups:
+            self.groupfile.write(group_id + "\n")
+        self.groupfile.close()
         self.database.close()
 
     def getAlreadyVisitedNum(self):
@@ -103,7 +113,7 @@ class Crawler(object):
             return len(self.visitedGroups) - self.threadPool.getTaskLeft()
 
     def _assignCurrentDepthTasks(self):
-        """取出一个线程，并为这个线程分配任务，即抓取网页
+        """取出一个线程，并为这个线程分配任务，即抓取网页，并进行相应的访问控制
         """
         # 判断当前周期内访问的网页数目是否大于最大数目
         if self.currentPeriodVisits > self.MAX_VISITS_PER_MINUTE - 1:
@@ -132,11 +142,13 @@ class Crawler(object):
         print "Visiting : " + url
         webPage = WebPage(url)
         # 抓取页面内容
-        if webPage.fetch():
+        flag = webPage.fetch()
+        if flag:
             self.lock.acquire() #锁住该变量,保证操作的原子性
             self.currentPeriodVisits += 1
             self.lock.release()
-            #self._saveTaskResults(webPage)
+            
+            self._saveTaskResults(webPage)
             self._addUnvisitedGroups(webPage)
             return True
             
@@ -147,19 +159,10 @@ class Crawler(object):
         """将小组信息写入数据库
         """
         url, pageSource = webPage.getDatas()
-        dbgroup = _getDBGroupDesc(url, pageSource)
-        try:
-            self.database.saveData(dbgroup)
-        except Exception, e:
-            log.error(' URL: %s ' % url + traceback.format_exc())
-
-    def _getDBGroupDesc(url, pageSource):
-        """从url和网页内容中抓取到小组的信息，包括id，组长，创建时间等等
-        返回一个字典介绍
-        """
-        dbgroup = dict()
-        
-        return dbgroup
+        # 产生一个group对象
+        dbgroup = Group(url, pageSource)
+        # 写入数据库
+        self.database.saveGroupInfo(dbgroup)
         
     def _addUnvisitedGroups(self, webPage):
         '''添加未访问的链接，并过滤掉非小组主页的链接。将有效的url放进UnvisitedGroups列表'''
@@ -168,7 +171,7 @@ class Crawler(object):
         hrefs = self._getAllHrefsFromPage(url, pageSource)
         for href in hrefs:
             #print "URLs in page: ", href
-            match_obj = self.pattern.match(href)
+            match_obj = REGroup.match(href)
             # 只有满足小组主页链接格式的链接才会被处理
             if self._isHttpOrHttpsProtocol(href) and (match_obj is not None):
                 #pdb.set_trace()
