@@ -63,29 +63,15 @@ class TopicCrawler(object):
         self.lock = Lock() #线程锁
         
         self.groupIDList = groupIDList
-        # 标记某个Group是否已经抓取结束
-        self.finished = [False] * len(self.groupIDList)
+        # 当前正在处理的小组id
+        self.currentGroupID = ""
         
         # 抓取结束有两种可能：1）抓取到的topic数目已经最大；2）已经将所有的topic全部抓取
         # 只保存topic id
         self.topicList = list()
         self.stickTopicList = list()
-        for i in range(len(self.groupIDList)):
-            self.topicList.append(list())
-            # 置顶贴的list, 只保存topic id
-            self.stickTopicList.append(list())
-        #标记爬虫是否开始执行任务
+
         self.isCrawling = False
-        
-        # 添加尚未访问的小组首页
-        for gid in groupIDList:
-            # 小组首页用于抽取置顶贴
-            url = "http://www.douban.com/group/" + gid + "/"
-            print "Add start url:", url
-            self.unvisitedHref.append(url)
-            url = "http://www.douban.com/group/" + gid + "/discussion?start=0"
-            print "Add start urls:", url
-            self.unvisitedHref.append(url)
         
         # 一分钟内允许的最大访问次数
         self.MAX_VISITS_PER_MINUTE = 10
@@ -107,19 +93,27 @@ class TopicCrawler(object):
         self.periodStart = time.time() # 当前周期开始
         self.currentDepth = 0 
         
-        while not self.isFinished():
+        # 逐次处理每个小组
+        for group_id in self.groupIDList:
+            self.currentGroupID = group_id
+            url = "http://www.douban.com/group/" + group_id + "/"
+            print "Add start url:", url
+            self.unvisitedHref.append(url)
+            url = "http://www.douban.com/group/" + group_id + "/discussion?start=0"
+            print "Add start urls:", url
+            self.unvisitedHref.append(url)
             #分配任务,线程池并发下载当前深度的所有页面（该操作不阻塞）
-            self._assignCurrentDepthTasks()
-            #等待当前线程池完成所有任务,当池内的所有任务完成时，即代表爬完了一个网页深度
+            self._assignInitTask()
+            #等待当前线程池完成所有任务,当池内的所有任务完成时，才进行下一个小组的抓取
             #self.threadPool.taskJoin()可代替以下操作，可无法Ctrl-C Interupt
             while self.threadPool.getTaskLeft() > 0:
                 #print "Task left: ", self.threadPool.getTaskLeft()
                 time.sleep(3)
-            print 'Depth %d Finish. Totally visited %d links. \n' % (
-                self.currentDepth, len(self.visitedHref))
-            log.info('Depth %d Finish. Total visited Links: %d\n' % (
-                self.currentDepth, len(self.visitedHref)))
-            self.currentDepth += 1
+            # 存储抓取的结果
+            print "Stroring crawling topic list for: " + group_id
+            self._saveTopicList()
+            print "Processing done with group: " + group_id
+            log.info("Topic list crawling done with group %s.", group_id)
         self.stop()
         assert(self.threadPool.getTaskLeft() == 0)
         print "Main Crawling procedure finished!"
@@ -127,14 +121,26 @@ class TopicCrawler(object):
     def stop(self):
         self.isCrawling = False
         self.threadPool.stopThreads()
-
-    def isFinished(self):
-        """ 判断是否已经结束抓取
+        
+    def _saveTopicList(self):
+        """将抽取的结果存储在文件中
+        Note: 这次是将存储过程放在主线程，将会阻塞抓取过程
         """
-        for flag in self.finished:
-            if not flag:
-                return False
-        return True
+        group_id = self.currentGroupID
+        print "For group %s: number of Stick post: %d, number of regurlar post: %d, total topics is: %d." % \
+            (group_id, len(self.stickTopicList), len(self.topicList), len(self.stickTopicList)+len(self.topicList))
+
+        f = open("data/"+group_id+".txt", "w")
+        for href in self.stickTopicList:
+            f.write(href + "\n")
+            
+        f.write("\n")
+        for href in self.topicList:
+            f.write(href + "\n")
+            
+        f.close()
+        self.stickTopicList = list()
+        self.topicList = list()
         
     def getAlreadyVisitedNum(self):
         #visitedGroups保存已经分配给taskQueue的链接，有可能链接还在处理中。
@@ -144,81 +150,72 @@ class TopicCrawler(object):
         else:
             return len(self.visitedHref) - self.threadPool.getTaskLeft()
 
-    def _assignCurrentDepthTasks(self):
-        """取出一个线程，并为这个线程分配任务，即抓取网页，并进行相应的访问控制
-        """
-        # 判断当前周期内访问的网页数目是否大于最大数目
-        if self.currentPeriodVisits > self.MAX_VISITS_PER_MINUTE - 1:
-            # 等待所有的网页处理完毕
-            while self.threadPool.getTaskLeft() > 0:
-                #print "Waiting period ends..."
-                time.sleep(1)
-            timeNow = time.time()
-            seconds = timeNow - self.periodStart
-            if  seconds < 60: # 如果当前还没有过一分钟,则sleep
-                time.sleep(int(seconds + 3))
-            self.periodStart = time.time() # 重新设置开始时间
-            self.currentPeriodVisits = 0
-        # 从未访问的列表中抽出，并为其分配thread
+    def _assignInitTask(self):
+        """取出一个线程，并为这个线程分配任务，即抓取网页
+        """ 
         while len(self.unvisitedHref) > 0:
+            # 从未访问的列表中抽出一个任务，并为其分配thread
             url = self.unvisitedHref.popleft()
             self.threadPool.putTask(self._taskHandler, url)
             # 添加已经访问过的小组id
             self.visitedHref.add(url)
             
     def _taskHandler(self, url):
-        """ 根据指定的url，抓取网页
+        """ 根据指定的url，抓取网页，并进行相应的访问控制
         """
+        # 判断当前周期内访问的网页数目是否大于最大数目
+        if self.currentPeriodVisits > self.MAX_VISITS_PER_MINUTE - 1:
+            timeNow = time.time()
+            seconds = timeNow - self.periodStart
+            if  seconds < 60: # 如果当前还没有过一分钟,则sleep
+                time.sleep(int(seconds + 3))
+
+            self.lock.acquire()
+            self.periodStart = time.time() # 重新设置开始时间
+            self.currentPeriodVisits = 0
+            self.lock.release()
+
+        print "Visiting : " + url
+        webPage = WebPage(url)
+        # 抓取页面内容
+        flag = webPage.fetch()
+        url, pageSource = webPage.getDatas()
+        
         # 抽取小组主页的置顶贴
         match_obj = REGroup.match(url)
         if match_obj is not None:
             group_id = match_obj.group(1)
             # 添加置顶贴的topic列表
-            self._addStickTopic(group_id)
+            self._addStickTopic(group_id, webPage, flag)
             return True
         
         # 抽取普通讨论贴
         match_obj = REDiscussion.match(url)
         group_id = match_obj.group(1)
-        index = self.groupIDList.index(group_id)
-        if self.finished[index]:
-            return 
-        
-        print "Visiting : " + url
-        webPage = WebPage(url)
-        # 抓取页面内容
-        flag = webPage.fetch()
+        start = int(match_obj.group(2))
+
         if flag:
             self.lock.acquire() #锁住该变量,保证操作的原子性
             self.currentPeriodVisits += 1
             self.lock.release()
             
             #self._saveTaskResults(webPage)
-            self._addTopicLink(webPage, group_id)
+            self._addTopicLink(webPage, group_id, start)
             return True
-        else:
-            index = self.groupIDList.index(group_id)
-            self.lock.acquire()
-            self.finished[index] = True
-            self.lock.release()
             
         # if page reading fails
         return False
 
-    def _addStickTopic(self, group_id):
+    def _addStickTopic(self, group_id, webPage, flag):
         """ 访问小组首页，添加置顶贴
         """
         #pdb.set_trace()
-        url = "http://www.douban.com/group/"+group_id+"/"
-        print "抽取置顶贴 for :", url
-        webPage = WebPage(url)
-        flag = webPage.fetch()
+        print "抽取置顶贴 for :", group_id
         if flag:
             self.lock.acquire() #锁住该变量,保证操作的原子性
             self.currentPeriodVisits += 1
             self.lock.release()
             
-            index = self.groupIDList.index(group_id)
             url, pageSource = webPage.getDatas()
             if not isinstance(pageSource, unicode):
                 # 默认页面采用UTF-8编码
@@ -233,7 +230,7 @@ class TopicCrawler(object):
                 # 加入到topic列表中
                 #print "Add stick post: ", href
                 match_obj = RETopic.match(href)
-                self.stickTopicList[index].append(match_obj.group(1))
+                self.stickTopicList.append(match_obj.group(1))
         else:
             print "抽取置顶贴失败 for Group: ", group_id
         
@@ -243,45 +240,51 @@ class TopicCrawler(object):
         pass
         
         
-    def _addTopicLink(self, webPage, group_id):
+    def _addTopicLink(self, webPage, group_id, start):
         '''将页面中所有的topic链接放入对应的topic列表，并同时加入
         下一步要访问的页面
         '''
         #对链接进行过滤:1.只获取http或https网页;2.保证每个链接只访问一次
         #pdb.set_trace()
-        index = self.groupIDList.index(group_id)
         url, pageSource = webPage.getDatas()
         hrefs = self._getAllHrefsFromPage(url, pageSource)
         # 找到有效的链接
-        gid_list = []
+        topic_list = []
         for href in hrefs:
             # 只有满足小组topic链接格式的链接才会被处理
             match_obj = RETopic.match(href)
             if self._isHttpOrHttpsProtocol(href) and match_obj is not None:
-                gid_list.append(match_obj.group(1))
+                topic_list.append(match_obj.group(1))
             
-        for gid in gid_list: 
+        for topic in topic_list: 
             #print "Add group id:", group_id, "with topic link: ", href
-            self.topicList[index].append(gid)
-            # 判断加入的topic链接已经大约最大值
-            if len(self.topicList[index]) >= self.MAX_TOPICS_NUM:
-                self.lock.acquire()
-                self.finished[index] = True
-                self.lock.release()
-                return 
+            self.topicList.append(topic)
                 
-        # 加入下一步要访问的页面
-        if len(gid_list) == 0:
-            # 如果当前页面不包含topic链接都说明已经没有更多的topic
-            self.lock.acquire()
-            self.finished[index] = True
-            self.lock.release()
+        # 如果是首页，则需要添加所有的将来访问的页面
+        if start == 0:
+            print "Adding future visis for Group: " + self.currentGroupID
+            self._addFutureVisit(pageSource)
+            
+    def _addFutureVisit(self, pageSource):
+        """ 访问讨论列表的首页，并添加所有的将来要访问的链接
+        """
+        #pdb.set_trace()
+        if not isinstance(pageSource, unicode):
+            # 默认页面采用UTF-8编码
+            page = etree.HTML(pageSource.decode('utf-8'))
         else:
-            match_obj = REDiscussion.match(url)
-            start = int(match_obj.group(2))
-            start += 25
-            href = "http://www.douban.com/group/" + group_id + "/discussion?start=" + str(start)
-            self.unvisitedHref.append(href)
+            page = etree.HTML(pageSource)
+            
+        # 目前的做法基于以下观察：在每个列表页面，paginator部分总会显示总的页数
+        # 得到总的页数后，便可以知道将来所有需要访问的页面
+        paginator = page.xpath(u"//div[@class='paginator']/a")
+        last_page = int(paginator[-1].text.strip())
+        for i in range(1, last_page):
+            url = "http://www.douban.com/group/" + self.currentGroupID + "/discussion?start=" + str(i * 25)
+            # 向线程池中添加任务：一次性添加
+            self.threadPool.putTask(self._taskHandler, url)
+            # 添加已经访问过的小组id
+            self.visitedHref.add(url)
 
     def _getAllHrefsFromPage(self, url, pageSource):
         '''解析html源码，获取页面所有链接。返回链接列表'''
@@ -309,22 +312,8 @@ class TopicCrawler(object):
         return False
         
 if __name__ == "__main__":
-    congifLogger("topicCrawler.log", 4)
+    congifLogger("topicCrawler.log", 5)
     tcrawler = TopicCrawler(['FLL', '294806', 'MML'], 5)
+    #tcrawler = TopicCrawler(['MML'], 3)
     tcrawler.start()
-    
-    # write to file
-    for i in range(len(tcrawler.groupIDList)):
-        group_id = tcrawler.groupIDList[i]
-        tlist = (tcrawler.topicList)[i]
-        sticklist = (tcrawler.stickTopicList)[i]
-        print "Total topics in Group: " + group_id + " is : " + str(len(tlist)+len(sticklist))
-        f = open("data/"+group_id+".txt", "w")
-        for href in sticklist:
-            f.write(href + "\n")
-            
-        f.write("\n")
-        for href in tlist:
-            f.write(href + "\n")
-            
-        f.close()
+
