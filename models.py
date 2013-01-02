@@ -11,6 +11,7 @@ from lxml import etree # use XPath from lxml
 
 # for debug
 import pdb
+from threading import Lock
 
 from patterns import *
 
@@ -39,7 +40,7 @@ class Comment(object):
 class Topic(object):
     """小组中的某个话题
     """
-    def __init__(self, topic_id, group_id, first_page, nonfirst_page):
+    def __init__(self, topic_id, group_id):
         self.topic_id = topic_id    # 该topic的id
         self.group_id = group_id    # 所在小组的id
         
@@ -48,13 +49,12 @@ class Topic(object):
         self.pubdate = ""           # 该topic发布的时间
         self.title = ""             # 该topic的标题
         self.content = ""           # topic的内容
+        
+        # 在多线程环境下，可能有多个线程同时修改一个Topic的评论列表
+        self.lock = Lock()
         self.comment_list = []      # 所有评论的id列表
         
-        self.first_page = first_page        # 测试用，首页
-        self.nonfirst_page = nonfirst_page  # 测试用，非首页
-        
-        # 抽取信息
-        self.parse()
+        self.max_comment_page = -1       # 这个topic具有多少页的评论, init with -1
         
     def __repr__(self):
         s = u"Topic id: " + self.topic_id + "\n"
@@ -62,25 +62,29 @@ class Topic(object):
         s += u"User id: " + self.user_id + u" called: " + self.user_name + "\n"
         s += u"Publish date: " + str(self.pubdate) + "\n"
         s += u"Title: " + self.title + "\n"
+        s += u"Max number of comment page: " + str(self.max_comment_page) + "\n"
         s += u"Content: " + self.content + "\n"
         
         return s
         
-    def parse(self):
+    def parse(self, webPage, isFirstPage):
         """ 从网页中抽取信息，填写类中的字段
-        @param strformat 字符串格式的数据
+        @webPage 网页数据
+        @isFirstPage 是否是topic评论的第一页
         """
-        # 抽取topic首页的内容
-        self.extract_first_page(self.first_page)
-        # 抽取topic非首页的内容
-        self.extract_nonfirst_page(self.non_first_page)
+        if isFirstPage:
+            self.extract_first_page(webPage)
+        else:
+            self.extract_nonfirst_page(webPage)
+            
         
-    def extract_first_page(self, pageSource):
+    def extract_first_page(self, webpage):
         # 抽取topic首页的内容
         url = "http://www.douban.com/group/topic/" + self.topic_id + "/"
         print "Reading webpage: " + url
-
-        page = etree.HTML(self.first_page.decode('utf-8'))
+        
+        url, pageSource = webPage.getDatas() # pageSource已经为unicode格式        
+        page = etree.HTML(pageSource)
         content = page.xpath(u"/html/body/div[@id='wrapper']/div[@id='content']")[0]
         # 找到标题：如果标题太长，那么标题会被截断，原标题则会在帖子内容中显示
         # 如果标题不被截断，则原标题不会在帖子内容中显示
@@ -110,12 +114,23 @@ class Topic(object):
         pnode = page.xpath(u"//div[@class='topic-content']/p")[0]
         self.content = etree.tostring(pnode, method='text', encoding='utf-8').strip()
         
-        comments_li = page.xpath(u"//li[@class='clearfix comment-item']")
+        # 设置本帖子的最大评论页数
+        paginator = page.xpath(u"//div[@id='wrapper']//div[@class='paginator']/a")
+        if len(paginator) == 0:
+            self.max_comment_page = 0
+        else:
+            max_page = int(paginator[-1].text.strip())
+            self.max_comment_page = max_page - 1
+        
+        comments_li = page.xpath(u"//ul[@id='comments']/li")
         # Note: 有可能一个topic下没有评论信息
-        print "Number of comments: ", str(len(comments_li))
+        # print "Number of comments in page: ", str(len(comments_li))
         for cli in comments_li:
             comment = self.extract_comment(cli)
+            # 为commen_list加锁
+            self.lock.acquire()
             self.comment_list.append(comment)
+            self.lock.release()
         
     def extract_comment(self, cli):
         # 从comment节点中抽取出Comment结构，并返回Comment对象
@@ -168,18 +183,29 @@ class Topic(object):
                 
         # not found, but should be found
         return ""
-    def extract_nonfirst_page(self, pageSource):
+    def extract_nonfirst_page(self, webPage):
         # 抽取topic非首页的内容
         # 如果第一页的评论数不足100，则不可能有第二页评论
+        url, pageSource = webPage.getDatas() # pageSource已经为unicode格式  
         if len(self.comment_list) < 100:
-            return 
-            
+            log.error("Error in extracting comments. Link: %s, Group: %s, Topic: %s." % (url, self.group_id, self.topic_id))
+            return
         
-        return ""
+        page = etree.HTML(pageSource)
+        comments_li = page.xpath(u"//ul[@id='comments']/li")
+        # Note: 有可能一个topic下没有评论信息
+        # print "Number of comments in page: ", str(len(comments_li))
+        for cli in comments_li:
+            comment = self.extract_comment(cli)
+            # 为commen_list加锁
+            self.lock.acquire()
+            self.comment_list.append(comment)
+            self.lock.release()
         
         
 class Group(object):
     """小组类
+    主要用于抽取小组本身的信息，比如创建者、创建日期等
     """
     def __init__(self, url, pageSource):
         self.group_id = u""             # 小组的id

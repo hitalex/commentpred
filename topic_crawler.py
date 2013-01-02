@@ -314,6 +314,6 @@ class TopicCrawler(object):
 if __name__ == "__main__":
     congifLogger("topicCrawler.log", 5)
     tcrawler = TopicCrawler(['FLL', '294806', 'MML'], 5)
-    #tcrawler = TopicCrawler(['MML'], 3)
+    #tcrawler = TopicCrawler(['70612'], 5) # 我们都是学术女小组
     tcrawler.start()
 
