@@ -11,6 +11,7 @@ import traceback
 from threading import Thread, Lock
 from Queue import Queue,Empty
 import logging
+import time
 
 log = logging.getLogger('Main.threadPool')
 
@@ -62,11 +63,21 @@ class ThreadPool(object):
         self.running = 0    #正在run的线程数
         self.taskQueue = Queue() #任务队列
         self.resultQueue = Queue() #结果队列, but never used here
+        
+        # 一分钟内允许的最大访问次数
+        self.MAX_VISITS_PER_MINUTE = 10
+        # 当前周期内已经访问的网页数量
+        self.currentPeriodVisits = 0
+        # 将一分钟当作一个访问周期，记录当前周期的开始时间
+        self.periodStart = time.time() # 使用当前时间初始化
+        self.isSleeping = False         # 标记主线程是否已经被阻塞
     
     def startThreads(self):
         """Create a certain number of threads and started to run 
         All Workers share the same ThreadPool
         """
+        # 开始当前的抓取周期
+        self.periodStart = time.time()
         for i in range(self.threadNum): 
             self.pool.append(Worker(self, i))
     
@@ -80,7 +91,24 @@ class ThreadPool(object):
         self.taskQueue.put((func, args, kargs))
 
     def getTask(self, *args, **kargs):
+        # 将整个getTask函数设置为原子块
+        self.lock.acquire()
+        # 进行访问控制: 判断当前周期内访问的网页数目是否大于最大数目
+        if self.currentPeriodVisits >= self.MAX_VISITS_PER_MINUTE - 2:
+            timeNow = time.time()
+            seconds = timeNow - self.periodStart
+            if  seconds < 60: # 如果当前还没有过一分钟,则sleep
+                print "ThreadPool Waiting..."
+                remain = 60 - seconds
+                time.sleep(int(remain + 1))
+
+            self.periodStart = time.time() # 重新设置开始时间
+            self.currentPeriodVisits = 0
+            
         task = self.taskQueue.get(*args, **kargs)
+        self.currentPeriodVisits += 1
+        self.lock.release()
+        
         return task
 
     def taskJoin(self, *args, **kargs):
