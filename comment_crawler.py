@@ -91,12 +91,12 @@ class CommentCrawler(object):
         self.isCrawling = True
         self.threadPool.startThreads() 
         self.periodStart = time.time() # 当前周期开始
-        self.currentDepth = 0 
+        self.currentPeriodVisits = 0
         
         # 初始化添加任务
         for topic_id in self.topicIDList:
-            url = "http://www.douban.com/group/topic/" + topic_id
-            self.unvisitedHref.append(url)
+            url = "http://www.douban.com/group/topic/" + topic_id + "/"
+            self.threadPool.putTask(self._taskHandler, url)
             self.nextPage[topic_id] = 1
         
         # 完全抛弃之前的抽取深度的概念，改为随时向thread pool推送任务
@@ -105,9 +105,9 @@ class CommentCrawler(object):
             while self.threadPool.getTaskLeft() < self.threadPool.threadNum * 2:
                 # 获取未来需要访问的链接
                 url = self._getFutureVisit()
-                if url is not None: # 已经不存在下一个链接
+                if url is not None: 
                     self.threadPool.putTask(self._taskHandler, url)
-                else:
+                else: # 已经不存在下一个链接
                     break
             # 每隔一秒检查thread pool的队列
             time.sleep(1)
@@ -115,7 +115,7 @@ class CommentCrawler(object):
             if len(self.finished) == len(self.topicIDList):
                 break
             elif len(self.finished) > len(self.topicIDList):
-                assert(True)
+                assert(False)
                 
         # 等待线程池中所有的任务都完成
         while self.threadPool.getTaskLeft() > 0:
@@ -124,6 +124,9 @@ class CommentCrawler(object):
         self.stop()
         assert(self.threadPool.getTaskLeft() == 0)
         print "Main Crawling procedure finished!"
+        
+        print "Start to save result..."
+        self._saveCommentList()
 
     def stop(self):
         self.isCrawling = False
@@ -133,7 +136,12 @@ class CommentCrawler(object):
         """将抽取的结果存储在文件中，包括存储topic内容和评论内容
         Note: 这次是将存储过程放在主线程，将会阻塞抓取过程
         """
-        pass
+        for topic_id in self.topicDict:
+            topic = self.topicDict[topic_id]
+            path = "data/" + self.groupID + "/" + topic_id + ".txt"
+            f = codecs.open(path, "w", "utf-8", errors='replace')
+            f.write(topic.__repr__())
+            f.close()
         
     def getAlreadyVisitedNum(self):
         #visitedGroups保存已经分配给taskQueue的链接，有可能链接还在处理中。
@@ -143,7 +151,7 @@ class CommentCrawler(object):
         else:
             return len(self.visitedHref) - self.threadPool.getTaskLeft()
 
-    def _getFutureVisit():
+    def _getFutureVisit(self):
         """根据当前的访问情况，获取下一个要访问的网页
         """
         for topic_id in self.topicDict:
@@ -160,7 +168,7 @@ class CommentCrawler(object):
                 # 该topic有多页评论
                 next_start = self.nextPage[topic_id] * 100
                 url = "http://www.douban.com/group/topic/?start=" + str(next_start)
-                if next_start >= self.max_comment_page:
+                if next_start >= topic.max_comment_page:
                     self.finished.add(topic_id)
                 else:
                     self.nextPage[topic_id] = next_start + 1
@@ -173,11 +181,13 @@ class CommentCrawler(object):
         """ 根据指定的url，抓取网页，并进行相应的访问控制
         """
         # 判断当前周期内访问的网页数目是否大于最大数目
-        if self.currentPeriodVisits > self.MAX_VISITS_PER_MINUTE - 1:
+        if self.currentPeriodVisits >= self.MAX_VISITS_PER_MINUTE - 2:
             timeNow = time.time()
             seconds = timeNow - self.periodStart
             if  seconds < 60: # 如果当前还没有过一分钟,则sleep
-                time.sleep(int(seconds + 3))
+                print "Waiting..."
+                remain = 60 - seconds
+                time.sleep(int(remain + 1))
 
             self.lock.acquire()
             self.periodStart = time.time() # 重新设置开始时间
@@ -186,14 +196,14 @@ class CommentCrawler(object):
         
         print "Visiting : " + url
         webPage = WebPage(url)
+        
         # 抓取页面内容
         flag = webPage.fetch()
+        self.lock.acquire() #锁住该变量,保证操作的原子性
+        self.currentPeriodVisits += 1
+        self.lock.release()
         
         if flag:
-            self.lock.acquire() #锁住该变量,保证操作的原子性
-            self.currentPeriodVisits += 1
-            self.lock.release()
-            
             match_obj = RETopic.match(url)
             match_obj2 = REComment.match(url)
             if match_obj is not None:
@@ -208,7 +218,8 @@ class CommentCrawler(object):
                 topic = self.topicDict[topic_id]
                 topic.parse(webPage, False) # non-firstpage parsing
             else:
-                log.info('Topic链接格式错误：%s in Group: %s.' % (url, self.group_id))
+                #pdb.set_trace()
+                log.info('Topic链接格式错误：%s in Group: %s.' % (url, self.groupID))
             
             return True
         # if page reading fails
@@ -239,14 +250,21 @@ class CommentCrawler(object):
         if protocal == 'http' or protocal == 'https':
             return True
         return False
-
-    def _isHrefRepeated(self, group_id):
-        if (group_id in self.visitedHref) or (group_id in self.unvisitedHref):
-            return True
-        return False
         
 if __name__ == "__main__":
+    LINE_FEED = "\n" # 采用windows的换行格式
     congifLogger("CommentCrawler.log", 5)
-    tcrawler = TopicCrawler(['FLL', '294806', 'MML'], 5)
-    #tcrawler = TopicCrawler(['MML'], 3)
-    tcrawler.start()
+    #group_id_list = ['FLL', '294806', 'MML']
+    group_id_list = ['FLL']
+    for group_id in group_id_list:
+        # 读取topic列表
+        f = open('data/' + group_id + ".txt")
+        topic_list = []
+        for line in f:
+            line = line.strip()
+            if line is not "":
+                topic_list.append(line)
+                
+        ccrawler = CommentCrawler(group_id, topic_list, 5)
+        ccrawler.start()
+    print "Done"

@@ -1,0 +1,11 @@
+话题 id: 26650285
+小组 id: MML
+楼主 id: manyishu 名号: 如果还有明天
+发表时间: 2012-01-02 21:33:54
+链接：http://www.douban.com/group/topic/26650285/
+标题: atcl Top 10 Mistakes in Web Design
+帖子内容: 
+http://www.useit.com/alertbox/9605.htmlThe ten most egregious offenses against users. Web design disasters and HTML horrors are legion, though many usability atrocities are less common than they used to be.inverted pyramidthe most salient information-carrying wordsmulti-windowing usersgoal-driven navigation fixate eyes on somethingpop-up purges////////////////////////////////////////////////////later //////////////////////////////////////////////////////////////Other Top-10 Lists•High-Profit Redesign Priorities •Usability in the Movies — Top 10 Bloopers •Most violated homepage guidelines •Top homepage usability guidelines •Good deeds in Web design•Web design mistakes (2005) •Web design mistakes (2003) •Web design mistakes (2002) With cartoons. •Web design mistakes (1999) •Web design mistakes (1996) My first list. Luckily, many of these mistakes have been fixed by now. •Application design mistakes •Information Architecture (IA) mistakes See also: Usability 101: Introduction to Usability I'll present my newest usability guidelines in the tutorial on Fundamental Guidelines for Web Usability at the annual Usability Week conference.The conference also has full-day seminars on Emerging Patterns for Web Design and Web Page Design: The Anatomy of High-Performing Web Pages.
+
+
+（无评论）

@@ -17,11 +17,12 @@ log = logging.getLogger('Main.threadPool')
 
 class Worker(Thread):
 
-    def __init__(self, threadPool):
+    def __init__(self, threadPool, ID):
         Thread.__init__(self)
         self.threadPool = threadPool
         self.daemon = True
         self.state = None
+        self.ID = ID    # 标识thread的index
         self.start()
 
     def stop(self):
@@ -38,6 +39,7 @@ class Worker(Thread):
             try:
                 self.threadPool.increaseRunsNum() 
                 # 抓取网页
+                print "Thread ID: " + str(self.ID)
                 func(*args, **kargs) 
                 self.threadPool.decreaseRunsNum()
                 # TODO : 搞清楚如何利用 resultQueue
@@ -66,7 +68,7 @@ class ThreadPool(object):
         All Workers share the same ThreadPool
         """
         for i in range(self.threadNum): 
-            self.pool.append(Worker(self))
+            self.pool.append(Worker(self, i))
     
     def stopThreads(self):
         for thread in self.pool:
