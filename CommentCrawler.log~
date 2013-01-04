@@ -1,40 +1,91 @@
-2013-01-03 16:50:39,328 Thread-1 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/topic/28466663/ 
+2013-01-04 14:46:56,346 Thread-3 CRITICAL Traceback (most recent call last):
+  File "/home/kqc/github/crawler/threadPool.py", line 49, in run
+    func(*args, **kargs)
+TypeError: NoneType object argument after ** must be a mapping, not NoneType
 
-2013-01-03 16:50:39,331 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/topic/21912860/ 
+2013-01-04 14:46:58,348 Thread-3 CRITICAL Traceback (most recent call last):
+  File "/home/kqc/github/crawler/threadPool.py", line 49, in run
+    func(*args, **kargs)
+TypeError: NoneType object argument after ** must be a mapping, not NoneType
 
-2013-01-03 16:50:39,333 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/topic/2523474/ 
+2013-01-04 14:46:59,348 Thread-3 CRITICAL Traceback (most recent call last):
+  File "/home/kqc/github/crawler/threadPool.py", line 49, in run
+    func(*args, **kargs)
+TypeError: NoneType object argument after ** must be a mapping, not NoneType
 
-2013-01-03 16:50:39,334 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/topic/26738352/ 
+2013-01-04 14:47:00,349 Thread-3 CRITICAL Traceback (most recent call last):
+  File "/home/kqc/github/crawler/threadPool.py", line 49, in run
+    func(*args, **kargs)
+TypeError: NoneType object argument after ** must be a mapping, not NoneType
 
-2013-01-03 16:50:39,335 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/topic/7635529/ 
+2013-01-04 14:47:01,349 Thread-1 CRITICAL Traceback (most recent call last):
+  File "/home/kqc/github/crawler/threadPool.py", line 49, in run
+    func(*args, **kargs)
+TypeError: NoneType object argument after ** must be a mapping, not NoneType
 
-2013-01-03 16:50:39,374 Thread-1 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/topic/14220194/ 
+2013-01-04 14:47:02,349 Thread-3 CRITICAL Traceback (most recent call last):
+  File "/home/kqc/github/crawler/threadPool.py", line 49, in run
+    func(*args, **kargs)
+TypeError: NoneType object argument after ** must be a mapping, not NoneType
 
-2013-01-03 16:50:39,378 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/topic/13151853/ 
+2013-01-04 14:47:03,350 Thread-3 CRITICAL Traceback (most recent call last):
+  File "/home/kqc/github/crawler/threadPool.py", line 49, in run
+    func(*args, **kargs)
+TypeError: NoneType object argument after ** must be a mapping, not NoneType
 
-2013-01-03 16:50:39,380 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/topic/21798408/ 
+2013-01-04 14:47:04,350 Thread-3 CRITICAL Traceback (most recent call last):
+  File "/home/kqc/github/crawler/threadPool.py", line 49, in run
+    func(*args, **kargs)
+TypeError: NoneType object argument after ** must be a mapping, not NoneType
 
-2013-01-03 16:50:39,381 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/topic/33291666/ 
+2013-01-04 14:47:05,350 Thread-3 CRITICAL Traceback (most recent call last):
+  File "/home/kqc/github/crawler/threadPool.py", line 49, in run
+    func(*args, **kargs)
+TypeError: NoneType object argument after ** must be a mapping, not NoneType
 
-2013-01-03 16:50:39,382 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/topic/26940574/ 
+2013-01-04 14:47:06,351 Thread-3 CRITICAL Traceback (most recent call last):
+  File "/home/kqc/github/crawler/threadPool.py", line 49, in run
+    func(*args, **kargs)
+TypeError: NoneType object argument after ** must be a mapping, not NoneType
 
-2013-01-03 16:50:39,409 Thread-1 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/topic/8236625/ 
+2013-01-04 14:47:07,351 Thread-3 CRITICAL Traceback (most recent call last):
+  File "/home/kqc/github/crawler/threadPool.py", line 49, in run
+    func(*args, **kargs)
+TypeError: NoneType object argument after ** must be a mapping, not NoneType
 
-2013-01-03 16:50:39,413 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/topic/1422137/ 
+2013-01-04 14:47:08,352 Thread-3 CRITICAL Traceback (most recent call last):
+  File "/home/kqc/github/crawler/threadPool.py", line 49, in run
+    func(*args, **kargs)
+TypeError: NoneType object argument after ** must be a mapping, not NoneType
 
-2013-01-03 17:26:28,568 Thread-1 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/topic/28466663/ 
+2013-01-04 14:47:09,352 Thread-3 CRITICAL Traceback (most recent call last):
+  File "/home/kqc/github/crawler/threadPool.py", line 49, in run
+    func(*args, **kargs)
+TypeError: NoneType object argument after ** must be a mapping, not NoneType
 
-2013-01-03 17:26:28,570 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/topic/26738352/ 
+2013-01-04 14:47:10,353 Thread-3 CRITICAL Traceback (most recent call last):
+  File "/home/kqc/github/crawler/threadPool.py", line 49, in run
+    func(*args, **kargs)
+TypeError: NoneType object argument after ** must be a mapping, not NoneType
 
-2013-01-03 17:26:28,572 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/topic/21912860/ 
+2013-01-04 14:47:11,353 Thread-3 CRITICAL Traceback (most recent call last):
+  File "/home/kqc/github/crawler/threadPool.py", line 49, in run
+    func(*args, **kargs)
+TypeError: NoneType object argument after ** must be a mapping, not NoneType
 
-2013-01-03 17:26:28,574 Thread-2 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/topic/2523474/ 
+2013-01-04 14:47:12,354 Thread-3 CRITICAL Traceback (most recent call last):
+  File "/home/kqc/github/crawler/threadPool.py", line 49, in run
+    func(*args, **kargs)
+TypeError: NoneType object argument after ** must be a mapping, not NoneType
 
-2013-01-03 17:26:28,576 Thread-4 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/topic/7635529/ 
+2013-01-04 14:47:13,354 Thread-3 CRITICAL Traceback (most recent call last):
+  File "/home/kqc/github/crawler/threadPool.py", line 49, in run
+    func(*args, **kargs)
+TypeError: NoneType object argument after ** must be a mapping, not NoneType
 
-2013-01-03 17:26:28,593 Thread-1 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/topic/14220194/ 
+2013-01-04 14:51:54,313 Thread-3 WARNING Page not avaliable. Status code: 502 with Status: ('bad_gateway',) URL: http://www.douban.com/group/topic/31429239/ 
 
-2013-01-03 17:26:28,595 Thread-3 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/topic/13151853/ 
+2013-01-04 14:52:03,598 Thread-1 WARNING Page not avaliable. Status code: 504 with Status: ('gateway_timeout',) URL: http://www.douban.com/group/topic/31477611/ 
 
-2013-01-03 17:26:28,597 Thread-5 WARNING Page not avaliable. Status code: 403 with Status: ('forbidden',) URL: http://www.douban.com/group/topic/21798408/ 
+2013-01-04 14:53:52,272 Thread-3 WARNING Page not avaliable. Status code: 504 with Status: ('gateway_timeout',) URL: http://www.douban.com/group/topic/31819949/ 
 

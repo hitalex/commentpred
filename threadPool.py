@@ -12,6 +12,7 @@ from threading import Thread, Lock
 from Queue import Queue,Empty
 import logging
 import time
+import pdb
 
 log = logging.getLogger('Main.threadPool')
 
@@ -33,16 +34,20 @@ class Worker(Thread):
         while 1:
             if self.state == 'STOP':
                 break
-            try:
-                func, args, kargs = self.threadPool.getTask(timeout=1)
-            except Empty:
+            # 将整个getTask函数设置为原子块
+            if self.ID == 1:
+                pdb.set_trace()
+            self.threadPool.taskLock.acquire()
+            func, args, kargs = self.threadPool.getTask(timeout=1)
+            self.threadPool.taskLock.release()
+            if func is None or args is None or kargs is None:
                 continue
+            
             try:
+                #print "Thread ID: ", str(self.ID), " with thread state: ", self.state
                 self.threadPool.increaseRunsNum() 
                 # 抓取网页
-                print "Thread ID: " + str(self.ID)
                 func(*args, **kargs) 
-                self.threadPool.decreaseRunsNum()
                 # TODO : 搞清楚如何利用 resultQueue
                 """
                 if result:
@@ -52,6 +57,8 @@ class Worker(Thread):
                 self.threadPool.taskDone() # 通知Queue一个任务已经执行完毕
             except Exception, e:
                 log.critical(traceback.format_exc())
+            finally:
+                self.threadPool.decreaseRunsNum()
 
 
 class ThreadPool(object):
@@ -59,18 +66,20 @@ class ThreadPool(object):
     def __init__(self, threadNum):
         self.pool = [] #线程池
         self.threadNum = threadNum  #线程数
-        self.lock = Lock() #线程锁
+        self.runningLock = Lock() #线程锁
+        self.taskLock = Lock() # getTask函数的锁
         self.running = 0    #正在run的线程数
         self.taskQueue = Queue() #任务队列
         self.resultQueue = Queue() #结果队列, but never used here
         
         # 一分钟内允许的最大访问次数
         self.MAX_VISITS_PER_MINUTE = 10
+        # 定制每分钟含有的秒数
+        self.SECONDS_PER_MINUTE = 10
         # 当前周期内已经访问的网页数量
         self.currentPeriodVisits = 0
         # 将一分钟当作一个访问周期，记录当前周期的开始时间
         self.periodStart = time.time() # 使用当前时间初始化
-        self.isSleeping = False         # 标记主线程是否已经被阻塞
     
     def startThreads(self):
         """Create a certain number of threads and started to run 
@@ -91,24 +100,25 @@ class ThreadPool(object):
         self.taskQueue.put((func, args, kargs))
 
     def getTask(self, *args, **kargs):
-        # 将整个getTask函数设置为原子块
-        self.lock.acquire()
+
         # 进行访问控制: 判断当前周期内访问的网页数目是否大于最大数目
         if self.currentPeriodVisits >= self.MAX_VISITS_PER_MINUTE - 2:
             timeNow = time.time()
             seconds = timeNow - self.periodStart
-            if  seconds < 60: # 如果当前还没有过一分钟,则sleep
-                print "ThreadPool Waiting..."
-                remain = 60 - seconds
+            if  seconds < self.SECONDS_PER_MINUTE: # 如果当前还没有过一分钟,则sleep
+                remain = self.SECONDS_PER_MINUTE - seconds
+                print "ThreadPool Waiting for " + str(remain) + " seconds."
                 time.sleep(int(remain + 1))
 
             self.periodStart = time.time() # 重新设置开始时间
             self.currentPeriodVisits = 0
             
-        task = self.taskQueue.get(*args, **kargs)
+        try:
+            task = self.taskQueue.get(*args, **kargs)
+        except Empty:
+            return (None, None, None)
+            
         self.currentPeriodVisits += 1
-        self.lock.release()
-        
         return task
 
     def taskJoin(self, *args, **kargs):
@@ -126,14 +136,14 @@ class ThreadPool(object):
         return self.resultQueue.get(*args, **kargs)
 
     def increaseRunsNum(self):
-        self.lock.acquire() #锁住该变量,保证操作的原子性
+        self.runningLock.acquire()
         self.running += 1 #正在运行的线程数加1
-        self.lock.release()
+        self.runningLock.release()
 
     def decreaseRunsNum(self):
-        self.lock.acquire() 
+        self.runningLock.acquire()
         self.running -= 1 
-        self.lock.release()
+        self.runningLock.release()
 
     def getTaskLeft(self):
         #线程池的所有任务包括：

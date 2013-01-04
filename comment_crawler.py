@@ -7,7 +7,6 @@
 
 from urlparse import urljoin,urlparse
 from collections import deque
-from threading import Lock
 import traceback
 import logging
 import time
@@ -59,8 +58,6 @@ class CommentCrawler(object):
         #待访问的小组讨论页面
         self.unvisitedHref = deque()
         
-        self.lock = Lock() #线程锁
-        
         # 依次为每个小组抽取topic评论
         self.groupID = groupID
         self.topicIDList = topicIDList # 等待抓取的topic列表
@@ -72,6 +69,8 @@ class CommentCrawler(object):
         self.nextPage = dict()
         # 已经抓取完毕的topic id集合
         self.finished = set()
+        
+        self.visitedHref = set() # 已经访问的网页
 
         self.isCrawling = False
         
@@ -109,8 +108,12 @@ class CommentCrawler(object):
                 assert(False)
                 
         # 等待线程池中所有的任务都完成
+        print "Totally visited: ", len(self.visitedHref)
+        #pdb.set_trace()
         while self.threadPool.getTaskLeft() > 0:
-            #print "Task left: ", self.threadPool.getTaskLeft()
+            print "Task left in threadPool: ", self.threadPool.getTaskLeft()
+            print "Task queue size: ", self.threadPool.taskQueue.qsize()
+            print "Running tasks: ", self.threadPool.running
             time.sleep(1)
         self.stop()
         assert(self.threadPool.getTaskLeft() == 0)
@@ -194,9 +197,11 @@ class CommentCrawler(object):
             else:
                 #pdb.set_trace()
                 log.info('Topic链接格式错误：%s in Group: %s.' % (url, self.groupID))
-            
+                
+            self.visitedHref.add(url)
             return True
         # if page reading fails
+        self.visitedHref.add(url)
         return False
         
     def _saveTaskResults(self, webPage):
@@ -229,7 +234,7 @@ if __name__ == "__main__":
     LINE_FEED = "\n" # 采用windows的换行格式
     congifLogger("CommentCrawler.log", 5)
     #group_id_list = ['FLL', '294806', 'MML']
-    group_id_list = ['FLL']
+    group_id_list = ['MML']
     for group_id in group_id_list:
         # 读取topic列表
         f = open('data/' + group_id + ".txt")
@@ -239,6 +244,6 @@ if __name__ == "__main__":
             if line is not "":
                 topic_list.append(line)
                 
-        ccrawler = CommentCrawler(group_id, topic_list, 5)
+        ccrawler = CommentCrawler(group_id, topic_list, 3)
         ccrawler.start()
     print "Done"

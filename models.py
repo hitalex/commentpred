@@ -178,7 +178,7 @@ class Topic(object):
         img = cli.xpath("div[@class='user-face']//img[@class='pil']")
         if len(img) == 0:
             pdb.set_trace()
-        user_name = img.attrib['alt']
+        user_name = img[0].attrib['alt']
         
         nodea = cli.xpath("div[@class='user-face']/a")[0]
         user_id = self.extract_user_id(nodea.attrib['href'])
