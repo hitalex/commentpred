@@ -7,13 +7,17 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 from datetime import datetime
+import logging
 from lxml import etree # use XPath from lxml
+import operator
 
 # for debug
 import pdb
 from threading import Lock
 
 from patterns import *
+
+log = logging.getLogger('Main.models')
 
 """
 在这里，我将定义会用到的类和数据结构，包括小组、topic和评论。它们之间的关系为：
@@ -30,7 +34,7 @@ class Comment(object):
         self.user_id = user_id      # 发评论的人的id
         self.pubdate = pubdate      # 发布时间
         self.content = content      # 评论内容，不包括引用评论的内容
-        self.quote = quote          # 引用他人评论
+        self.quote = quote          # 引用他人评论, Comment 类
         
         self.topic_id = topic_id    # 所在topic的id
         self.group_id = group_id    # 所在小组的id
@@ -65,7 +69,7 @@ class Topic(object):
         self.lock = Lock()
         self.comment_list = []      # 所有评论的id列表
         
-        self.max_comment_page = -1       # 这个topic具有多少页的评论, init with -1
+        self.max_comment_page = 0       # 这个topic具有多少页的评论(包括帖子的首页), init with 0
         
     def __repr__(self):
         if not ('LINE_FEED' in dir()):
@@ -85,7 +89,7 @@ class Topic(object):
         else:
             s += u"评论内容：" + LINE_FEED
             for comment in self.comment_list:
-                s += comment.__repr__()
+                s += (comment.__repr__() + "\n")
         
         return s
         
@@ -155,32 +159,34 @@ class Topic(object):
         # 设置本帖子的最大评论页数
         paginator = page.xpath(u"//div[@id='wrapper']//div[@class='paginator']/a")
         if len(paginator) == 0:
-            self.max_comment_page = 0
+            self.max_comment_page = 1 # 如果没有paginator，则只有一页评论
         else:
             max_page = int(paginator[-1].text.strip())
-            self.max_comment_page = max_page - 1
+            self.max_comment_page = max_page
+        #print "Total comment page: %d" % self.max_comment_page
         
         comments_li = page.xpath(u"//ul[@id='comments']/li")
         # Note: 有可能一个topic下没有评论信息
-        # print "Number of comments in page: ", str(len(comments_li))
         for cli in comments_li:
             comment = self.extract_comment(cli)
             # 为commen_list加锁
             #pdb.set_trace()
+            if comment is None:
+                continue
             self.lock.acquire()
             self.comment_list.append(comment)
             self.lock.release()
+            
+        # 在添加评论后对评论按照日期排序
+        sorted(self.comment_list, key=operator.attrgetter('pubdate'), reverse = True)
         
     def extract_comment(self, cli):
         # 从comment节点中抽取出Comment结构，并返回Comment对象
         #pdb.set_trace()
         cid = cli.attrib['data-cid']
-        img = cli.xpath("div[@class='user-face']//img[@class='pil']")
-        if len(img) == 0:
-            pdb.set_trace()
-        user_name = img[0].attrib['alt']
-        
-        nodea = cli.xpath("div[@class='user-face']/a")[0]
+        nodea = cli.xpath("div[@class='reply-doc content']/div[@class='bg-img-green']/h4/a")[0]
+        #  如果是已注销的用于，则user_name = '[已注销]'
+        user_name = nodea.text
         user_id = self.extract_user_id(nodea.attrib['href'])
         pnode = cli.xpath("div[@class='reply-doc content']/p")[0]
         content = unicode(etree.tostring(pnode, method='text', encoding='utf-8')).strip()
@@ -230,13 +236,11 @@ class Topic(object):
         # 如果第一页的评论数不足100，则不可能有第二页评论
         url, pageSource = webPage.getDatas() # pageSource已经为unicode格式  
         if len(self.comment_list) < 100:
-            log.error("Error in extracting comments. Link: %s, Group: %s, Topic: %s." % (url, self.group_id, self.topic_id))
-            return
+            log.warning("Warning(might be an error) in extracting comments. Link: %s, Group id: %s, Topic id: %s." % (url, self.group_id, self.topic_id))
         
         page = etree.HTML(pageSource)
         comments_li = page.xpath(u"//ul[@id='comments']/li")
         # Note: 有可能一个topic下没有评论信息
-        # print "Number of comments in page: ", str(len(comments_li))
         for cli in comments_li:
             comment = self.extract_comment(cli)
             # 为commen_list加锁
@@ -244,39 +248,48 @@ class Topic(object):
             self.comment_list.append(comment)
             self.lock.release()
         
+        # 对评论进行排序
+        sorted(self.comment_list, key=operator.attrgetter('pubdate'), reverse = True)
         
 class Group(object):
     """小组类
-    主要用于抽取小组本身的信息，比如创建者、创建日期等
+    主要用于抽取小组本身的信息，比如创建者、创建日期等，以及小组的置顶贴
+    注意：这里并不抓取小组的普通帖子
     """
-    def __init__(self, url, pageSource):
-        self.group_id = u""             # 小组的id
+    def __init__(self, group_id):
+        self.group_id = group_id            # 小组的id
         self.user_id = u""              # 创建小组的user id
         self.pubdate = ""               # 小组创建的时间
         self.desc = u""                 # 小组的介绍
-
-        # 抽取小组id
-        match_obj = REGroup.match(url)
-        assert(match_obj is not None)
-        self.group_id = match_obj.group(1)
         
-        self.parse(pageSource)
+        # 小组置顶贴的列表
+        self.stick_topic_list = []        # stick topic 的id列表
         
     def __repr__(self):
         """ String representation for class Group
         """
-        s = "Group id: " + self.group_id + "\n"
-        s += "User id: " + self.user_id + "\n"
-        s += "Time Created: " + str(self.pubdate) + "\n"
-        s += "Desc: " + self.desc + "\n"
+        s = u"小组id: " + self.group_id + "\n"
+        s += u"创建者id: " + self.user_id + "\n"
+        s += u"创建日期: " + str(self.pubdate) + "\n"
+        s += u"小组描述: " + self.desc + "\n"
+        
+        if len(self.stick_topic_list) == 0:
+            s += u"（无置顶贴）"
+        else:
+            s += u"置顶贴ID列表：\n"
+            for tid in self.stick_topic_list:
+                s += (tid + "\n")
         
         return s
         
-    def parse(self, pageSource):
-        """ 从网页中抽取小组信息
+    def parse(self, webPage):
+        """ 从网页中抽取小组信息和置顶贴
         """
         # 默认html是utf-8编码
         #pdb.set_trace()
+        url, pageSource = webPage.getDatas()
+        
+        # 抽取小组信息
         page = etree.HTML(pageSource.decode('utf-8'))
         self.title = page.xpath("/html/head/title")[0].text.strip()
         infobox = page.xpath("//div[@id='wrapper']//div[@class='infobox']")[0]
@@ -284,13 +297,33 @@ class Group(object):
         self.user_id = REPeople.match(url).group(1)
         
         pnode = infobox.xpath("div[@class='bd']/p")[0]
-        timepattern = re.compile("[0-9]{4}\-[0-9]{2}\-[0-9]{2}")
-        strtime = timepattern.search(pnode.text).group(0)
+        strtime = RETime.search(pnode.text).group(0)
         self.pubdate = datetime.strptime(strtime, "%Y-%m-%d")
         
         bdnode = infobox.xpath("div[@class='bd']")[0]
         self.desc = etree.tostring(bdnode, method='text', encoding='utf-8').strip()
         self.desc = self.desc.decode('utf-8').strip()
+        
+        self.extract_stick_topic(webPage)
+        
+    def extract_stick_topic(self, webPage):
+        """ 抓取小组的置顶topic id列表
+        """
+        url, pageSource = webPage.getDatas()
+        if not isinstance(pageSource, unicode):
+            # 默认页面采用UTF-8编码
+            page = etree.HTML(pageSource.decode('utf-8'))
+        else:
+            page = etree.HTML(pageSource)
+        stickimg = page.xpath(u"//div[@id='wrapper']//div[@class='article']//img[@alt='[置顶]']")
+        # 可能一个小组中没有置顶贴，此时stickmig为空
+        for imgnode in stickimg:
+            titlenode = imgnode.getparent().getparent()
+            href = titlenode.xpath("a")[0].attrib['href']
+            # 加入到topic列表中
+            #print "Add stick post: ", href
+            match_obj = RETopic.match(href)
+            self.stick_topic_list.append(match_obj.group(1))
         
         
 if __name__ == "__main__":

@@ -1,91 +1,77 @@
-2013-01-04 14:46:56,346 Thread-3 CRITICAL Traceback (most recent call last):
-  File "/home/kqc/github/crawler/threadPool.py", line 49, in run
+2013-01-08 15:56:07,633 Thread-3 CRITICAL Traceback (most recent call last):
+  File "/home/kqc/github/crawler/threadPool.py", line 54, in run
     func(*args, **kargs)
-TypeError: NoneType object argument after ** must be a mapping, not NoneType
+  File "comment_crawler.py", line 233, in _taskHandler
+    topic.parse(webPage, False) # non-firstpage parsing
+  File "/home/kqc/github/crawler/models.py", line 110, in parse
+    self.extract_nonfirst_page(webPage)
+  File "/home/kqc/github/crawler/models.py", line 252, in extract_nonfirst_page
+    sorted(self.comment_comment, key=operator.attrgetter('pubdate'), reverse = True)
+AttributeError: 'Topic' object has no attribute 'comment_comment'
 
-2013-01-04 14:46:58,348 Thread-3 CRITICAL Traceback (most recent call last):
-  File "/home/kqc/github/crawler/threadPool.py", line 49, in run
+2013-01-08 15:56:07,772 Thread-5 CRITICAL Traceback (most recent call last):
+  File "/home/kqc/github/crawler/threadPool.py", line 54, in run
     func(*args, **kargs)
-TypeError: NoneType object argument after ** must be a mapping, not NoneType
+  File "comment_crawler.py", line 233, in _taskHandler
+    topic.parse(webPage, False) # non-firstpage parsing
+  File "/home/kqc/github/crawler/models.py", line 110, in parse
+    self.extract_nonfirst_page(webPage)
+  File "/home/kqc/github/crawler/models.py", line 252, in extract_nonfirst_page
+    sorted(self.comment_comment, key=operator.attrgetter('pubdate'), reverse = True)
+AttributeError: 'Topic' object has no attribute 'comment_comment'
 
-2013-01-04 14:46:59,348 Thread-3 CRITICAL Traceback (most recent call last):
-  File "/home/kqc/github/crawler/threadPool.py", line 49, in run
+2013-01-08 15:56:07,846 Thread-4 CRITICAL Traceback (most recent call last):
+  File "/home/kqc/github/crawler/threadPool.py", line 54, in run
     func(*args, **kargs)
-TypeError: NoneType object argument after ** must be a mapping, not NoneType
+  File "comment_crawler.py", line 233, in _taskHandler
+    topic.parse(webPage, False) # non-firstpage parsing
+  File "/home/kqc/github/crawler/models.py", line 110, in parse
+    self.extract_nonfirst_page(webPage)
+  File "/home/kqc/github/crawler/models.py", line 252, in extract_nonfirst_page
+    sorted(self.comment_comment, key=operator.attrgetter('pubdate'), reverse = True)
+AttributeError: 'Topic' object has no attribute 'comment_comment'
 
-2013-01-04 14:47:00,349 Thread-3 CRITICAL Traceback (most recent call last):
-  File "/home/kqc/github/crawler/threadPool.py", line 49, in run
+2013-01-08 15:56:07,886 Thread-6 CRITICAL Traceback (most recent call last):
+  File "/home/kqc/github/crawler/threadPool.py", line 54, in run
     func(*args, **kargs)
-TypeError: NoneType object argument after ** must be a mapping, not NoneType
+  File "comment_crawler.py", line 233, in _taskHandler
+    topic.parse(webPage, False) # non-firstpage parsing
+  File "/home/kqc/github/crawler/models.py", line 110, in parse
+    self.extract_nonfirst_page(webPage)
+  File "/home/kqc/github/crawler/models.py", line 252, in extract_nonfirst_page
+    sorted(self.comment_comment, key=operator.attrgetter('pubdate'), reverse = True)
+AttributeError: 'Topic' object has no attribute 'comment_comment'
 
-2013-01-04 14:47:01,349 Thread-1 CRITICAL Traceback (most recent call last):
-  File "/home/kqc/github/crawler/threadPool.py", line 49, in run
+2013-01-08 15:56:07,995 Thread-4 CRITICAL Traceback (most recent call last):
+  File "/home/kqc/github/crawler/threadPool.py", line 54, in run
     func(*args, **kargs)
-TypeError: NoneType object argument after ** must be a mapping, not NoneType
+  File "comment_crawler.py", line 233, in _taskHandler
+    topic.parse(webPage, False) # non-firstpage parsing
+  File "/home/kqc/github/crawler/models.py", line 110, in parse
+    self.extract_nonfirst_page(webPage)
+  File "/home/kqc/github/crawler/models.py", line 252, in extract_nonfirst_page
+    sorted(self.comment_comment, key=operator.attrgetter('pubdate'), reverse = True)
+AttributeError: 'Topic' object has no attribute 'comment_comment'
 
-2013-01-04 14:47:02,349 Thread-3 CRITICAL Traceback (most recent call last):
-  File "/home/kqc/github/crawler/threadPool.py", line 49, in run
+2013-01-08 15:56:08,119 Thread-3 CRITICAL Traceback (most recent call last):
+  File "/home/kqc/github/crawler/threadPool.py", line 54, in run
     func(*args, **kargs)
-TypeError: NoneType object argument after ** must be a mapping, not NoneType
+  File "comment_crawler.py", line 233, in _taskHandler
+    topic.parse(webPage, False) # non-firstpage parsing
+  File "/home/kqc/github/crawler/models.py", line 110, in parse
+    self.extract_nonfirst_page(webPage)
+  File "/home/kqc/github/crawler/models.py", line 252, in extract_nonfirst_page
+    sorted(self.comment_comment, key=operator.attrgetter('pubdate'), reverse = True)
+AttributeError: 'Topic' object has no attribute 'comment_comment'
 
-2013-01-04 14:47:03,350 Thread-3 CRITICAL Traceback (most recent call last):
-  File "/home/kqc/github/crawler/threadPool.py", line 49, in run
+2013-01-08 15:56:14,221 Thread-5 CRITICAL Traceback (most recent call last):
+  File "/home/kqc/github/crawler/threadPool.py", line 54, in run
     func(*args, **kargs)
-TypeError: NoneType object argument after ** must be a mapping, not NoneType
-
-2013-01-04 14:47:04,350 Thread-3 CRITICAL Traceback (most recent call last):
-  File "/home/kqc/github/crawler/threadPool.py", line 49, in run
-    func(*args, **kargs)
-TypeError: NoneType object argument after ** must be a mapping, not NoneType
-
-2013-01-04 14:47:05,350 Thread-3 CRITICAL Traceback (most recent call last):
-  File "/home/kqc/github/crawler/threadPool.py", line 49, in run
-    func(*args, **kargs)
-TypeError: NoneType object argument after ** must be a mapping, not NoneType
-
-2013-01-04 14:47:06,351 Thread-3 CRITICAL Traceback (most recent call last):
-  File "/home/kqc/github/crawler/threadPool.py", line 49, in run
-    func(*args, **kargs)
-TypeError: NoneType object argument after ** must be a mapping, not NoneType
-
-2013-01-04 14:47:07,351 Thread-3 CRITICAL Traceback (most recent call last):
-  File "/home/kqc/github/crawler/threadPool.py", line 49, in run
-    func(*args, **kargs)
-TypeError: NoneType object argument after ** must be a mapping, not NoneType
-
-2013-01-04 14:47:08,352 Thread-3 CRITICAL Traceback (most recent call last):
-  File "/home/kqc/github/crawler/threadPool.py", line 49, in run
-    func(*args, **kargs)
-TypeError: NoneType object argument after ** must be a mapping, not NoneType
-
-2013-01-04 14:47:09,352 Thread-3 CRITICAL Traceback (most recent call last):
-  File "/home/kqc/github/crawler/threadPool.py", line 49, in run
-    func(*args, **kargs)
-TypeError: NoneType object argument after ** must be a mapping, not NoneType
-
-2013-01-04 14:47:10,353 Thread-3 CRITICAL Traceback (most recent call last):
-  File "/home/kqc/github/crawler/threadPool.py", line 49, in run
-    func(*args, **kargs)
-TypeError: NoneType object argument after ** must be a mapping, not NoneType
-
-2013-01-04 14:47:11,353 Thread-3 CRITICAL Traceback (most recent call last):
-  File "/home/kqc/github/crawler/threadPool.py", line 49, in run
-    func(*args, **kargs)
-TypeError: NoneType object argument after ** must be a mapping, not NoneType
-
-2013-01-04 14:47:12,354 Thread-3 CRITICAL Traceback (most recent call last):
-  File "/home/kqc/github/crawler/threadPool.py", line 49, in run
-    func(*args, **kargs)
-TypeError: NoneType object argument after ** must be a mapping, not NoneType
-
-2013-01-04 14:47:13,354 Thread-3 CRITICAL Traceback (most recent call last):
-  File "/home/kqc/github/crawler/threadPool.py", line 49, in run
-    func(*args, **kargs)
-TypeError: NoneType object argument after ** must be a mapping, not NoneType
-
-2013-01-04 14:51:54,313 Thread-3 WARNING Page not avaliable. Status code: 502 with Status: ('bad_gateway',) URL: http://www.douban.com/group/topic/31429239/ 
-
-2013-01-04 14:52:03,598 Thread-1 WARNING Page not avaliable. Status code: 504 with Status: ('gateway_timeout',) URL: http://www.douban.com/group/topic/31477611/ 
-
-2013-01-04 14:53:52,272 Thread-3 WARNING Page not avaliable. Status code: 504 with Status: ('gateway_timeout',) URL: http://www.douban.com/group/topic/31819949/ 
+  File "comment_crawler.py", line 233, in _taskHandler
+    topic.parse(webPage, False) # non-firstpage parsing
+  File "/home/kqc/github/crawler/models.py", line 110, in parse
+    self.extract_nonfirst_page(webPage)
+  File "/home/kqc/github/crawler/models.py", line 252, in extract_nonfirst_page
+    sorted(self.comment_comment, key=operator.attrgetter('pubdate'), reverse = True)
+AttributeError: 'Topic' object has no attribute 'comment_comment'
 

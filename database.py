@@ -23,7 +23,15 @@ class Database(object):
                             group_id TEXT,
                             user_id TEXT, 
                             pubdate TEXT,
-                            description TEXT)''')
+                            description TEXT,
+                            topic_list TEXT)''')
+            self.conn.execute('''CREATE TABLE IF NOT EXISTS
+                            Topic (id INTEGER PRIMARY KEY AUTOINCREMENT, 
+                            topic_id TEXT,
+                            user_id TEXT, 
+                            pubdate TEXT,
+                            content TEXT,
+                            comment_list TEXT)''')
         except Exception, e:
             self.conn = None
 
@@ -40,14 +48,26 @@ class Database(object):
         else :
             raise sqlite3.OperationalError,'Database is not connected. Can not save Data!'
             
-    def saveGrouInfo(self, dbgroup):
+    def saveGrouInfo(self, dbgroup, topic_list):
         """ 保存小组信息
         """
+        s = ""
+        # 添加置顶贴
+        for tid in dbgroup.stick_topic_list:
+            s += (tid + ",")
+        # 添加普通讨论贴
+        for tid in topic_list:
+            s += (tid + ",")
+            
         if self.conn:
-            sql='''INSERT INTO Group (group_id, user_id, pubdate, description) VALUES (?, ?, ?, ?);'''
-            self.conn.execute(sql, (dbgroup.group_id, dbgroup.user_id, str(dbgroup.pubdate), dbgroup.desc) )
+            sql='''INSERT INTO Group (group_id, user_id, pubdate, description, topic_list) VALUES (?, ?, ?, ?, ?);'''
+            self.conn.execute(sql, (dbgroup.group_id, dbgroup.user_id, str(dbgroup.pubdate), dbgroup.desc, s) )
         else :
             raise sqlite3.OperationalError,'Database is not connected. Can not save Data!'
+            
+    def saveTopicInfo(self, atopic):
+        """保存Topic相关信息
+        """
 
     def close(self):
         if self.conn:

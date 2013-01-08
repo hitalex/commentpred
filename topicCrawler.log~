@@ -1,9 +1,9 @@
-2013-01-02 18:20:25,264 MainThread INFO Topic list crawling done with group FLL.
-2013-01-02 18:20:25,265 MainThread INFO Topic list crawling done with group 294806.
-2013-01-02 18:20:25,266 MainThread INFO Topic list crawling done with group MML.
-2013-01-02 18:24:55,143 MainThread INFO Topic list crawling done with group FLL.
-2013-01-02 18:24:55,144 MainThread INFO Topic list crawling done with group 294806.
-2013-01-02 18:24:55,144 MainThread INFO Topic list crawling done with group MML.
-2013-01-02 18:27:18,421 MainThread INFO Topic list crawling done with group FLL.
-2013-01-02 18:27:21,423 MainThread INFO Topic list crawling done with group 294806.
-2013-01-02 18:27:30,434 MainThread INFO Topic list crawling done with group MML.
+2013-01-07 14:30:25,541 Thread-2 CRITICAL Traceback (most recent call last):
+  File "/home/kqc/github/crawler/threadPool.py", line 54, in run
+    func(*args, **kargs)
+  File "topic_crawler.py", line 178, in _taskHandler
+    self._addStickTopic(webPage)
+  File "topic_crawler.py", line 205, in _addStickTopic
+    groupDict[self.currentGroupID] = group
+NameError: global name 'groupDict' is not defined
+

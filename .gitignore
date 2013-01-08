@@ -34,3 +34,4 @@ pip-log.txt
 *.gitignore~
 *.md~
 *.py~
+*.log~

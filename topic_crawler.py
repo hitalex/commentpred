@@ -19,6 +19,10 @@ from lxml import etree # use XPath from lxml
 from webPage import WebPage
 from threadPool import ThreadPool
 from patterns import *
+from models import Group
+from database import Database
+
+import stacktracer
 
 def congifLogger(logFile, logLevel):
     '''配置logging的日志文件以及日志的记录等级'''
@@ -48,17 +52,18 @@ log = logging.getLogger('Main.TopicCrawler')
 class TopicCrawler(object):
 
     def __init__(self, groupIDList, threadNum):
-        # 这里的深度指topic列表的页面
-        # 例如，http://www.douban.com/group/FLL/discussion?start=0 被认为是深度为0
-        self.currentDepth = 0  
         
         #线程池,指定线程数
         self.threadPool = ThreadPool(threadNum)  
+        # 写数据库的线程
+        self.DBThread = ThreadPool(1)
         
         # 已经访问的页面: Group id ==> True or False
         self.visitedHref = set()
         #待访问的小组讨论页面
         self.unvisitedHref = deque()
+        # 访问失败的页面链接
+        self.failedHref = set()
         
         self.lock = Lock() #线程锁
         
@@ -69,16 +74,12 @@ class TopicCrawler(object):
         # 抓取结束有两种可能：1）抓取到的topic数目已经最大；2）已经将所有的topic全部抓取
         # 只保存topic id
         self.topicList = list()
-        self.stickTopicList = list()
+        # map group id ==> group info and stick topic list
+        self.groupDict = dict()
 
         self.isCrawling = False
         
-        # 一分钟内允许的最大访问次数
-        self.MAX_VISITS_PER_MINUTE = 10
-        # 当前周期内已经访问的网页数量
-        self.currentPeriodVisits = 0
-        # 将一分钟当作一个访问周期，记录当前周期的开始时间
-        self.periodStart = time.time() # 使用当前时间初始化
+        self.database =  Database("DoubanGroup.db")
         
         # 每个Group抓取的最大topic个数
         #self.MAX_TOPICS_NUM = 50
@@ -90,8 +91,6 @@ class TopicCrawler(object):
         print '\nStart Crawling topic list...\n'
         self.isCrawling = True
         self.threadPool.startThreads() 
-        self.periodStart = time.time() # 当前周期开始
-        self.currentDepth = 0 
         
         # 逐次处理每个小组
         for group_id in self.groupIDList:
@@ -112,6 +111,9 @@ class TopicCrawler(object):
             # 存储抓取的结果
             print "Stroring crawling topic list for: " + group_id
             self._saveTopicList()
+            # 写入数据库
+            self.database.saveGrouInfo(self.groupDict[self.currentGroupID], self.topicList)
+            
             print "Processing done with group: " + group_id
             log.info("Topic list crawling done with group %s.", group_id)
         self.stop()
@@ -127,20 +129,29 @@ class TopicCrawler(object):
         Note: 这次是将存储过程放在主线程，将会阻塞抓取过程
         """
         group_id = self.currentGroupID
+        this_group = self.groupDict[group_id]
         print "For group %s: number of Stick post: %d, number of regurlar post: %d, total topics is: %d." % \
-            (group_id, len(self.stickTopicList), len(self.topicList), len(self.stickTopicList)+len(self.topicList))
+            (group_id, len(this_group.stick_topic_list), len(self.topicList), len(this_group.stick_topic_list)+len(self.topicList))
 
         f = open("data/"+group_id+".txt", "w")
-        for href in self.stickTopicList:
-            f.write(href + "\n")
+        for tid in this_group.stick_topic_list:
+            f.write(tid + "\n")
             
         f.write("\n")
-        for href in self.topicList:
-            f.write(href + "\n")
+        for tid in self.topicList:
+            f.write(tid + "\n")
             
         f.close()
-        self.stickTopicList = list()
+        
+        # 将访问失败的网页存储起来
+        f = open("data/" + group_id + "_failed.txt", "w")
+        for href in self.failedHref:
+            f.write(href + "\n")
+        f.close()
+        
         self.topicList = list()
+        self.failedHref = set()
+        
         
     def getAlreadyVisitedNum(self):
         #visitedGroups保存已经分配给taskQueue的链接，有可能链接还在处理中。
@@ -163,84 +174,48 @@ class TopicCrawler(object):
     def _taskHandler(self, url):
         """ 根据指定的url，抓取网页，并进行相应的访问控制
         """
-        # 判断当前周期内访问的网页数目是否大于最大数目
-        if self.currentPeriodVisits > self.MAX_VISITS_PER_MINUTE - 1:
-            timeNow = time.time()
-            seconds = timeNow - self.periodStart
-            if  seconds < 60: # 如果当前还没有过一分钟,则sleep
-                time.sleep(int(seconds + 3))
-
-            self.lock.acquire()
-            self.periodStart = time.time() # 重新设置开始时间
-            self.currentPeriodVisits = 0
-            self.lock.release()
 
         print "Visiting : " + url
         webPage = WebPage(url)
         # 抓取页面内容
         flag = webPage.fetch()
-        url, pageSource = webPage.getDatas()
-        
-        # 抽取小组主页的置顶贴
-        match_obj = REGroup.match(url)
-        if match_obj is not None:
-            group_id = match_obj.group(1)
-            # 添加置顶贴的topic列表
-            self._addStickTopic(group_id, webPage, flag)
-            return True
-        
-        # 抽取普通讨论贴
-        match_obj = REDiscussion.match(url)
-        group_id = match_obj.group(1)
-        start = int(match_obj.group(2))
-
         if flag:
-            self.lock.acquire() #锁住该变量,保证操作的原子性
-            self.currentPeriodVisits += 1
-            self.lock.release()
+            url, pageSource = webPage.getDatas()
+            # 抽取小组主页的置顶贴
+            match_obj = REGroup.match(url)
+            if match_obj is not None:
+                group_id = match_obj.group(1)
+                # 添加置顶贴的topic列表
+                self._addStickTopic(webPage)
+                return True
             
-            #self._saveTaskResults(webPage)
-            self._addTopicLink(webPage, group_id, start)
-            return True
+            # 抽取普通讨论贴
+            match_obj = REDiscussion.match(url)
+            if match_obj is not None:
+                group_id = match_obj.group(1)
+                start = int(match_obj.group(2))
+                
+                self._addTopicLink(webPage, start)
+                return True
+                
+            log.error("抓取小组讨论列表时，发现网址格式错误。Group ID: %s, URL: %s" % (self.currentGroupID, url))
             
         # if page reading fails
+        self.failedHref.add(url)
         return False
 
-    def _addStickTopic(self, group_id, webPage, flag):
+    def _addStickTopic(self, webPage):
         """ 访问小组首页，添加置顶贴
         """
         #pdb.set_trace()
-        print "抽取置顶贴 for :", group_id
-        if flag:
-            self.lock.acquire() #锁住该变量,保证操作的原子性
-            self.currentPeriodVisits += 1
-            self.lock.release()
-            
-            url, pageSource = webPage.getDatas()
-            if not isinstance(pageSource, unicode):
-                # 默认页面采用UTF-8编码
-                page = etree.HTML(pageSource.decode('utf-8'))
-            else:
-                page = etree.HTML(pageSource)
-            stickimg = page.xpath(u"//div[@id='wrapper']//div[@class='article']//img[@alt='[置顶]']")
-            # 可能一个小组中没有置顶贴，此时stickmig为空
-            for imgnode in stickimg:
-                titlenode = imgnode.getparent().getparent()
-                href = titlenode.xpath("a")[0].attrib['href']
-                # 加入到topic列表中
-                #print "Add stick post: ", href
-                match_obj = RETopic.match(href)
-                self.stickTopicList.append(match_obj.group(1))
-        else:
-            print "抽取置顶贴失败 for Group: ", group_id
         
-    def _saveTaskResults(self, webPage):
-        """将topic链接信息写入数据库
-        """
-        pass
+        group = Group(self.currentGroupID)
+        group.parse(webPage)
+        
+        self.groupDict[self.currentGroupID] = group
         
         
-    def _addTopicLink(self, webPage, group_id, start):
+    def _addTopicLink(self, webPage, start):
         '''将页面中所有的topic链接放入对应的topic列表，并同时加入
         下一步要访问的页面
         '''
@@ -257,7 +232,7 @@ class TopicCrawler(object):
                 topic_list.append(match_obj.group(1))
             
         for topic in topic_list: 
-            #print "Add group id:", group_id, "with topic link: ", href
+            #print "Add group id:", self.currentGroupID, "with topic link: ", href
             self.topicList.append(topic)
                 
         # 如果是首页，则需要添加所有的将来访问的页面
@@ -280,6 +255,9 @@ class TopicCrawler(object):
         paginator = page.xpath(u"//div[@class='paginator']/a")
         last_page = int(paginator[-1].text.strip())
         for i in range(1, last_page):
+            # 控制加入topic列表的数量
+            if i * 25 >= self.MAX_TOPICS_NUM:
+                break
             url = "http://www.douban.com/group/" + self.currentGroupID + "/discussion?start=" + str(i * 25)
             # 向线程池中添加任务：一次性添加
             self.threadPool.putTask(self._taskHandler, url)
@@ -305,15 +283,13 @@ class TopicCrawler(object):
         if protocal == 'http' or protocal == 'https':
             return True
         return False
-
-    def _isHrefRepeated(self, group_id):
-        if (group_id in self.visitedHref) or (group_id in self.unvisitedHref):
-            return True
-        return False
         
 if __name__ == "__main__":
+    stacktracer.trace_start("trace.html",interval=5,auto=True) # Set auto flag to always update file!
     congifLogger("topicCrawler.log", 5)
-    tcrawler = TopicCrawler(['FLL', '294806', 'MML'], 5)
-    #tcrawler = TopicCrawler(['70612'], 5) # 我们都是学术女小组
+    #tcrawler = TopicCrawler(['FLL', '294806', 'MML'], 5)
+    tcrawler = TopicCrawler(['70612'], 5) # 我们都是学术女小组
     tcrawler.start()
+    
+    stacktracer.trace_stop()
 

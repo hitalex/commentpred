@@ -17,4 +17,7 @@ RETopic = re.compile("^http://www.douban.com/group/topic/([0-9]+)/$")
 REDiscussion = re.compile("^http://www.douban.com/group/([0-9,a-z,A-Z,\-,_,\.]+)/discussion\?start=([0-9]+)$")
 
 # topic评论页面链接，group(1)为topic id，group(2)为start page
-REComment = re.compile("^http://www.douban.com/group/topic/([0-9]+)/?start=([0-9]+)$")
+REComment = re.compile("^http://www.douban.com/group/topic/([0-9]+)/\?start=([0-9]+)$")
+
+# 时间模板, 格式如：2012-04-12
+RETime = re.compile("[0-9]{4}\-[0-9]{2}\-[0-9]{2}")

@@ -32,13 +32,17 @@ class Worker(Thread):
 
     def run(self):
         while 1:
+            """
+            if self.ID == 1:
+                print "Thread ID: ", self.ID, " loops with state = ", self.state
+            """
             if self.state == 'STOP':
                 break
             # 将整个getTask函数设置为原子块
-            if self.ID == 1:
-                pdb.set_trace()
+            #if self.ID == 1:
+            #    pdb.set_trace()
             self.threadPool.taskLock.acquire()
-            func, args, kargs = self.threadPool.getTask(timeout=1)
+            func, args, kargs = self.threadPool.getTask()
             self.threadPool.taskLock.release()
             if func is None or args is None or kargs is None:
                 continue
@@ -75,7 +79,7 @@ class ThreadPool(object):
         # 一分钟内允许的最大访问次数
         self.MAX_VISITS_PER_MINUTE = 10
         # 定制每分钟含有的秒数
-        self.SECONDS_PER_MINUTE = 10
+        self.SECONDS_PER_MINUTE = 30
         # 当前周期内已经访问的网页数量
         self.currentPeriodVisits = 0
         # 将一分钟当作一个访问周期，记录当前周期的开始时间
@@ -100,7 +104,6 @@ class ThreadPool(object):
         self.taskQueue.put((func, args, kargs))
 
     def getTask(self, *args, **kargs):
-
         # 进行访问控制: 判断当前周期内访问的网页数目是否大于最大数目
         if self.currentPeriodVisits >= self.MAX_VISITS_PER_MINUTE - 2:
             timeNow = time.time()
@@ -114,11 +117,13 @@ class ThreadPool(object):
             self.currentPeriodVisits = 0
             
         try:
-            task = self.taskQueue.get(*args, **kargs)
+            #task = self.taskQueue.get(*args, **kargs)
+            task = self.taskQueue.get_nowait()
         except Empty:
             return (None, None, None)
             
         self.currentPeriodVisits += 1
+        
         return task
 
     def taskJoin(self, *args, **kargs):
