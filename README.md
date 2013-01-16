@@ -11,7 +11,11 @@ crawler
 #### 注意：
 目前已经修改了原来的代码，现在用于抓取豆瓣小组的信息，包括小组ID、创建时间、组内人数等。
 
-
+### 抓取操作步骤
+* 抓取小组的ID, GID
+* 根据得到的小组ID，抓取小组的讨论列表，放在data/GID.txt
+* 根据讨论列表，抓取小组的评论数据，并生成评论结构, 放在data/GID/topic_id.txt和structure/GID/topic_id.txt
+* 可视化评论树，放在image/GID/topic_id.jpg
 
 usage
 -------------

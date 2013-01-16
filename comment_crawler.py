@@ -13,6 +13,7 @@ import time
 import pdb
 import codecs # for file encodings
 import os
+import sys
 
 from bs4 import BeautifulSoup 
 
@@ -20,6 +21,7 @@ from webPage import WebPage
 from threadPool import ThreadPool
 from patterns import *
 from models import Topic
+from database import Database
 
 import stacktracer
 
@@ -57,6 +59,9 @@ class CommentCrawler(object):
         # 写数据库的线程
         self.DBThread = ThreadPool(1)
         
+        self.database =  Database("DoubanGroup.db")
+        #self.database =  Database("test.db")
+        
         # 已经访问的页面: Group id ==> True or False
         self.visitedHref = set()
         # 抓取失败的网页
@@ -91,6 +96,10 @@ class CommentCrawler(object):
         print '\nStart Crawling comment list for group: ' + self.groupID + '...\n'
         self.isCrawling = True
         self.threadPool.startThreads() 
+        
+        # 从数据库中读取topic id列表
+        self.topicIDList = self.database.readTopicList(self.groupID)
+        print "Total topics in group %s: %d." % (self.groupID, len(self.topicIDList))
         
         # 初始化添加任务
         for topic_id in self.topicIDList:
@@ -133,11 +142,15 @@ class CommentCrawler(object):
         print "Main Crawling procedure finished!"
         
         print "Start to save result..."
-        self._saveCommentList()
+        #self._saveCommentList()
+        print "Saving results to database..."
+        self.saveComment2DB()
+        log.info("Processing done with group: %s" % (self.groupID))
 
     def stop(self):
         self.isCrawling = False
         self.threadPool.stopThreads()
+
         
     def _saveCommentList(self):
         """将抽取的结果存储在文件中，包括存储topic内容和评论内容
@@ -176,6 +189,13 @@ class CommentCrawler(object):
                     f.write(" " + comment.quote.cid + " " + comment.quote.user_id)
                 f.write("\n")
             f.close()
+            
+    def saveComment2DB(self):
+        """ 将抓取结果存入数据库
+        """
+        for topic_id in self.topicDict:
+            topic = self.topicDict[topic_id]
+            self.database.saveTopicInfo(topic)
         
     def getAlreadyVisitedNum(self):
         #visitedGroups保存已经分配给taskQueue的链接，有可能链接还在处理中。
@@ -294,10 +314,21 @@ if __name__ == "__main__":
     congifLogger("CommentCrawler.log", 5)
     #group_id_list = ['FLL', '294806', 'MML']
     #group_id_list = ['test']
-    group_id_list = ['70612', 'FLL']
+    #group_id_list = ['70612', 'FLL']
+    group_id_list = []
+    if len(sys.argv) <= 1:
+        print "Group IDs were not provided."
+        sys.exit()
+    # add group ids
+    for i in range(1, len(sys.argv)):
+        group_id_list.append(sys.argv[i])
+        
+    print "Crawling comments for groups: ", group_id_list
+    
     MAX_TOPIC_NUM = 500 # 每个小组最多处理的topic的个数
     for group_id in group_id_list:
         # 读取topic列表
+        """
         f = open('data/' + group_id + ".txt")
         topic_list = []
         for line in f:
@@ -307,8 +338,8 @@ if __name__ == "__main__":
                 if len(topic_list) >= MAX_TOPIC_NUM:
                     break
         f.close()
-        
-        ccrawler = CommentCrawler(group_id, topic_list, 5)
+        """
+        ccrawler = CommentCrawler(group_id, [], 5)
         ccrawler.start()
     print "Done"
     stacktracer.trace_stop()

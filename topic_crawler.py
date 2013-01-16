@@ -3,6 +3,7 @@
 """
 根据已经抓取到的Group id，抓取每个group的topic列表
 """
+import sys
 
 from urlparse import urljoin,urlparse
 from collections import deque
@@ -82,8 +83,8 @@ class TopicCrawler(object):
         self.database =  Database("DoubanGroup.db")
         
         # 每个Group抓取的最大topic个数
-        #self.MAX_TOPICS_NUM = 50
-        self.MAX_TOPICS_NUM = float('inf')
+        self.MAX_TOPICS_NUM = 2000
+        #self.MAX_TOPICS_NUM = float('inf')
         # 每一页中显示的最多的topic数量，似乎每页中不一定显示25个topic
         #self.MAX_TOPICS_PER_PAGE = 25
 
@@ -110,9 +111,11 @@ class TopicCrawler(object):
                 time.sleep(3)
             # 存储抓取的结果
             print "Stroring crawling topic list for: " + group_id
-            self._saveTopicList()
             # 写入数据库
+            print "Saving to database..."
             self.database.saveGrouInfo(self.groupDict[self.currentGroupID], self.topicList)
+            print "Save to files..."
+            self._saveTopicList()
             
             print "Processing done with group: " + group_id
             log.info("Topic list crawling done with group %s.", group_id)
@@ -147,6 +150,11 @@ class TopicCrawler(object):
         f = open("data/" + group_id + "_failed.txt", "w")
         for href in self.failedHref:
             f.write(href + "\n")
+        f.close()
+        
+        # 保存Group的本身的信息
+        f = open("data/" + group_id + "_info.txt", "w")
+        f.write(this_group.__repr__())
         f.close()
         
         self.topicList = list()
@@ -287,8 +295,20 @@ class TopicCrawler(object):
 if __name__ == "__main__":
     stacktracer.trace_start("trace.html",interval=5,auto=True) # Set auto flag to always update file!
     congifLogger("topicCrawler.log", 5)
+    
+    group_id_list = []
+    if len(sys.argv) <= 1:
+        print "Group IDs were not provided."
+        sys.exit()
+    # add group ids
+    for i in range(1, len(sys.argv)):
+        group_id_list.append(sys.argv[i])
+        
+    print "Crawling topic list for groups: ", group_id_list
     #tcrawler = TopicCrawler(['FLL', '294806', 'MML'], 5)
-    tcrawler = TopicCrawler(['70612'], 5) # 我们都是学术女小组
+    #tcrawler = TopicCrawler(['70612'], 5) # 我们都是学术女小组
+    #tcrawler = TopicCrawler(['ustv'], 5) # 美剧fans 小组
+    tcrawler = TopicCrawler(tuple(group_id_list), 5)
     tcrawler.start()
     
     stacktracer.trace_stop()

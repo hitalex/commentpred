@@ -6,6 +6,8 @@ buildtree.py
 
 此脚本按照评论结构画出评论树
 """
+import os
+import sys
 
 import networkx as nx
 import matplotlib.pyplot as plt
@@ -15,9 +17,16 @@ try:
 except ImportError:
     raise ImportError("This example needs Graphviz and either PyGraphviz or Pydot")
 
+if len(sys.argv) <= 1:
+    print "Group IDs were not provided."
+    sys.exit()
+# add group ids
+group_id = sys.argv[1]
+
 # 读入所有的topic id列表
 topic_list = []
-f = open("data/test.txt")
+print "Loading topic list for group: ", group_id
+f = open("data/" + group_id + ".txt")
 for tid in f:
     tid = tid.strip()
     if tid is not "":
@@ -26,9 +35,19 @@ for tid in f:
 # 对于每个topic，做图
 plt.figure(num=None, figsize=(20, 20), dpi=50, facecolor='w', edgecolor='k')
 
+path = "image/" + group_id + "/"
+if not os.path.exists(path):
+    os.mkdir(path)
+        
 for tid in topic_list:
     print "Processing for topic: ", tid
-    f = open("structure/test/" + tid + ".txt")
+    try:
+        path = "structure/" + group_id + "/" + tid + ".txt"
+        f = open(path, "r")
+    except IOError:
+        print "File not found. %s" % path
+        continue
+        
     color = 0
     node_color = []
     G = nx.Graph()
@@ -50,23 +69,23 @@ for tid in topic_list:
                 print "Reference comment not found. Comment id: ", item_list[0], " Ref comment id: ", item_list[2]
             G.add_edge(item_list[0], item_list[2])
             #print "Add edge from ", item_list[0], " to ", item_list[2] 
-            if len(node_color) != len(G.nodes()):
-                print "Color number != node count"
         elif len(item_list) == 2:
             G.add_edge("topic_" + tid, item_list[0])
             #print "Add edge from topic_"+tid, " to ", item_list[0]
-            if len(node_color) != len(G.nodes()):
-                print "Color number != node count"
         else:
             print "Bad comment structure."
     
+    if len(G.nodes()) == 0:
+        continue
+        
     if len(node_color) != len(G.nodes()):
         print "Color node: ", len(node_color)
         print "Number of nodes: ", len(G.nodes())
         print "Not enough color node.", "Error in topic: ", tid
+        continue
     
     h = plt.figure()
     pos=nx.graphviz_layout(G,prog="twopi",root="topic_"+tid)
     nx.draw(G, pos, with_labels=False, node_color=node_color, alpha=0.7, node_size=30, hold=False)
-    plt.savefig("structure/test/" + tid + ".jpg", dpi=200)
+    plt.savefig( "image/" +group_id + "/" + tid +  ".jpg", dpi=200)
     plt.close(h)

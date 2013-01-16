@@ -67,7 +67,7 @@ class Topic(object):
         
         # 在多线程环境下，可能有多个线程同时修改一个Topic的评论列表
         self.lock = Lock()
-        self.comment_list = []      # 所有评论的id列表
+        self.comment_list = []      # 所有评论的列表, 属于Comment类
         
         self.max_comment_page = 0       # 这个topic具有多少页的评论(包括帖子的首页), init with 0
         
@@ -273,13 +273,14 @@ class Group(object):
         s += u"创建日期: " + str(self.pubdate) + "\n"
         s += u"小组描述: " + self.desc + "\n"
         
+        """
         if len(self.stick_topic_list) == 0:
             s += u"（无置顶贴）"
         else:
             s += u"置顶贴ID列表：\n"
             for tid in self.stick_topic_list:
                 s += (tid + "\n")
-        
+        """
         return s
         
     def parse(self, webPage):
@@ -294,7 +295,7 @@ class Group(object):
         self.title = page.xpath("/html/head/title")[0].text.strip()
         infobox = page.xpath("//div[@id='wrapper']//div[@class='infobox']")[0]
         url = infobox.xpath("div[@class='bd']/p/a")[0].attrib['href']
-        self.user_id = REPeople.match(url).group(1)
+        self.user_id = REPeople.match(url).group(1).strip()
         
         pnode = infobox.xpath("div[@class='bd']/p")[0]
         strtime = RETime.search(pnode.text).group(0)
