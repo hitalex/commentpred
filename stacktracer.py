@@ -1,3 +1,5 @@
+#encoding=utf8
+
 """Stack tracer for multi-threaded applications.
 
 

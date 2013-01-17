@@ -67,7 +67,7 @@ class Worker(Thread):
 
 class ThreadPool(object):
 
-    def __init__(self, threadNum):
+    def __init__(self, threadNum, max_tasks_per_period = 10, seconds_per_period = 30):
         self.pool = [] #线程池
         self.threadNum = threadNum  #线程数
         self.runningLock = Lock() #线程锁
@@ -77,9 +77,9 @@ class ThreadPool(object):
         self.resultQueue = Queue() #结果队列, but never used here
         
         # 一分钟内允许的最大访问次数
-        self.MAX_VISITS_PER_MINUTE = 10
+        self.max_tasks_per_period = max_tasks_per_period
         # 定制每分钟含有的秒数
-        self.SECONDS_PER_MINUTE = 30
+        self.seconds_per_period = seconds_per_period 
         # 当前周期内已经访问的网页数量
         self.currentPeriodVisits = 0
         # 将一分钟当作一个访问周期，记录当前周期的开始时间
@@ -105,11 +105,11 @@ class ThreadPool(object):
 
     def getTask(self, *args, **kargs):
         # 进行访问控制: 判断当前周期内访问的网页数目是否大于最大数目
-        if self.currentPeriodVisits >= self.MAX_VISITS_PER_MINUTE - 2:
+        if self.currentPeriodVisits >= self.max_tasks_per_period - 2:
             timeNow = time.time()
             seconds = timeNow - self.periodStart
             if  seconds < self.SECONDS_PER_MINUTE: # 如果当前还没有过一分钟,则sleep
-                remain = self.SECONDS_PER_MINUTE - seconds
+                remain = self.seconds_per_period - seconds
                 print "ThreadPool Waiting for " + str(remain) + " seconds."
                 time.sleep(int(remain + 1))
 
