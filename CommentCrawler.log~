@@ -1,18 +1,40 @@
-2013-01-08 18:48:25,298 Thread-5 WARNING Page not avaliable. Status code: 504 with Status: ('gateway_timeout',) URL: http://www.douban.com/group/topic/33047783/ 
+2013-01-15 17:22:06,294 Thread-3 WARNING Page not avaliable. Status code: 504 with Status: ('gateway_timeout',) URL: http://www.douban.com/group/topic/27642459/ 
 
-2013-01-08 18:50:58,806 Thread-3 WARNING Page not avaliable. Status code: 504 with Status: ('gateway_timeout',) URL: http://www.douban.com/group/topic/34953953/ 
+2013-01-15 17:22:06,298 Thread-5 WARNING Page not avaliable. Status code: 504 with Status: ('gateway_timeout',) URL: http://www.douban.com/group/topic/35596974/ 
 
-2013-01-08 18:50:58,806 Thread-4 WARNING Page not avaliable. Status code: 504 with Status: ('gateway_timeout',) URL: http://www.douban.com/group/topic/34990399/ 
+2013-01-15 17:22:06,306 Thread-2 WARNING Page not avaliable. Status code: 504 with Status: ('gateway_timeout',) URL: http://www.douban.com/group/topic/33231280/ 
 
-2013-01-08 18:51:59,611 Thread-6 WARNING Page not avaliable. Status code: 504 with Status: ('gateway_timeout',) URL: http://www.douban.com/group/topic/34565903/ 
+2013-01-16 03:08:41,460 Thread-7 WARNING Page not avaliable. Status code: 404 with Status: ('not_found', '-o-') URL: http://www.douban.com/group/topic/27185855/ 
 
-2013-01-08 18:51:59,824 Thread-5 WARNING Page not avaliable. Status code: 504 with Status: ('gateway_timeout',) URL: http://www.douban.com/group/topic/34423602/ 
+2013-01-16 03:55:32,880 Thread-13 WARNING Page not avaliable. Status code: 404 with Status: ('not_found', '-o-') URL: http://www.douban.com/group/topic/36032698/ 
 
-2013-01-08 18:52:30,383 Thread-3 WARNING Page not avaliable. Status code: 504 with Status: ('gateway_timeout',) URL: http://www.douban.com/group/topic/33902612/ 
+2013-01-16 03:55:33,646 Thread-12 WARNING Page not avaliable. Status code: 404 with Status: ('not_found', '-o-') URL: http://www.douban.com/group/topic/36031567/ 
 
-2013-01-08 18:53:00,183 Thread-4 WARNING Page not avaliable. Status code: 504 with Status: ('gateway_timeout',) URL: http://www.douban.com/group/topic/33727628/ 
+2013-01-16 03:56:33,260 Thread-15 WARNING Page not avaliable. Status code: 404 with Status: ('not_found', '-o-') URL: http://www.douban.com/group/topic/36031909/ 
 
-2013-01-08 18:53:31,036 Thread-4 WARNING Page not avaliable. Status code: 504 with Status: ('gateway_timeout',) URL: http://www.douban.com/group/topic/34589160/ 
+2013-01-16 04:04:08,645 Thread-16 WARNING Page not avaliable. Status code: 404 with Status: ('not_found', '-o-') URL: http://www.douban.com/group/topic/33461436/ 
 
-2013-01-09 10:22:07,163 Thread-5 WARNING Page not avaliable. Status code: 404 with Status: ('not_found', '-o-') URL: http://www.douban.com/group/topic/35841214/ 
+2013-01-16 08:56:12,341 Thread-20 WARNING Page not avaliable. Status code: 404 with Status: ('not_found', '-o-') URL: http://www.douban.com/group/topic/36014810/ 
 
+2013-01-16 09:13:31,222 Thread-20 WARNING Page not avaliable. Status code: 404 with Status: ('not_found', '-o-') URL: http://www.douban.com/group/topic/35989761/ 
+
+2013-01-16 10:24:49,995 Thread-21 WARNING Page not avaliable. Status code: 404 with Status: ('not_found', '-o-') URL: http://www.douban.com/group/topic/35692538/ 
+
+2013-01-16 14:25:27,809 Thread-5 WARNING Page not avaliable. Status code: 404 with Status: ('not_found', '-o-') URL: http://www.douban.com/group/topic/36031597/ 
+
+2013-01-16 14:26:58,884 Thread-5 WARNING Page not avaliable. Status code: 404 with Status: ('not_found', '-o-') URL: http://www.douban.com/group/topic/36029540/ 
+
+2013-01-16 14:33:35,065 Thread-2 WARNING Page not avaliable. Status code: 404 with Status: ('not_found', '-o-') URL: http://www.douban.com/group/topic/35991045/ 
+
+2013-01-16 14:34:05,561 Thread-6 WARNING Page not avaliable. Status code: 404 with Status: ('not_found', '-o-') URL: http://www.douban.com/group/topic/35955495/ 
+
+2013-01-16 14:37:38,483 Thread-4 WARNING Page not avaliable. Status code: 404 with Status: ('not_found', '-o-') URL: http://www.douban.com/group/topic/35910154/ 
+
+2013-01-16 16:09:47,583 Thread-5 WARNING Page not avaliable. Status code: 404 with Status: ('not_found', '-o-') URL: http://www.douban.com/group/topic/34447641/ 
+
+2013-01-16 17:00:41,962 MainThread INFO Processing done with group: Appearance
+2013-01-17 11:42:20,408 Thread-4 WARNING Page not avaliable. Status code: 404 with Status: ('not_found', '-o-') URL: http://www.douban.com/group/topic/36031873/ 
+
+2013-01-17 11:43:01,613 Thread-5 WARNING Page not avaliable. Status code: 404 with Status: ('not_found', '-o-') URL: http://www.douban.com/group/topic/36031873/ 
+
+2013-01-17 16:09:32,394 MainThread INFO Processing done with group: ustv

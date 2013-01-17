@@ -1,5 +1,14 @@
 API_KEY = '0c0cb6f7df695ce1242624e79e3c16a3'
 API_SECRET = 'b73d7a87176fbd16'
 your_redirect_uri = "http://alexkong.net"
+SCOPE = 'douban_basic_common,shuo_basic_r,shuo_basic_w'
+
 code = '42cb164ceffb3552'
 
+followers:
+[{u'city': u'\u5e38\u719f', u'icon_avatar': u'http://img3.douban.com/icon/ui50734015-14.jpg', u'statuses_count': 1103, u'screen_name': u'\u591a\u591a\u94b1\u5c11\u5c11', u'following_count': 26, u'url': u'http://www.douban.com/people/50734015/', u'type': u'user', u'created_at': u'2011-04-09 15:11:50', u'large_avatar': u'http://img3.douban.com/icon/ul50734015-14.jpg', u'new_site_to_vu_count': 0, u'followers_count': 13, u'location': u'', u'small_avatar': u'http://img3.douban.com/icon/u50734015-14.jpg', u'following': False, u'verified': False, u'is_first_visit': False, u'uid': u'qianshaoshao', u'id': u'50734015', u'description': u'\u591a\u591a\u94b1\u5c11\u5c11'}]
+
+API_KEY = '08bbd6fcb2c4e2ec1a3384f6184ea8c4'
+API_SECRET = '6bed2335463af18c'
+your_redirect_uri = "http://alexkong.net"
+SCOPE = 'douban_basic_common,shuo_basic_r,shuo_basic_w'

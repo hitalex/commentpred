@@ -108,7 +108,7 @@ class ThreadPool(object):
         if self.currentPeriodVisits >= self.max_tasks_per_period - 2:
             timeNow = time.time()
             seconds = timeNow - self.periodStart
-            if  seconds < self.SECONDS_PER_MINUTE: # 如果当前还没有过一分钟,则sleep
+            if  seconds < self.seconds_per_period: # 如果当前还没有过一分钟,则sleep
                 remain = self.seconds_per_period - seconds
                 print "ThreadPool Waiting for " + str(remain) + " seconds."
                 time.sleep(int(remain + 1))

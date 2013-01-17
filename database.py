@@ -123,8 +123,6 @@ class Database(object):
                 records.append(r)
                 
             cur = self.conn.cursor()
-            records = [('1', '1','1','1','1','1','1',), ('1', '1','1','1','1','1','1',)]
-
             sql='''INSERT INTO CommentInfo (comment_id, group_id, topic_id, user_id, pubdate, ref_comment_id, content) VALUES (?, ?, ?, ?, ?, ?, ?);'''
             cur.executemany(sql, records )
         else :

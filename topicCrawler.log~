@@ -1,9 +1,21 @@
-2013-01-07 14:30:25,541 Thread-2 CRITICAL Traceback (most recent call last):
-  File "/home/kqc/github/crawler/threadPool.py", line 54, in run
-    func(*args, **kargs)
-  File "topic_crawler.py", line 178, in _taskHandler
-    self._addStickTopic(webPage)
-  File "topic_crawler.py", line 205, in _addStickTopic
-    groupDict[self.currentGroupID] = group
-NameError: global name 'groupDict' is not defined
-
+2013-01-07 14:43:11,799 MainThread INFO Topic list crawling done with group 70612.
+2013-01-09 10:10:00,667 MainThread INFO Topic list crawling done with group ustv.
+2013-01-09 15:44:10,778 MainThread INFO Topic list crawling done with group insidestory.
+2013-01-15 09:58:13,820 MainThread INFO Topic list crawling done with group ustv.
+2013-01-15 10:16:21,776 MainThread INFO Topic list crawling done with group ustv.
+2013-01-15 10:18:55,083 MainThread INFO Topic list crawling done with group 70612.
+2013-01-15 10:21:25,363 MainThread INFO Topic list crawling done with group insidestory.
+2013-01-15 10:24:04,692 MainThread INFO Topic list crawling done with group wokaoyan.
+2013-01-15 10:26:31,951 MainThread INFO Topic list crawling done with group Dear-momo.
+2013-01-15 10:40:22,164 MainThread INFO Topic list crawling done with group ustv.
+2013-01-15 10:45:37,612 MainThread INFO Topic list crawling done with group 70612.
+2013-01-15 10:50:32,032 MainThread INFO Topic list crawling done with group insidestory.
+2013-01-15 10:55:35,478 MainThread INFO Topic list crawling done with group wokaoyan.
+2013-01-15 11:00:41,927 MainThread INFO Topic list crawling done with group Dear-momo.
+2013-01-15 11:05:45,356 MainThread INFO Topic list crawling done with group Appearance.
+2013-01-15 19:36:58,469 MainThread INFO Topic list crawling done with group ustv.
+2013-01-15 19:42:04,908 MainThread INFO Topic list crawling done with group 70612.
+2013-01-15 19:47:05,337 MainThread INFO Topic list crawling done with group insidestory.
+2013-01-15 19:52:14,801 MainThread INFO Topic list crawling done with group wokaoyan.
+2013-01-15 19:57:15,262 MainThread INFO Topic list crawling done with group Dear-momo.
+2013-01-15 20:02:21,682 MainThread INFO Topic list crawling done with group Appearance.
