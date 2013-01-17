@@ -14,6 +14,7 @@ import operator
 # for debug
 import pdb
 from threading import Lock
+from utils import seg_chinese
 
 from patterns import *
 
@@ -49,6 +50,23 @@ class Comment(object):
         if self.quote is not None:
             s += u"引用评论的id：" + self.quote.cid + LINE_FEED
         s += u"内容：" + LINE_FEED + self.content + LINE_FEED
+        
+        return s
+        
+    def getSimpleString(self, delimiter):
+        """ 获取简单字符串表示
+        """
+        s = u''
+        s += (self.cid + delimiter)
+        s += (self.group_id + delimiter)
+        s += (self.topic_id + delimiter)
+        s += (self.user_id + delimiter)
+        s += (str(self.pubdate) + delimiter)
+        if self.quote is None:
+            s += delimiter
+        else:
+            s += (self.quote.cid + delimiter)
+        s += (seg_chinese(self.content)) # 直接返回已经中文分词的结果
         
         return s
         
@@ -91,6 +109,22 @@ class Topic(object):
             for comment in self.comment_list:
                 s += (comment.__repr__() + "\n")
         
+        return s
+        
+    def getSimpleString(self, delimiter):
+        """ 获取简单字符串表示
+        """
+        s = u""
+        s += (self.topic_id + delimiter)
+        s += (self.group_id + delimiter)
+        s += (self.user_id + delimiter)
+        s += (str(self.pubdate) + delimiter)
+        s += (seg_chinese(self.content) + delimiter) # 直接返回已经中文分词的结果
+        
+        if len(self.comment_list) > 0:
+            for comment in self.comment_list:
+                s += (comment.cid + ',')
+                
         return s
         
     def _getLink(self):

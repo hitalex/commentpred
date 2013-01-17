@@ -16,6 +16,7 @@ import os
 import sys
 
 from bs4 import BeautifulSoup 
+import jieba # 中文分词模块
 
 from webPage import WebPage
 from threadPool import ThreadPool
@@ -48,6 +49,13 @@ def congifLogger(logFile, logLevel):
         return True
 
 log = logging.getLogger('Main.CommentCrawler')
+
+def seg(chinese_str):
+    """中文分词
+    Note: 目前采用jieba分词. jieba项目主页：https://github.com/fxsjy/jieba
+    """
+    seg_list = jieba.cut(chinese_str)
+    return " ".join(seg_list)
 
 
 class CommentCrawler(object):
@@ -144,7 +152,8 @@ class CommentCrawler(object):
         print "Start to save result..."
         #self._saveCommentList()
         print "Saving results to database..."
-        self.saveComment2DB()
+        #self.saveComment2DB()
+        self.saveComment2file()
         log.info("Processing done with group: %s" % (self.groupID))
 
     def stop(self):
@@ -196,6 +205,22 @@ class CommentCrawler(object):
         for topic_id in self.topicDict:
             topic = self.topicDict[topic_id]
             self.database.saveTopicInfo(topic)
+            
+    def saveComment2file(self):
+        """ 直接将抓取结果存入文件中，并中文分词
+        """
+        ftopic = open('tables/TopicInfo-' + self.groupID, 'w')
+        fcomment = open('tables/CommentInfo-' + self.groupID , 'w')
+        for topic_id in self.topicDict:
+            topic = self.topicDict[topic_id]
+            s = topic.getSimpleString(delimiter = '[=]')
+            ftopic.write(s + '\n[*ROWEND*]\n')
+            for comment in topic.comment_list:
+                cs = comment.getSimpleString(delimiter = '[=]')
+                fcomment.write(cs + '\n[*ROWEND*]\n')
+                
+        ftopic.close()
+        fcomment.close()
         
     def getAlreadyVisitedNum(self):
         #visitedGroups保存已经分配给taskQueue的链接，有可能链接还在处理中。
