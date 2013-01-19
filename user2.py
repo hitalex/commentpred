@@ -16,8 +16,8 @@ from douban_client.api.error import DoubanError
 from logconfig import congifLogger
 
 # config logging
-log = logging.getLogger('Main.user')
-congifLogger("user.log", 5)
+log = logging.getLogger('Main.user2')
+congifLogger("user2.log", 5)
 
 GROUP_FILE_PATH = 'tables/GroupInfo.txt'
 TOPIC_FILE_PATH = 'tables/TopicInfo.txt'
@@ -25,7 +25,7 @@ COMMENT_FILE_PATH = 'tables/CommentInfo.txt'
 
 # 训练集的起止时间
 START_DATE = datetime(2012, 10, 1)
-END_DATE = datetime(2012, 12, 1)
+END_DATE = datetime(2013, 12, 1)
 
 def inTraining(strtime):
     if isinstance(strtime, basestring):
@@ -41,12 +41,12 @@ def inTraining(strtime):
         return False
     
 # Douban API
+"""
 API_KEY = '0c0cb6f7df695ce1242624e79e3c16a3'
 API_SECRET = 'b73d7a87176fbd16'
 your_redirect_uri = 'http://alexkong.net'
 code = '42cb164ceffb3552'
 SCOPE = 'douban_basic_common,shuo_basic_r,shuo_basic_w'
-
 """
 API_KEY = '08bbd6fcb2c4e2ec1a3384f6184ea8c4'
 API_SECRET = '6bed2335463af18c'
@@ -54,7 +54,6 @@ your_redirect_uri = 'http://alexkong.net'
 SCOPE = 'douban_basic_common,shuo_basic_r,shuo_basic_w'
 
 code = '0133410989b9f450'
-"""
 
 douban_client = DoubanClient(API_KEY, API_SECRET, your_redirect_uri, SCOPE)
 douban_client.auth_with_code(code)
@@ -63,8 +62,8 @@ douban_client.auth_with_code(code)
 GROUP_ID = 'ustv'
 
 # 依次查找
-FOLLOWERS_FILE_PATH = 'tables/followers.txt'
-FOLLOWING_FILE_PATH = 'tables/following.txt'
+FOLLOWERS_FILE_PATH = 'tables/followers2.txt'
+FOLLOWING_FILE_PATH = 'tables/following2.txt'
 USERS_FILE_PATH = 'tables/users.txt'
 
 file_followers = open(FOLLOWERS_FILE_PATH, 'w')
@@ -232,12 +231,10 @@ def main():
     current_period_tasks = 0
     count = 0
     for uid in user_info:
-        #log.info('抽取用户的粉丝列表... ')
         #find_followers(uid, 0, 100)
-        log.info('抽取用户的关注列表... ')
         find_following(uid, 0, 100)
         count += 1
-        
+    
     # 记录抽取失败的用户
     log.info('抽取失败的用户id：')
     for uid in failed_set:

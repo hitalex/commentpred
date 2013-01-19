@@ -13,6 +13,7 @@ import logging
 import time
 import pdb
 import codecs # for file encodings
+import os
 
 from bs4 import BeautifulSoup 
 from lxml import etree # use XPath from lxml
@@ -136,7 +137,24 @@ class TopicCrawler(object):
         print "For group %s: number of Stick post: %d, number of regurlar post: %d, total topics is: %d." % \
             (group_id, len(this_group.stick_topic_list), len(self.topicList), len(this_group.stick_topic_list)+len(self.topicList))
 
-        f = open("data/"+group_id+".txt", "w")
+        
+        base_path = 'tables/' + group_id + '/'
+        if not os.path.exists(base_path):
+            os.mkdir(base_path)
+            
+        # 将访问失败的网页存储起来
+        f = open(base_path + group_id + "_failed.txt", "w")
+        for href in self.failedHref:
+            f.write(href + "\n")
+        f.close()
+        
+        # 保存Group的本身的信息
+        f = open(base_path + group_id + "_info.txt", "w")
+        f.write(this_group.__repr__())
+        f.close()
+        
+        # 存储Topic相关信息
+        f = open(base_path + 'TopicList.txt', 'w')
         for tid in this_group.stick_topic_list:
             f.write(tid + "\n")
             
@@ -144,17 +162,6 @@ class TopicCrawler(object):
         for tid in self.topicList:
             f.write(tid + "\n")
             
-        f.close()
-        
-        # 将访问失败的网页存储起来
-        f = open("data/" + group_id + "_failed.txt", "w")
-        for href in self.failedHref:
-            f.write(href + "\n")
-        f.close()
-        
-        # 保存Group的本身的信息
-        f = open("data/" + group_id + "_info.txt", "w")
-        f.write(this_group.__repr__())
         f.close()
         
         self.topicList = list()

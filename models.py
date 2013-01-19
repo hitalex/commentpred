@@ -118,6 +118,7 @@ class Topic(object):
         s += (self.topic_id + delimiter)
         s += (self.group_id + delimiter)
         s += (self.user_id + delimiter)
+        s += (self.title + delimiter)
         s += (str(self.pubdate) + delimiter)
         s += (seg_chinese(self.content) + delimiter) # 直接返回已经中文分词的结果
         
@@ -163,6 +164,7 @@ class Topic(object):
         else:
             titlenode = tmp[0]
             self.title = etree.tostring(titlenode, method='text', encoding='utf-8').strip()
+        
         
         self.title = self.title.decode("utf-8")
         

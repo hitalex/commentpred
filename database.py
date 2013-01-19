@@ -37,6 +37,7 @@ class Database(object):
                         group_id TEXT,
                         user_id TEXT, 
                         pubdate TEXT,
+                        title TEXT,
                         content TEXT,
                         comment_list TEXT)''')
         # 评论信息 数据表
@@ -100,11 +101,11 @@ class Database(object):
                 s += (comment.cid + ",")
             cur = self.conn.cursor()
             # 只记录comment id列表
-            sql='''INSERT INTO TopicInfo (topic_id, group_id, user_id, pubdate, content, comment_list) VALUES (?, ?, ?, ?, ?, ?);'''
-            cur.execute(sql, (topic.topic_id, topic.group_id, topic.user_id, str(topic.pubdate), topic.content, s) )
+            sql='''INSERT INTO TopicInfo (topic_id, group_id, user_id, pubdate, title, content, comment_list) VALUES (?, ?, ?, ?, ?, ?, ?);'''
+            cur.execute(sql, (topic.topic_id, topic.group_id, topic.user_id, str(topic.pubdate), topic.tilte, topic.content, s) )
             # 保存评论的内容信息
             self.saveCommentInfo(topic)
-        else :
+        else:
             raise sqlite3.OperationalError,'Database is not connected. Can not save Data!'
             
     def saveCommentInfo(self, topic):
