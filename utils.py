@@ -13,7 +13,7 @@ def is_between(now, start_date, end_date):
     """
     from datetime import datetime
     
-    if now >= start_date and now <= end_date:
+    if now >= start_date and now < end_date:
         return True
     else:
         return False
