@@ -10,13 +10,13 @@ from collections import deque
 import traceback
 import logging
 import time
+from datetime import datetime
 import pdb
 import codecs # for file encodings
 import os
 import sys
 
 from bs4 import BeautifulSoup 
-import jieba # 中文分词模块
 
 from webPage import WebPage
 from threadPool import ThreadPool
@@ -50,32 +50,36 @@ def congifLogger(logFile, logLevel):
 
 log = logging.getLogger('Main.CommentCrawler')
 
-def seg(chinese_str):
-    """中文分词
-    Note: 目前采用jieba分词. jieba项目主页：https://github.com/fxsjy/jieba
-    """
-    seg_list = jieba.cut(chinese_str)
-    return " ".join(seg_list)
-
 
 class CommentCrawler(object):
     
-    def __init__(self, groupID, topicIDList, threadNum):
+    def __init__(self, groupID, topicIDList, threadNum, topic_info_path, comment_info_path):
+        """
+        `groupID` 当前的Group id
+        `topicIDList` 需要抓取的topic id的list
+        `threadNum` 开启的线程数目
+        `topic_info_path` 存储topic信息的文件
+        `comment_info_path` 存储comment信息的文件
+        """
         
         #线程池,指定线程数
         self.threadPool = ThreadPool(threadNum)  
         # 写数据库的线程
-        self.DBThread = ThreadPool(1)
+        #self.DBThread = ThreadPool(1)
+        # 保证同时只有一个线程在写文件
+        self.saveThread = ThreadPool(1)
         
         self.database =  Database("DoubanGroup.db")
         #self.database =  Database("test.db")
         
+        self.topic_info_path = topic_info_path
+        self.comment_info_path = comment_info_path
+        
         # 已经访问的页面: Group id ==> True or False
         self.visitedHref = set()
-        # 抓取失败的网页
-        self.failedHref = set()
-        #待访问的小组讨论页面
-        self.unvisitedHref = deque()
+        # 抓取失败的topic id
+        self.failed = set()
+        
         
         # 依次为每个小组抽取topic评论
         self.groupID = groupID
@@ -88,6 +92,7 @@ class CommentCrawler(object):
         self.nextPage = dict()
         # 已经抓取完毕的topic id集合
         self.finished = set()
+        
         
         self.visitedHref = set() # 已经访问的网页
 
@@ -103,10 +108,16 @@ class CommentCrawler(object):
     def start(self):
         print '\nStart Crawling comment list for group: ' + self.groupID + '...\n'
         self.isCrawling = True
-        self.threadPool.startThreads() 
+        self.threadPool.startThreads()
+        self.saveThread.startThreads()
+        
+        # 打开需要存储的文件
+        self.topic_info_file = codecs.open(self.topic_info_path, 'w', 'utf-8')
+        self.comment_info_file = codecs.open(self.comment_info_path, 'w', 'utf-8')
         
         # 从数据库中读取topic id列表
-        self.topicIDList = self.database.readTopicList(self.groupID)
+        #self.topicIDList = self.database.readTopicList(self.groupID)
+        self.topicIDList = list(set(self.topicIDList)) # 消除重复的topic id
         print "Total topics in group %s: %d." % (self.groupID, len(self.topicIDList))
         
         # 初始化添加任务
@@ -134,6 +145,11 @@ class CommentCrawler(object):
                 break
             elif len(self.finished) > len(self.topicIDList):
                 assert(False)
+            print 'Total topics: %d, Finished topic: %d' % (len(self.topicIDList), len(self.finished))
+            
+            remain = set(self.topicIDList) - self.finished
+            if len(remain) < 5:
+                print 'Unfinished: ', remain
                 
         # 等待线程池中所有的任务都完成
         print "Totally visited: ", len(self.visitedHref)
@@ -144,33 +160,50 @@ class CommentCrawler(object):
             print "Running tasks: ", self.threadPool.running
             time.sleep(2)
         
+        while self.saveThread.getTaskLeft() > 0:
+            print "Task left in save thread: ", self.saveThread.getTaskLeft()
+            print "Task queue size: ", self.saveThread.taskQueue.qsize()
+            print "Running tasks: ", self.saveThread.running
+            time.sleep(2)
+        
+        # 记录抓取失败的topic id
+        log.info('抓取失败的topic id：')
+        s = ''
+        for topic_id in self.failed:
+            s += (topic_id + '\n')
+        log.info('\n' + s)
+        
         print "Terminating all threads..."
         self.stop()
         assert(self.threadPool.getTaskLeft() == 0)
+        
+        self.topic_info_file.close()
+        self.comment_info_file.close()
+        
         print "Main Crawling procedure finished!"
         
         print "Start to save result..."
         #self._saveCommentList()
-        print "Saving results to database..."
-        #self.saveComment2DB()
-        self.saveComment2file()
+        #self.saveComment2file()
         log.info("Processing done with group: %s" % (self.groupID))
 
     def stop(self):
         self.isCrawling = False
         self.threadPool.stopThreads()
+        self.saveThread.stopThreads()
 
         
     def _saveCommentList(self):
         """将抽取的结果存储在文件中，包括存储topic内容和评论内容
         Note: 这次是将存储过程放在主线程，将会阻塞抓取过程
+        NOTE: 此函数已经不再使用
         """
         # 如果不存在目录，则创建它
         path = "data/" + self.groupID + "/"
         if not os.path.exists(path):
             os.mkdir(path)
             
-        for topic_id in self.topicDict:
+        for topic_id in self.topicIDList:
             topic = self.topicDict[topic_id]
             path = "data/" + self.groupID + "/" + topic_id + ".txt"
             f = codecs.open(path, "w", "utf-8", errors='replace')
@@ -179,7 +212,7 @@ class CommentCrawler(object):
             
         # save the failed hrefs
         f = open("data/"+self.groupID+"/failed.txt", "w")
-        for href in self.failedHref:
+        for href in self.failed:
             f.write(href + "\n")
         f.close()
         
@@ -199,18 +232,11 @@ class CommentCrawler(object):
                 f.write("\n")
             f.close()
             
-    def saveComment2DB(self):
-        """ 将抓取结果存入数据库
-        """
-        for topic_id in self.topicDict:
-            topic = self.topicDict[topic_id]
-            self.database.saveTopicInfo(topic)
-            
     def saveComment2file(self):
-        """ 直接将抓取结果存入文件中，并中文分词
+        """ 直接将抓取结果存入文件中
         """
-        ftopic = open('tables/TopicInfo-' + self.groupID, 'w')
-        fcomment = open('tables/CommentInfo-' + self.groupID , 'w')
+        ftopic = open(self.topic_info_path, 'w')
+        fcomment = open(self.comment_info_path , 'w')
         for topic_id in self.topicDict:
             topic = self.topicDict[topic_id]
             s = topic.getSimpleString(delimiter = '[=]')
@@ -221,6 +247,25 @@ class CommentCrawler(object):
                 
         ftopic.close()
         fcomment.close()
+    
+    def _save_handler(self, comment_list, topic):
+        """ 将topic信息和comemnt信息保存到文件中
+        """
+        # 先保存comment_list id
+        # 判断是否是第一次保存该topic
+        if topic != None: # 如果是第一次保存，则需要保存topic的基本信息
+            s = topic.getSimpleString('[=]')
+            self.topic_info_file.write(s + '\n[*ROWEND*]\n')
+        # 保存comment信息
+        for comment in comment_list:
+            s = comment.getSimpleString('[=]')
+            self.comment_info_file.write(s + '\n[*ROWEND*]\n')
+            
+        # 保证已经写入到磁盘上，这样可以随时终止
+        self.topic_info_file.flush()
+        os.fsync(self.topic_info_file)
+        self.comment_info_file.flush()
+        os.fsync(self.comment_info_file)
         
     def getAlreadyVisitedNum(self):
         #visitedGroups保存已经分配给taskQueue的链接，有可能链接还在处理中。
@@ -237,22 +282,23 @@ class CommentCrawler(object):
             if topic_id in self.finished:
                 continue
             topic = self.topicDict[topic_id]
+            if topic is None:
+                continue
             if topic.max_comment_page <= 0:
                 # 还未处理该topic的首页
                 continue
             elif topic.max_comment_page == 1:
                 # 该topic只有首页有评论
-                self.finished.add(topic_id)
+                continue
             else:
                 # 该topic有多页评论
                 next_start = self.nextPage[topic_id]
                 url = "http://www.douban.com/group/topic/" + topic_id + "/?start=" + str(next_start * self.COMMENTS_PER_PAGE)
-                if next_start >= topic.max_comment_page-1:
-                    self.finished.add(topic_id)
-                else:
+                if next_start <= topic.max_comment_page-1:
                     self.nextPage[topic_id] = next_start + 1
-                    
-                return url
+                    return url
+                else:
+                    continue
         
         return None
         
@@ -271,44 +317,56 @@ class CommentCrawler(object):
             if match_obj is not None:
                 topic_id = match_obj.group(1)
                 topic = Topic(topic_id, self.groupID)
-                topic.parse(webPage, True) # First page parsing
+                comment_list = topic.parse(webPage, True) # First page parsing
                 self.topicDict[topic_id] = topic
+                # 保存到文件
+                self.saveThread.putTask(self._save_handler, comment_list, topic = topic)
+                # 如果
             elif match_obj2 is not None:
                 topic_id = match_obj2.group(1)
                 start = int(match_obj2.group(2))
                 # 抽取非第一页的评论数据
-                topic = self.topicDict[topic_id]
-                topic.parse(webPage, False) # non-firstpage parsing
+                if topic_id in self.topicDict:
+                    topic = self.topicDict[topic_id]
+                    if topic is None:
+                        log.error('未知程序错误：该topic已经抓取结束，已释放相关内存，topic id：%s' % topic_id)
+                        return False
+                else:
+                    log.error('未知程序错误：在topicDict字典中找不到topic id: %s' % topic_id)
+                    self.failed.add(topic_id)
+                    self.finished.add(topic_id)
+                    return False
+                    
+                comment_list = topic.parse(webPage, False) # non-firstpage parsing
+                # 保存到文件
+                self.saveThread.putTask(self._save_handler, comment_list, topic = None)
             else:
                 #pdb.set_trace()
                 log.info('Topic链接格式错误：%s in Group: %s.' % (url, self.groupID))
+            # 判断抓取是否结束，如果结束，则释放dict内存
+            # 这个很重要，因为随着topic数量增多，内存会占很多
+            if topic.isComplete():
+                self.topicDict[topic_id] = None
+                self.finished.add(topic_id)
+                log.info('Topic: %s 抓取结束。' % topic_id)
                 
             self.visitedHref.add(url)
             return True
         else:
             # 处理抓取失败的网页集合
-            self.failedHref.add(url) # 加入到失败链接集合中
+            # 只要一个网页抓取失败，则加入到finished
             if match_obj is not None:
                 # 讨论贴的第一页就没有抓到，则将其列入finished名单中
                 topic_id = match_obj.group(1)
-                self.finished.add(topic_id)
             elif match_obj2 is not None:
-                # 如果这不是讨论贴的首页，此时需要检查讨论贴的除首页外，其他页是否
-                # 都在self.failedHref中，如果都在，则将其加入self.finished中，
-                # 否则只加入自己
                 topic_id = match_obj2.group(1)
                 start = int(match_obj2.group(2))
-                topic = self.topicDict[topic_id]
-                tflag = True
-                for i in range(1, topic.max_comment_page):
-                    turl = "http://www.douban.com/group/topic/" + topic_id + "/?start=" + str(i * self.COMMENTS_PER_PAGE)
-                    if turl not in self.failedHref:
-                        tflag = False
-                        break
-                if tflag:
-                    self.finished.add(topic_id)
             else:
                 log.info('Topic链接格式错误：%s in Group: %s.' % (url, self.groupID))
+            
+            # 添加抓取失败的topic id和标记抓取结束的topic
+            self.failed.add(topic_id)
+            self.finished.add(topic_id) # 有可能已经记录了一些某些topic的信息
             self.visitedHref.add(url)
             return False
         
@@ -350,21 +408,25 @@ if __name__ == "__main__":
         
     print "Crawling comments for groups: ", group_id_list
     
-    MAX_TOPIC_NUM = 500 # 每个小组最多处理的topic的个数
-    for group_id in group_id_list:
+    MAX_TOPIC_NUM = float('inf') # 每个小组最多处理的topic的个数
+    group_id = group_id_list[0]
+    for index in range(3,8):
         # 读取topic列表
-        """
-        f = open('data/' + group_id + ".txt")
+        f = open('tables/ustv/TopicList-ustv-remain-' + str(index), 'r')
+        #f = open('tables/ustv/topic-list-test.txt', 'r')
         topic_list = []
         for line in f:
             line = line.strip()
             if line is not "":
                 topic_list.append(line)
-                if len(topic_list) >= MAX_TOPIC_NUM:
-                    break
+                #if len(topic_list) >= MAX_TOPIC_NUM:
+                #    break
         f.close()
-        """
-        ccrawler = CommentCrawler(group_id, [], 5)
+        
+        time_now = datetime.now()
+        topic_path = 'tables/' + group_id + '/TopicInfo-' + group_id + '-' + str(time_now) + '-raw-' + str(index)
+        comment_path = 'tables/' + group_id + '/CommentInfo-' + group_id + '-' + str(time_now) + '-raw-' + str(index)
+        ccrawler = CommentCrawler(group_id, topic_list, 5, topic_path, comment_path)
         ccrawler.start()
     print "Done"
     stacktracer.trace_stop()
