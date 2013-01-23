@@ -19,10 +19,13 @@ from utils import is_between, load_uid
 log = logging.getLogger('Main.behavior')
 congifLogger("behavior.log", 5)
 
-GROUP_ID = 'ustv'
+# 所有group的topic和comment信息
+TOPIC_ALL_FILE_PATH = 'tables/TopicInfo-all.txt'
+COMMENT_ALL_FILE_PATH = 'tables/CommentInfo-all.txt'
 
+GROUP_ID = 'ustv'
 TOPIC_FILE_PATH = 'tables/' + GROUP_ID + '/TopicInfo-' + GROUP_ID + '.txt'
-COMMENT_FILE_PATH = 'tables/' + GROUP_ID + '/CommentInfo.txt'
+COMMENT_FILE_PATH = 'tables/' + GROUP_ID + '/CommentInfo-' + GROUP_ID + '.txt'
 BEHAVIOR_FILE_PATH = 'tables/' + GROUP_ID + '/behavior-' + GROUP_ID + '.txt'
 
 # 训练集的起止时间
@@ -38,15 +41,15 @@ TEST_END_DATE = datetime(2013, 1, 1)
 3，存储所有在（训练+测试）集内的comment
 """
 
-def load_topic(file_path):
+def load_topic():
     """ 读入所有的topic信息
     Note：这里按照有title信息的格式来
     """
     log.info('Loading topic info...')
     # map topic_id --> dict()
     topic_dict = dict()
-    f = open(file_path, 'r')
-    ft = open('tables/' + GROUP_ID + '/TopicInfo-' + GROUP_ID + '.txt', 'w') # 存储本group的topic
+    f = open(TOPIC_ALL_FILE_PATH, 'r')
+    ft = open(TOPIC_FILE_PATH, 'w') # 存储本group的topic
     row = ''
     for line in f:
         line = line.strip()
@@ -55,6 +58,7 @@ def load_topic(file_path):
             continue
         seg_list = row.split('[=]')
         if len(seg_list) == 6: # 没有title信息
+            log.info('Title empty for topic: %s' % seg_list[0])
             seg_list.insert(4, '') # 将title信息置为空
         print 'Processing topic id: %s, group id: %s' % (seg_list[0], seg_list[1])
         pubdate = datetime.strptime(seg_list[3], "%Y-%m-%d %H:%M:%S")
@@ -101,12 +105,12 @@ def get_behavior_statics(uid_list, topic_dict):
             behavior[uid][2] += (topic['title'] + ' ' + topic['content'])
             
     print '浏览所有的留言信息...'
-    f = open(COMMENT_FILE_PATH, 'r')
-    fc_path = 'tables/' + GROUP_ID + '/CommentInfo-' + GROUP_ID + '.txt'
-    if os.path.exists(fc_path):
+    f = open(COMMENT_ALL_FILE_PATH, 'r')
+    # 保证本group的comment信息只抽取一遍
+    if os.path.exists(COMMENT_FILE_PATH):
         fc = None
     else:
-        fc = open(fc_path, 'w') # 存储本group的comment
+        fc = open(COMMENT_FILE_PATH, 'w') # 存储本group的comment
     row = ''
     for line in f:
         line = line.strip()
@@ -116,9 +120,11 @@ def get_behavior_statics(uid_list, topic_dict):
         seg_list = row.split('[=]')
         #print 'Processing comment id: %s, group id: %s, topic id: %s' % (seg_list[0], seg_list[1], seg_list[2])
         pubdate = datetime.strptime(seg_list[4], "%Y-%m-%d %H:%M:%S")
-        if seg_list[1] != GROUP_ID:
+        topic_id = seg_list[2] # 保证评论所在的topic被收录
+        if seg_list[1] != GROUP_ID or (not topic_id in topic_dict):
             row = ''
             continue
+        
         if fc != None and (is_between(pubdate, TRAIN_START_DATE, TRAIN_END_DATE) or is_between(pubdate, TEST_START_DATE, TEST_END_DATE)):
             fc.write(row + '\n[*ROWEND*]\n')
         
@@ -130,6 +136,7 @@ def get_behavior_statics(uid_list, topic_dict):
                 # 在这里，将帖子的标题和内容，都加入用户的感兴趣的内容中
                 topic_id = seg_list[2]
                 topic = topic_dict[topic_id]
+                # 这里并没有包括引用的评论的内容
                 behavior[uid][2] += (topic['title'] + ' ' + topic['content'] + ' ' + seg_list[6])
                 
         row = ''
@@ -143,6 +150,7 @@ def get_behavior_statics(uid_list, topic_dict):
 def save_behavior_statics(behavior, topic_count, comment_count):
     """ 保存所有的用户行为信息
     """
+    # 在这里使用的是每次将行为信息添加到文件最后
     f = open(BEHAVIOR_FILE_PATH, 'a')
     for uid in behavior:
         f.write(uid + '[=]')
@@ -162,7 +170,8 @@ def main():
     uid_list = load_uid('tables/users.txt') # load users
     log.info('Loading user id, done.')
     
-    topic_dict = load_topic('tables/' + GROUP_ID + '/TopicInfo.txt' )
+    # 导入所有group的topic
+    topic_dict = load_topic()
     start = 0
     count = 100 # 一次处理100个用户
     total_users = len(uid_list)

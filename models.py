@@ -14,7 +14,6 @@ import operator
 # for debug
 import pdb
 from threading import Lock
-from utils import seg_chinese
 
 from patterns import *
 
@@ -66,7 +65,7 @@ class Comment(object):
             s += delimiter
         else:
             s += (self.quote.cid + delimiter)
-        s += (seg_chinese(self.content)) # 直接返回已经中文分词的结果
+        s += (self.content) # 直接返回已经中文分词的结果
         
         return s
         
@@ -88,6 +87,8 @@ class Topic(object):
         self.comment_list = []      # 所有评论的列表, 属于Comment类
         
         self.max_comment_page = 0       # 这个topic具有多少页的评论(包括帖子的首页), init with 0
+        # 已经抓取的评论的页面的index
+        self.parsedPageIndexSet = set()
         
     def __repr__(self):
         if not ('LINE_FEED' in dir()):
@@ -111,8 +112,9 @@ class Topic(object):
         
         return s
         
+        
     def getSimpleString(self, delimiter):
-        """ 获取简单字符串表示
+        """ 获取简单字符串表示，不过不包括comment
         """
         s = u""
         s += (self.topic_id + delimiter)
@@ -120,12 +122,8 @@ class Topic(object):
         s += (self.user_id + delimiter)
         s += (self.title + delimiter)
         s += (str(self.pubdate) + delimiter)
-        s += (seg_chinese(self.content) + delimiter) # 直接返回已经中文分词的结果
+        s += self.content
         
-        if len(self.comment_list) > 0:
-            for comment in self.comment_list:
-                s += (comment.cid + ',')
-                
         return s
         
     def _getLink(self):
@@ -138,14 +136,28 @@ class Topic(object):
         """ 从网页中抽取信息，填写类中的字段
         @webPage 网页数据
         @isFirstPage 是否是topic评论的第一页
+        返回新添加的comment list
         """
         if isFirstPage:
-            self.extract_first_page(webPage)
+            return self.extract_first_page(webPage)
         else:
-            self.extract_nonfirst_page(webPage)
+            return self.extract_nonfirst_page(webPage)
             
+    def isComplete(self):
+        """ 判断评论抓取是否结束
+        """
+        if self.max_comment_page == 0:
+            return False
+        
+        if len(self.parsedPageIndexSet) < self.max_comment_page:
+            return False
+        else:
+            return True
         
     def extract_first_page(self, webPage):
+        """ 抽取topic首页的topic内容和评论
+        返回新添加的comment list
+        """
         # 抽取topic首页的内容
         url = "http://www.douban.com/group/topic/" + self.topic_id + "/"
         #print "Reading webpage: " + url
@@ -165,8 +177,10 @@ class Topic(object):
             titlenode = tmp[0]
             self.title = etree.tostring(titlenode, method='text', encoding='utf-8').strip()
         
-        
-        self.title = self.title.decode("utf-8")
+        if isinstance(self.title, unicode):
+            pass
+        else:
+            self.title = self.title.decode("utf-8")
         
         lz = page.xpath(u"//div[@class='topic-doc']/h3/span[@class='from']/a")[0]
         self.user_name = lz.text.strip()
@@ -203,6 +217,7 @@ class Topic(object):
         
         comments_li = page.xpath(u"//ul[@id='comments']/li")
         # Note: 有可能一个topic下没有评论信息
+        newly_added = [] # 本页中新添加的comment
         for cli in comments_li:
             comment = self.extract_comment(cli)
             # 为commen_list加锁
@@ -211,10 +226,15 @@ class Topic(object):
                 continue
             self.lock.acquire()
             self.comment_list.append(comment)
+            newly_added.append(comment)
             self.lock.release()
             
         # 在添加评论后对评论按照日期排序
         sorted(self.comment_list, key=operator.attrgetter('pubdate'), reverse = True)
+        # 添加已经抓取的page index
+        self.parsedPageIndexSet.add(1)
+        
+        return newly_added
         
     def extract_comment(self, cli):
         # 从comment节点中抽取出Comment结构，并返回Comment对象
@@ -242,8 +262,8 @@ class Topic(object):
             quote_user_id = self.extract_user_id(url)
             # 找到引用的回复的comment
             quote_comment = self.find_previous_comment(quote_content_all, quote_user_id)
-            if quote_id is None:
-                pdb.set_trace()
+            if quote_comment is None:
+                log.error('Quote comment not found for comment: %s' % cid)
                 
         comment = Comment(cid, user_id, pubdate, content, quote_comment, self.topic_id, self.group_id)
         #print "Comment content: ", comment.content
@@ -277,15 +297,24 @@ class Topic(object):
         page = etree.HTML(pageSource)
         comments_li = page.xpath(u"//ul[@id='comments']/li")
         # Note: 有可能一个topic下没有评论信息
+        newly_added = [] # 本页中新添加的comment
         for cli in comments_li:
             comment = self.extract_comment(cli)
             # 为commen_list加锁
             self.lock.acquire()
             self.comment_list.append(comment)
+            newly_added.append(comment)
             self.lock.release()
         
         # 对评论进行排序
         sorted(self.comment_list, key=operator.attrgetter('pubdate'), reverse = True)
+        
+        match_obj = REComment.match(url)
+        start = int(match_obj.group(2))
+        if start % 100 != 0:
+            log.info('链接格式错误：%s' % url)
+        self.parsedPageIndexSet.add(start / 100 + 1)
+        return newly_added
         
 class Group(object):
     """小组类
@@ -317,6 +346,18 @@ class Group(object):
             for tid in self.stick_topic_list:
                 s += (tid + "\n")
         """
+        return s
+        
+    def getSimpleString(self, delimiter):
+        """ 获取简单字符串表示
+        """
+        s = u''
+        s += (self.group_id + delimiter)
+        s += (self.user_id + delimiter)
+        s += (str(self.pubdate) + delimiter)
+        s += (self.desc + delimiter)
+        s += ','.join(self.stick_topic_list)
+        
         return s
         
     def parse(self, webPage):
