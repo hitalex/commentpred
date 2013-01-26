@@ -1,0 +1,2 @@
+将这些Topic和Comment的Info分开存放，有一个好处是：可以分别浏览这些Info文件，然后找到每个topic的评论列表。
+注意：每个topic list文件大约有2000行，并不算多
