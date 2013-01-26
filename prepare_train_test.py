@@ -28,11 +28,11 @@ def main(argv):
     group_id = argv[1]
     log.info('Prepare training set and test set for group: %s' % group_id)
     
-    path = 'tables/' + group_id + '/TopicInfo-' + group_id + '.txt'
+    path = 'tables/' + group_id + '/TopicInfo-' + group_id + '-raw-part.txt'
     topic_dict = load_topic(path, TRAIN_START_DATE, TEST_END_DATE) # 取出所有topic
     log.info('Number of topics loaded: %d' % len(topic_dict))
     
-    path = 'tables/' + group_id + '/CommentInfo-' + group_id + '.txt'
+    path = 'tables/' + group_id + '/CommentInfo-' + group_id + '-raw-part.txt'
     comment_dict = load_comment(path, topic_dict, TRAIN_START_DATE, COMMENT_END_DATE)
     log.info('Number of comments loaded: %d' % len(comment_dict))
     
@@ -65,7 +65,7 @@ def main(argv):
             topic['user_id'] + '[=]' + str(topic['pubdate']) + '[=]' + \
             topic['title'] + '[=]' + topic['content'] + '[=]' + \
             topic['comment_list'] + '[=]' + ','.join(uid_list)
-        row += '\n[*ROWEND*]\n'
+        row += '\n'
         f.write(row)
         
     train_topic_file.close()

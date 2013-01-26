@@ -7,6 +7,7 @@
 import logging
 import sys
 import codecs
+from datetime import datetime
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -48,6 +49,26 @@ def load_documents(file_path):
         
     return documents
     
+def filter_word(word):
+    """ 判断某个单词是否满足token的标准
+    """
+    # 至少是两个字词，同时过滤单个英文字符
+    if len(word) == 1:
+        return False
+    
+    # 过滤数字
+    flag = True
+    try:
+        float(word)
+    except ValueError:
+        flag = False
+    # 如果没有引起ValueError，则是数字
+    if flag:
+        return False
+    
+    return True
+        
+    
 def build_dict_corpus(source_text_path, corpus_path, dict_path):
     """ 建立字典和corpus，并存储到文件中
     `source_text_path` 源文本所在的文件路径
@@ -63,14 +84,20 @@ def build_dict_corpus(source_text_path, corpus_path, dict_path):
     log.info('Done.')
     
     log.info('Remove one time words...')
+    print 'Remove one time words...'
     texts = [[word for word in document.lower().split(' ') if word not in stoplist]
         for document in documents]
     # remove words that appear only once
-    all_tokens = sum(texts, [])
-    tokens_once = set(word for word in set(all_tokens) if all_tokens.count(word) == 1)
+    #print 'Number of documents: %d, then find all tokens...' % len(texts)
+    #all_tokens = sum(texts, [])
+    #print 'Number of all tokens: %d' % len(all_tokens)
+    #print 'finding tokens that appear only once...'
+    #tokens_once = set(word for word in set(all_tokens) if all_tokens.count(word) == 1)
+    #print 'Number of token_once: %d, done' % len(tokens_once)
+    tokens_once = []
     # 去掉只出现一次的词和只包含一个字的词
     # 在这里需要保证使用的是python的unicode编码
-    texts = [[word for word in text if (word not in tokens_once and len(word) > 1)]
+    texts = [[word for word in text if (word not in tokens_once and filter_word(word))]
         for text in texts]
     log.info('Done.')
     
@@ -87,36 +114,45 @@ def build_dict_corpus(source_text_path, corpus_path, dict_path):
     
 
 def main(argv):
-    if len(argv) < 2:
+    if len(argv) < 4:
         print 'Group ID not provided.'
         sys.exit(1)
         
     group_id = argv[1]
+    num_topics = int(argv[2])
+    passes = int(argv[3])
     log.info('Prepare corpus for group: %s' % group_id)
 
     base_path = 'tables/' + group_id + '/'
     
     # buid dict and corpus
-    build_dict_corpus(base_path + 'source-text.txt', base_path + group_id + '.mm', base_path + group_id + '.dict')
+    #now = datetime.now()
+    indicator = 'title-comment'
+    source_path = base_path + 'corpus-topic-comment'
+    corpus_path = base_path + group_id + '-corpus-'+ indicator + '.mm'
+    dict_path = base_path + group_id + '-dict-' + indicator + '.dict'
+    
+    build_dict_corpus(source_path, corpus_path, dict_path)
     
     log.info('Loading dict from pre-saved file...')
-    dictionary = corpora.Dictionary.load(base_path + group_id + '.dict')
+    dictionary = corpora.Dictionary.load(dict_path)
     log.info('Done')
     
-    dictionary.save_as_text(base_path + 'text-dict.txt')
+    #dictionary.save_as_text(base_path + 'text-dict.txt')
     
     log.info('Build a lda model...')
     log.info('Loading corpus from pre-saved .mm file...')
-    mmcorpus = corpora.MmCorpus(base_path + group_id + '.mm')
+    mmcorpus = corpora.MmCorpus(corpus_path)
     log.info('Done')
     
     log.info('Training lda model...')
-    model = LdaModel(mmcorpus, num_topics=10, id2word = dictionary, passes = 20)
-    model.save(base_path + group_id + '.ldamodel')
+    model = LdaModel(mmcorpus, num_topics=num_topics, id2word = dictionary, passes = passes)
+    model.save(base_path + group_id + '-' + indicator + '.ldamodel')
     log.info('Done.')
     
-    model = LdaModel.load(base_path + group_id + '.ldamodel')
-    model.show_topics(topics=3, topn=10, log=True)
+    model_path = base_path + group_id + '-' + indicator + '.ldamodel'
+    model = LdaModel.load(model_path)
+    model.show_topics(topics=num_topics, topn=10, log=True)
 
 if __name__ == '__main__':
     main(sys.argv)

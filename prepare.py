@@ -6,8 +6,14 @@
 
 from datetime import datetime
 import codecs
+import logging
 
 from utils import is_between
+from logconfig import congifLogger
+
+# config logging
+log = logging.getLogger('Main.prepare')
+congifLogger("prepare.log", 5)
 
 # 训练集和测试集的起止时间
 TRAIN_START_DATE = datetime(2012, 10, 1)
@@ -22,22 +28,22 @@ VERY_LATE_TIME = datetime(2050, 1, 1)
 
 def load_topic(filepath, start_date = VERY_EARLY_TIME, end_date = VERY_LATE_TIME):
     """ 根据时间范围，导入所有的topic
-    注意：在这里
+    注意：topic可能有commentlist或者没有
     """
     f = codecs.open(filepath, 'r', 'utf-8')
     # map topic_id --> dict()
     topic_dict = dict()
-    row = ''
+    count = 0
     for line in f:
         line = line.strip()
-        if line != '[*ROWEND*]':
-            row += line
+        seg_list = line.split('[=]')
+        if len(seg_list) != 7:
+            log.info('Bad formatted topic: %s' % line)
+            count += 1
             continue
-        seg_list = row.split('[=]')
         print 'Processing topic id: %s, group id: %s' % (seg_list[0], seg_list[1])
         pubdate = datetime.strptime(seg_list[3], "%Y-%m-%d %H:%M:%S")
         if not is_between(pubdate, start_date, end_date):
-            row = ''
             continue
         # 记录下该topic信息
         topic = dict()
@@ -57,8 +63,9 @@ def load_topic(filepath, start_date = VERY_EARLY_TIME, end_date = VERY_LATE_TIME
             topic['comment_list'] = ''
         
         topic_dict[topic['topic_id']] = topic
-        row = ''
         #print "Loaded topic: " + topic[topic_id]
+        
+    log.info('Number of bad formatted topic: %d' % count)
         
     f.close()
     
@@ -70,20 +77,20 @@ def load_comment(filepath, topic_dict, start_date = VERY_EARLY_TIME, end_date = 
     """
     f = codecs.open(filepath, 'r', 'utf-8')
     comment_dict = dict()
-    row = ''
+    count = 0
     for line in f:
         line = line.strip()
-        if line != '[*ROWEND*]':
-            row += line
+        seg_list = line.split('[=]')
+        if len(seg_list) != 7:
+            log.info('Bad formatted comment: %s' % line)
+            count += 1
             continue
-        seg_list = row.split('[=]')
         print 'Processing comment id: %s, group id: %s, topic id: %s' % (seg_list[0], seg_list[1], seg_list[2])
         pubdate = datetime.strptime(seg_list[4], "%Y-%m-%d %H:%M:%S")
         topic_id = seg_list[2]
         if topic_id in topic_dict and is_between(pubdate, start_date, end_date):
             pass
         else:
-            row = ''
             continue
             
         comment = dict()
@@ -97,6 +104,6 @@ def load_comment(filepath, topic_dict, start_date = VERY_EARLY_TIME, end_date = 
         comment['content'] = seg_list[6]
         
         comment_dict[comment['comment_id']] = comment
-        row = ''
         
+    log.info('Number of bad formatted comment: %d' % count)
     return comment_dict

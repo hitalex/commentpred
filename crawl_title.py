@@ -50,9 +50,7 @@ def task_handler(topic_id, seg_list):
         else:
             title = title.decode("utf-8")
         seg_list.insert(4, title)
-        for seg in seg_list[0:-1]:
-            f.write(seg + '[=]')
-        f.write(seg_list[-1] + '\n[*ROWEND*]\n')
+        f.write('[=]'.join(seg_list) + '\n')
     else:
         failed_set.add(topic_id)
     
@@ -62,24 +60,21 @@ def main():
     threadPool = ThreadPool(5)
     threadPool.startThreads()
     
-    f = codecs.open('tables/TopicInfo.txt', 'r', 'utf-8') # 读入unicode字符
-    row = ''
+    f = codecs.open('tables/TopicInfo-all.txt', 'r', 'utf-8') # 读入unicode字符
     count = 0
     for line in f:
         line = line.strip()
-        if line != '[*ROWEND*]':
-            row += line
-            continue
-        seg_list = row.split('[=]')
-        threadPool.putTask(task_handler, seg_list[0], seg_list)
-        
-        row = ''
-        count += 1
+        seg_list = line.split('[=]')
+        if seg_list[1] == 'ustv':
+            threadPool.putTask(task_handler, seg_list[0], seg_list)
+            count += 1
         
     f.close()
     while threadPool.getTaskLeft() > 0:
         time.sleep(10)
         print 'Waiting to finish. Task left: %d' % threadPool.getTaskLeft()
+        
+    log.info('Number of topics in ustv: %d' % count)
 
 if __name__ == '__main__':
     stacktracer.trace_start("trace.html",interval=5,auto=True) # Set auto flag to always update file!

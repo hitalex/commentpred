@@ -6,7 +6,7 @@
 import sys
 import codecs
 
-def main(file_path, new_file_path):
+def remove(file_path, new_file_path):
     f = codecs.open(file_path, 'r', 'utf-8')
     nf = codecs.open(new_file_path, 'w', 'utf-8')
     row = ''
@@ -24,4 +24,4 @@ def main(file_path, new_file_path):
     nf.close()
 
 if __name__ == '__main__':
-    main(sys.argv[1], sys.argv[2])
+    remove(sys.argv[1], sys.argv[2])

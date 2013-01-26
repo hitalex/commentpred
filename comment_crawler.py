@@ -410,7 +410,7 @@ if __name__ == "__main__":
     
     MAX_TOPIC_NUM = float('inf') # 每个小组最多处理的topic的个数
     group_id = group_id_list[0]
-    for index in range(3,8):
+    for index in range(8,9):
         # 读取topic列表
         f = open('tables/ustv/TopicList-ustv-remain-' + str(index), 'r')
         #f = open('tables/ustv/topic-list-test.txt', 'r')
