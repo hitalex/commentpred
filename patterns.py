@@ -23,4 +23,5 @@ REComment = re.compile("^http://www.douban.com/group/topic/([0-9]+)/\?start=([0-
 RETime = re.compile("[0-9]{4}\-[0-9]{2}\-[0-9]{2}")
 
 # URL 模板,包括了普通URL和图片的http链接
-REURL = re.compile(r'((http|https|ftp)://)?([\w\-]+\.)+[\w\-]+(/[\w\-\./\?%&\=]*)?')
+REURL = re.compile(r'((http|https|ftp)://([\w\-]+\.)+[\w\-]+(/[\w\-\./\?%&\=]*)?)')
+REIMGURL = re.compile(r'http://img3\.douban\.com/.*\.jpg')

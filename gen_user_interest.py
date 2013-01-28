@@ -38,7 +38,6 @@ def main(argv):
         line = line.strip()
         seg_list = line.split('[=]')
         uid = seg_list[0]
-        uf.write(uid + '[=]')
         text = seg_list[3]
         document = text.split(' ')
         doc_bow = dictionary.doc2bow(document)
@@ -46,7 +45,9 @@ def main(argv):
         #print doc_lda
         probs = [topicvalue for topicid, topicvalue in doc_lda]
         str_probs = [str(prob) for prob in probs]
-        uf.write(','.join(str_probs) + '\n')
+        # 将每行用户中最后的文本替换为topic的概率分布
+        seg_list[-1] = ','.join(str_probs)
+        uf.write('[=]'.join(seg_list) + '\n')
         
     bf.close()
     uf.close()

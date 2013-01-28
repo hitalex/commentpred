@@ -15,13 +15,6 @@ from logconfig import congifLogger
 log = logging.getLogger('Main.prepare')
 congifLogger("prepare.log", 5)
 
-# 训练集和测试集的起止时间
-TRAIN_START_DATE = datetime(2012, 10, 1)
-TRAIN_END_DATE = datetime(2012, 12, 1)
-
-TEST_START_DATE = datetime(2012, 12, 1)
-TEST_END_DATE = datetime(2013, 1, 1)
-
 # 设置最早和最晚的年限
 VERY_EARLY_TIME = datetime(1900, 1, 1)
 VERY_LATE_TIME = datetime(2050, 1, 1)
@@ -30,6 +23,7 @@ def load_topic(filepath, start_date = VERY_EARLY_TIME, end_date = VERY_LATE_TIME
     """ 根据时间范围，导入所有的topic
     注意：topic可能有commentlist或者没有
     """
+    print 'Loading topic from %s' % filepath
     f = codecs.open(filepath, 'r', 'utf-8')
     # map topic_id --> dict()
     topic_dict = dict()
@@ -41,7 +35,7 @@ def load_topic(filepath, start_date = VERY_EARLY_TIME, end_date = VERY_LATE_TIME
             log.info('Bad formatted topic: %s' % line)
             count += 1
             continue
-        print 'Processing topic id: %s, group id: %s' % (seg_list[0], seg_list[1])
+        #print 'Processing topic id: %s, group id: %s' % (seg_list[0], seg_list[1])
         pubdate = datetime.strptime(seg_list[3], "%Y-%m-%d %H:%M:%S")
         if not is_between(pubdate, start_date, end_date):
             continue
@@ -75,6 +69,7 @@ def load_comment(filepath, topic_dict, start_date = VERY_EARLY_TIME, end_date = 
     """ 根据时间范围，导入所有的评论id，tpic id和内容
     注意：在这里仍然需要topic_dict，因为只有在topic_dict中的comment才会被收集
     """
+    print 'Loading comment from %s' % filepath
     f = codecs.open(filepath, 'r', 'utf-8')
     comment_dict = dict()
     count = 0
@@ -85,7 +80,7 @@ def load_comment(filepath, topic_dict, start_date = VERY_EARLY_TIME, end_date = 
             log.info('Bad formatted comment: %s' % line)
             count += 1
             continue
-        print 'Processing comment id: %s, group id: %s, topic id: %s' % (seg_list[0], seg_list[1], seg_list[2])
+        #print 'Processing comment id: %s, group id: %s, topic id: %s' % (seg_list[0], seg_list[1], seg_list[2])
         pubdate = datetime.strptime(seg_list[4], "%Y-%m-%d %H:%M:%S")
         topic_id = seg_list[2]
         if topic_id in topic_dict and is_between(pubdate, start_date, end_date):

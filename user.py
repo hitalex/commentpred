@@ -19,10 +19,6 @@ from logconfig import congifLogger
 log = logging.getLogger('Main.user')
 congifLogger("user.log", 5)
 
-GROUP_FILE_PATH = 'tables/GroupInfo.txt'
-TOPIC_FILE_PATH = 'tables/TopicInfo.txt'
-COMMENT_FILE_PATH = 'tables/CommentInfo.txt'
-
 # 训练集的起止时间
 START_DATE = datetime(2012, 10, 1)
 END_DATE = datetime(2012, 12, 1)
@@ -44,7 +40,7 @@ def inTraining(strtime):
 API_KEY = '0c0cb6f7df695ce1242624e79e3c16a3'
 API_SECRET = 'b73d7a87176fbd16'
 your_redirect_uri = 'http://alexkong.net'
-code = '42cb164ceffb3552'
+code = 'd47ef98a926249bc'
 SCOPE = 'douban_basic_common,shuo_basic_r,shuo_basic_w'
 
 """
@@ -61,14 +57,6 @@ douban_client.auth_with_code(code)
 
 # 指定group
 GROUP_ID = 'ustv'
-
-# 依次查找
-FOLLOWERS_FILE_PATH = 'tables/followers.txt'
-FOLLOWING_FILE_PATH = 'tables/following.txt'
-USERS_FILE_PATH = 'tables/users.txt'
-
-file_followers = open(FOLLOWERS_FILE_PATH, 'w')
-file_following = open(FOLLOWING_FILE_PATH, 'w')
 
 # 查找topic中所有用户
 user_info = dict() # 保存所有的uid
@@ -95,6 +83,9 @@ def task_control():
 def find_followers(user_id, start, count):
     """ 找到所有的粉丝
     """
+    global user_info, failed_set
+    global file_followers, file_following
+    
     task_control()
     
     try:
@@ -121,6 +112,9 @@ def find_followers(user_id, start, count):
 def find_following(user_id, start, count):
     """ 找到所有的关注
     """
+    global user_info, failed_set
+    global file_followers, file_following
+    
     task_control()
     try:
         plist = douban_client.user.following(user_id, start, count)
@@ -158,6 +152,10 @@ def save_result(f, user_id, uid_set):
 def extract_user():
     """ 抽取出所有的用户，并写入文件
     """
+    GROUP_FILE_PATH = 'tables/GroupInfo.txt'
+    TOPIC_FILE_PATH = 'tables/TopicInfo.txt'
+    COMMENT_FILE_PATH = 'tables/CommentInfo.txt'
+    
     # 先抽取所有的用户
     f = open(TOPIC_FILE_PATH, 'r')
     log.info("抽取Topic表中的用户...")
@@ -210,10 +208,11 @@ def extract_user():
         f.write(user_id + '\n')
     f.close()
     
-def load_user():
+def load_user(user_list_path):
     """ 从文件内导入用户id
     """
-    f = open(USERS_FILE_PATH, 'r')
+    user_info = dict()
+    f = open(user_list_path, 'r')
     for line in f:
         line = line.strip()
         if line != '':
@@ -221,21 +220,50 @@ def load_user():
     f.close()
     log.info('User id loaded.')
     
+    return user_info
+    
 def main():
     global max_tasks_per_period, current_period_tasks, period_start_time
+    global file_followers, file_following
+    global user_info, failed_set
+    # 依次查找
+
     #extract_user()
     #log.info("Total users: %d" % len(user_info))
     #return 
-    load_user()
-    
+    FOLLOWING_FILE_PATH = 'social/ustv/following-remain'
+    failed_set = set()
+    file_following = open(FOLLOWING_FILE_PATH, 'w')
+    user_info = load_user('social/ustv/following-ustv-remain')
+    log.info('Number of users in following: %d' % len(user_info))
     period_start_time = time.time()
     current_period_tasks = 0
     count = 0
+    log.info('抽取用户的关注列表... ')
     for uid in user_info:
-        #log.info('抽取用户的粉丝列表... ')
-        #find_followers(uid, 0, 100)
-        log.info('抽取用户的关注列表... ')
         find_following(uid, 0, 100)
+        count += 1
+        
+    # 记录抽取失败的用户
+    log.info('抽取失败的用户id：')
+    for uid in failed_set:
+        log.info(uid)
+    log.info('抽取完成.')
+    file_following.close()
+    
+    #####
+    FOLLOWERS_FILE_PATH = 'social/ustv/followers-remain'
+    failed_set = set()
+    file_followers = open(FOLLOWERS_FILE_PATH, 'w')
+    user_info = load_user('social/ustv/followers-ustv-remain')
+    log.info('Number of users in followers: %d' % len(user_info))
+        
+    period_start_time = time.time()
+    current_period_tasks = 0
+    count = 0
+    log.info('抽取用户的粉丝列表... ')
+    for uid in user_info:
+        find_followers(uid, 0, 100)
         count += 1
         
     # 记录抽取失败的用户
@@ -245,7 +273,6 @@ def main():
     log.info('抽取完成.')
     
     file_followers.close()
-    file_following.close()
     
 if __name__ == '__main__':
     main()

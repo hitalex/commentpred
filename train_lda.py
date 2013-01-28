@@ -49,12 +49,12 @@ def load_documents(file_path):
         
     return documents
     
-def filter_word(word):
+def is_filtered_word(word):
     """ 判断某个单词是否满足token的标准
     """
     # 至少是两个字词，同时过滤单个英文字符
     if len(word) == 1:
-        return False
+        return True
     
     # 过滤数字
     flag = True
@@ -64,9 +64,9 @@ def filter_word(word):
         flag = False
     # 如果没有引起ValueError，则是数字
     if flag:
-        return False
+        return True
     
-    return True
+    return False
         
     
 def build_dict_corpus(source_text_path, corpus_path, dict_path):
@@ -94,16 +94,20 @@ def build_dict_corpus(source_text_path, corpus_path, dict_path):
     #print 'finding tokens that appear only once...'
     #tokens_once = set(word for word in set(all_tokens) if all_tokens.count(word) == 1)
     #print 'Number of token_once: %d, done' % len(tokens_once)
-    tokens_once = []
+    #tokens_once = []
     # 去掉只出现一次的词和只包含一个字的词
     # 在这里需要保证使用的是python的unicode编码
-    texts = [[word for word in text if (word not in tokens_once and filter_word(word))]
+    texts = [[word for word in text if not is_filtered_word(word)]
         for text in texts]
     log.info('Done.')
     
     # build dict
     log.info('Building and saving dict...')
     dictionary = corpora.Dictionary(texts)
+    log.info('Filter extremes...')
+    # filter extremes, 
+    # see: http://radimrehurek.com/gensim/corpora/dictionary.html#gensim.corpora.dictionary.Dictionary.filter_extremes
+    dictionary.filter_extremes(no_below = 1, no_above = 0.8, keep_n = None)
     dictionary.save(dict_path) # store the dictionary, for future reference
     log.info('Done.')
     
@@ -124,13 +128,15 @@ def main(argv):
     log.info('Prepare corpus for group: %s' % group_id)
 
     base_path = 'tables/' + group_id + '/'
+    model_base_path = 'ldamodels/' + group_id + '/'
     
     # buid dict and corpus
     #now = datetime.now()
-    indicator = 'title-comment'
+    indicator = 'title-comment-new'
     source_path = base_path + 'corpus-topic-comment'
-    corpus_path = base_path + group_id + '-corpus-'+ indicator + '.mm'
-    dict_path = base_path + group_id + '-dict-' + indicator + '.dict'
+    
+    corpus_path = model_base_path + 'corpus-'+ indicator + '-' + group_id + '.mm'
+    dict_path = model_base_path + 'dict-' + indicator + '-' + group_id + '.dict'
     
     build_dict_corpus(source_path, corpus_path, dict_path)
     
@@ -147,10 +153,10 @@ def main(argv):
     
     log.info('Training lda model...')
     model = LdaModel(mmcorpus, num_topics=num_topics, id2word = dictionary, passes = passes)
-    model.save(base_path + group_id + '-' + indicator + '.ldamodel')
+    model_path = model_base_path + '-' + indicator + '-' + group_id + '.ldamodel'
+    model.save(model_path)
     log.info('Done.')
     
-    model_path = base_path + group_id + '-' + indicator + '.ldamodel'
     model = LdaModel.load(model_path)
     model.show_topics(topics=num_topics, topn=10, log=True)
 

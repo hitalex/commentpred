@@ -11,7 +11,13 @@ import codecs
 from logconfig import congifLogger
 from utils import is_between
 from prepare import load_topic, load_comment
-from prepare import TRAIN_START_DATE, TRAIN_END_DATE, TEST_START_DATE, TEST_END_DATE
+
+# 训练集和测试集的起止时间
+TRAIN_START_DATE = datetime(2012, 10, 1)
+TRAIN_END_DATE = datetime(2012, 12, 1)
+
+TEST_START_DATE = datetime(2012, 12, 1)
+TEST_END_DATE = datetime(2013, 1, 1)
 
 # config logging
 log = logging.getLogger('Main.prepare_train_test')
@@ -28,11 +34,11 @@ def main(argv):
     group_id = argv[1]
     log.info('Prepare training set and test set for group: %s' % group_id)
     
-    path = 'tables/' + group_id + '/TopicInfo-' + group_id + '-raw-part.txt'
+    path = 'tables/' + group_id + '/TopicInfo-' + group_id + '-raw-part'
     topic_dict = load_topic(path, TRAIN_START_DATE, TEST_END_DATE) # 取出所有topic
     log.info('Number of topics loaded: %d' % len(topic_dict))
     
-    path = 'tables/' + group_id + '/CommentInfo-' + group_id + '-raw-part.txt'
+    path = 'tables/' + group_id + '/CommentInfo-' + group_id + '-raw-part'
     comment_dict = load_comment(path, topic_dict, TRAIN_START_DATE, COMMENT_END_DATE)
     log.info('Number of comments loaded: %d' % len(comment_dict))
     

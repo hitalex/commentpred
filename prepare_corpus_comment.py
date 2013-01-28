@@ -13,8 +13,6 @@ import codecs
 from datetime import datetime
 import re
 
-import jieba
-
 from logconfig import congifLogger
 from prepare_corpus import remove_url, seg_chinese
 from patterns import REURL
