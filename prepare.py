@@ -15,18 +15,26 @@ from logconfig import congifLogger
 log = logging.getLogger('Main.prepare')
 congifLogger("prepare.log", 5)
 
+# 训练集的起止时间
+TRAIN_START_DATE = datetime(2012, 10, 1)
+TRAIN_END_DATE = datetime(2012, 12, 1)
+
+TEST_START_DATE = datetime(2012, 12, 1)
+TEST_END_DATE = datetime(2013, 1, 1)
+
 # 设置最早和最晚的年限
 VERY_EARLY_TIME = datetime(1900, 1, 1)
 VERY_LATE_TIME = datetime(2050, 1, 1)
 
-def load_topic(filepath, start_date = VERY_EARLY_TIME, end_date = VERY_LATE_TIME):
-    """ 根据时间范围，导入所有的topic
+def load_topic_user(filepath, start_date = VERY_EARLY_TIME, end_date = VERY_LATE_TIME):
+    """ 根据时间范围，导入所有的topic以及参与的user id
     注意：topic可能有commentlist或者没有
     """
     print 'Loading topic from %s' % filepath
     f = codecs.open(filepath, 'r', 'utf-8')
     # map topic_id --> dict()
     topic_dict = dict()
+    user_set = set()
     count = 0
     for line in f:
         line = line.strip()
@@ -47,6 +55,7 @@ def load_topic(filepath, start_date = VERY_EARLY_TIME, end_date = VERY_LATE_TIME
         topic['pubdate'] = pubdate
         topic['title'] = seg_list[4]
         topic['content'] = seg_list[5]
+        user_set.add(topic['user_id'])
         # 去掉最后的逗号
         if len(seg_list) == 7: # 如果包含comment_list
             s = seg_list[6]
@@ -63,15 +72,16 @@ def load_topic(filepath, start_date = VERY_EARLY_TIME, end_date = VERY_LATE_TIME
         
     f.close()
     
-    return topic_dict
+    return topic_dict, user_set
     
-def load_comment(filepath, topic_dict, start_date = VERY_EARLY_TIME, end_date = VERY_LATE_TIME):
+def load_comment_user(filepath, topic_dict, start_date = VERY_EARLY_TIME, end_date = VERY_LATE_TIME):
     """ 根据时间范围，导入所有的评论id，tpic id和内容
     注意：在这里仍然需要topic_dict，因为只有在topic_dict中的comment才会被收集
     """
     print 'Loading comment from %s' % filepath
     f = codecs.open(filepath, 'r', 'utf-8')
     comment_dict = dict()
+    user_set = set()
     count = 0
     for line in f:
         line = line.strip()
@@ -93,6 +103,7 @@ def load_comment(filepath, topic_dict, start_date = VERY_EARLY_TIME, end_date = 
         comment['group_id'] = seg_list[1]
         comment['topic_id'] = seg_list[2]
         comment['user_id'] = seg_list[3]
+        user_set.add(comment['user_id'])
         pubdate = datetime.strptime(seg_list[4], "%Y-%m-%d %H:%M:%S")
         comment['pubdate'] = pubdate
         comment['ref_comment_id'] = seg_list[5]
@@ -101,4 +112,16 @@ def load_comment(filepath, topic_dict, start_date = VERY_EARLY_TIME, end_date = 
         comment_dict[comment['comment_id']] = comment
         
     log.info('Number of bad formatted comment: %d' % count)
-    return comment_dict
+    return comment_dict, user_set
+    
+def load_user_list(user_path):
+    """ 从文件中读入用户uid列表
+    """
+    f = open(user_path)
+    ulist = []
+    for uid in f:
+        uid = uid.strip()
+        ulist.append(uid)
+    
+    f.close()
+    return ulist

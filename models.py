@@ -263,7 +263,7 @@ class Topic(object):
             # 找到引用的回复的comment
             quote_comment = self.find_previous_comment(quote_content_all, quote_user_id)
             if quote_comment is None:
-                log.error('Quote comment not found for comment: %s' % cid)
+                log.error('Quote comment not found for comment: %s in topic: %s, in group: %s' % (cid, self.topic_id, self.group_id))
                 
         comment = Comment(cid, user_id, pubdate, content, quote_comment, self.topic_id, self.group_id)
         #print "Comment content: ", comment.content

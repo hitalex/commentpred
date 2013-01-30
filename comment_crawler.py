@@ -410,6 +410,7 @@ if __name__ == "__main__":
     
     MAX_TOPIC_NUM = float('inf') # 每个小组最多处理的topic的个数
     group_id = group_id_list[0]
+    """
     for index in range(8,9):
         # 读取topic列表
         f = open('tables/ustv/TopicList-ustv-remain-' + str(index), 'r')
@@ -428,5 +429,19 @@ if __name__ == "__main__":
         comment_path = 'tables/' + group_id + '/CommentInfo-' + group_id + '-' + str(time_now) + '-raw-' + str(index)
         ccrawler = CommentCrawler(group_id, topic_list, 5, topic_path, comment_path)
         ccrawler.start()
+    """
+    # 抓取insidestory
+    f = open('tables/' + group_id + '/TopicList-'+group_id, 'r')
+    topic_list = []
+    for line in f:
+        line = line.strip()
+        if line is not "":
+            topic_list.append(line)
+    f.close()
+    time_now = datetime.now()
+    topic_path = 'tables/' + group_id + '/TopicInfo-' + group_id + '-raw-all'
+    comment_path = 'tables/' + group_id + '/CommentInfo-' + group_id + '-raw-all'
+    ccrawler = CommentCrawler(group_id, topic_list, 5, topic_path, comment_path)
+    ccrawler.start()
     print "Done"
     stacktracer.trace_stop()

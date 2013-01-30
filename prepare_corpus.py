@@ -14,9 +14,6 @@ import re
 import jieba
 
 from logconfig import congifLogger
-from prepare import TRAIN_START_DATE, TRAIN_END_DATE
-from prepare import TEST_START_DATE, TEST_END_DATE
-from prepare import VERY_EARLY_TIME, VERY_LATE_TIME
 from patterns import REURL
 
 # config logging

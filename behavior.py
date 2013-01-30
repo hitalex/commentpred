@@ -1,11 +1,8 @@
 #encoding=utf8
 
 """
-功能：找到user behavior feature和找到每个用户所关注的topic和评论数据
-这个脚本做以下几件事情：
-1，根据指定的group，浏览TopicInfo和CommentInfo
-2，找到所有用户的发表的帖子和评论过的帖子
-
+功能：找到user behavior feature，包括用户在训练时期内发表的topic数和comment数目
+这个脚本负责：指定的group，浏览TopicInfo和CommentInfo
 Note: Do one thing, do it well.
 """
 from datetime import datetime
@@ -13,33 +10,14 @@ import logging
 import os
 
 from logconfig import congifLogger
-from utils import is_between, load_uid
+from utils import is_between
+from prepare import TRAIN_START_DATE, TRAIN_END_DATE
+from prepare import TEST_START_DATE, TEST_END_DATE
+from prepare import load_user_list
 
 # config logging
 log = logging.getLogger('Main.behavior')
 congifLogger("behavior.log", 5)
-
-# 所有group的topic和comment信息
-TOPIC_ALL_FILE_PATH = 'tables/TopicInfo-all.txt'
-COMMENT_ALL_FILE_PATH = 'tables/CommentInfo-all.txt'
-
-GROUP_ID = 'ustv'
-TOPIC_FILE_PATH = 'tables/' + GROUP_ID + '/TopicInfo-' + GROUP_ID + '.txt'
-COMMENT_FILE_PATH = 'tables/' + GROUP_ID + '/CommentInfo-' + GROUP_ID + '.txt'
-BEHAVIOR_FILE_PATH = 'tables/' + GROUP_ID + '/behavior-' + GROUP_ID + '.txt'
-
-# 训练集的起止时间
-TRAIN_START_DATE = datetime(2012, 10, 1)
-TRAIN_END_DATE = datetime(2012, 12, 1)
-
-TEST_START_DATE = datetime(2012, 12, 1)
-TEST_END_DATE = datetime(2013, 1, 1)
-"""
-说明：
-1, 无论是comment还是topic信息，都按照group来存储
-2，存储所有的topic信息，大约2000条
-3，存储所有在（训练+测试）集内的comment
-"""
 
 def load_topic():
     """ 读入所有的topic信息
@@ -167,7 +145,7 @@ def save_behavior_statics(behavior, topic_count, comment_count):
 
 def main():
     log.info('Loading user ids...')
-    uid_list = load_uid('tables/users.txt') # load users
+    uid_list = load_user_list('tables/users.txt') # load users
     log.info('Loading user id, done.')
     
     # 导入所有group的topic

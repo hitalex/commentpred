@@ -24,4 +24,4 @@ RETime = re.compile("[0-9]{4}\-[0-9]{2}\-[0-9]{2}")
 
 # URL 模板,包括了普通URL和图片的http链接
 REURL = re.compile(r'((http|https|ftp)://([\w\-]+\.)+[\w\-]+(/[\w\-\./\?%&\=]*)?)')
-REIMGURL = re.compile(r'http://img3\.douban\.com/.*\.jpg')
+REIMGURL = re.compile(r'(http://img3\.douban\.com/.*\.jpg)')
