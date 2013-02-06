@@ -1,23 +1,0 @@
-话题 id: 35430841
-小组 id: 70612
-楼主 id: 48649071 名号: 漂泊的玉瑾
-发表时间: 2012-12-25 08:48:45
-链接：http://www.douban.com/group/topic/35430841/
-标题: 标题：博士论文写作的一些心得 (主要针对political science及相关社科领域)
-帖子内容: 
-一直很想写个关于自己博士论文写到现在的心得, 只不过一直忙忙忙, 因此始终没动笔.  这两天圣诞节, 正好给自己放个假, 也算是写点论文写作的心得吧.鄙人算是人文科学领域的, 现在做的基本是political science底下的IPE (International Political Economy).  目前是dissertation prospectus已经出来, 然后大致的计划是到14年5月论文能够写完答辩.  整个prospectus从定题目到定稿(就是advisor plus four other committee members都认为OK)大概花了半年时间 (从今年6月到现在).心得之一:  Your literature review could never be comprehensive写博士论文有个很麻烦的事情是你从定题目, prospectus defense到final dissertation defense之间最起码总得有两年左右时间, 而这期间很可能有不少你的peer researchers在和你做相似的研究.  因此我一开始总有这种焦虑, 也和不少professor交流过如何克服这个问题:  是不是要常参加conference, meet with fellow researchers in the same area and ask for working papers from them, 以便尽量做一些别人没在做的东西.  结果我得到的一个最逗的回答是我们学院一个AP把他的personal experience和我分享了一下.  It is a conversation between his advisor and him when he was in the last six months of finishing his dissertation:His advisor:  Hey, did you see that XXX is coming out with a new book on international law, humanitarian intervention, and secession, looking in particular at Kosovo? [i.e., directly relevant to his dissertation]Him: No. Uh, if I don't talk about it in the dissertation, do you think I could still pass the defense?His advisor: Well, probably. I just thought you might be interested.Him: Then I'm not reading it until after I’m done.所以其实…某种程度上literature review很难面面俱到, 而你做的东西也不可能truly innovative.  所以…只要是能在本领域有些marginal contribution, 而且做出来的论文能够让你在academic job market上有人要你, 也就OK了.心得之二:  mixed methods?现在political science领域或多或少会希望你的dissertation里能有mixed methods, 据说以前formal modeling, natural experiment啥的比现在更风靡的时候, 学生的博士论文里面不管有没有必要, 都得塞一章formal modeling, 结果有一些天生没有数学建模天赋的同志都是郁闷得不是一点点…现在虽然没那么严格, 但为了上job market考虑, 很多导师也会建议学生最好是a mixture of quantitative and qualitative analysis, 就是最好总得有regression model plus case studies.  我的论文现在定下来的框架就是two regression models plus one case study.  其实有时候我也和一些同校经济学的PhD们吐槽:  regression model 这东西, 包括various kinds of different quantitative analysis, 由于技术上的日新月异, 你做出来的东西恐怕很难做到20年以后还有人愿意看, 因为一旦后来的研究者有比你更全的样本, 更好的技术, 你的东西很快就被淘汰了.  但做得好的qualitative study是在写历史的, 而你如果用的是第一手资料, 比如interview了很多人, 很可能你做的东西50年以后还是有价值的.  但现在米国教职市场的麻烦就在于, 至少就IPE而言, 主要是一群做quantitative analysis的同志们, 而且整个political science领域的leading peer reviewed journal也越来越侧重发quantitative的东西. 所以怎么说呢…某种程度上真到了写的时候, 也只能strike a balance, 在自己喜欢的研究方法和能够在job market上更好的推销自己之间寻找平衡了.心得之三:  Field Work Timing另一个比较麻烦的是安排做田野调查的时间 (如果你的论文需要做田调的话), 尤其是象我这样研究上有regional focus的人, case study做起来还是需要international travel的. 我的建议是趁早. 论文提纲定下来之后赶紧安排时间做.  因为如果你还想在米国的job market上找工作的话, After you put yourself on the job market, you might still have time to finish writing your dissertation but you won’t have time to do extensive international travels.  无论是教职还是非教职市场 (private consulting or government job), 到时候都会频繁约你面试.  而且很多面试时间可能还是non-negotiable, 到时候你说你在XX国做田调赶不回来, 那这个事情就麻烦了…暂时先写这么多吧.  Merry Christmas!
-
-
-评论内容：
-评论id：414750748
-评论人id：1140060
-发表时间：2012-12-25 10:16:56
-内容：
-多谢分享。祝愿一切顺利！Merry Christmas & Happy New Year！
-
-评论id：415819816
-评论人id：48649071
-发表时间：2012-12-28 05:28:29
-内容：
-回楼上:  谢谢.  Happy Holidays! P.S. 现在也就是想着快点把论文写出来快点毕业了.  :)
-

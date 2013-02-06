@@ -1,89 +1,0 @@
-话题 id: 8937260
-小组 id: FLL
-楼主 id: manyishu 名号: 如果还有明天
-发表时间: 2009-12-07 14:10:27
-链接：http://www.douban.com/group/topic/8937260/
-标题: 汉语量词和英文量词互译的复杂性ZT
-帖子内容: 
-汉语量词和英文量词互译的复杂性汉语中有一类词叫做量词，位于数词和名词之间，是用以表示事物单位的词。 　汉语量词分为两类：表人或事物的量词叫物量词；表动作或行为的量词叫动量词。　　　　　　 1．物量词汉语物量词可分为三类： (1)表度量衡的单位，如“尺、里、吨”等。 (2)一般量词，如“个、只、本、间”等。 (3)以事物特征、状态来衡量的量词，如“头、口、杯、发、条” 等。 2.动量词汉语的动量词可分为两类： 　 (1)专用动量词，如“次、遍、番、阵、顿”等。 (2)借用动量词，一般借用与动作有关的名词，如“刀”(砍一刀)，“笔”(写一笔)，“星期”(讨论一星期)等。 汉语量词一般要与数词一起使用，合称数量结构，如： 三斤肉，一头牛，一杯咖啡，一山树，一屋人，一架书，五匹布， 两桶水，一块煤，一粒米，一剂药，两行树，一朵花，一线希望， 四排房子，三堆鸡蛋 汉语偶尔也有不用量词的，这不过在古汉语中出现。如： 卧室里是一桌一凳一床，床板只有两块。(《朝花夕拾.琐记》) 撤屏视之，一人，一桌，一椅，一扇，一抚尺而已。(《口技》) 在一些成语中，常有不用量词的。如： ’ 千言万语，九牛一毛，三人一组，七上八下，三头六臂，一心一意，三言两语，七嘴八舌，一草一木，一砖一瓦. 还有表示行政区域划分的名词，如三省，五市，两县。这大概是沿袭旧时四言词组所演变成的，或受到古汉语的影响。 (二)英语没有量词。数词(或不定冠词)可直接置于数名词之前表示数量。如： a(ones)book 一本书 　　three Workers 三个工人　　　 four rifles 四枝枪 　 six cars 六辆汽车 five tractors 五部拖拉机 　 seven lathes 七台车床 eight lamps 八盏灯　　　ten houses 十栋房屋 但是，在一定的条件下，由于意义上的要求，英语中的可数名 词也可与特殊表示量的概念名词连用。这种特殊量词，通常是借用了普通名词，具有独立词汇意义。不过在量词和名词之间要有一个介词“of”。如： a packet of cigarettes 一包纸烟 a company of soldiers 　一连士兵 two groups of children 　 两群小孩 a team of horses 　　　　一队马 three heaps of eggs 　　 三堆鸡蛋 four blocks of houses 　 四排房子 为了方便起见，这里暂且把英语“名词+of+名词”这一形式称为英语特殊“量词”。这种特殊量词，常借用普通名词，具有独立词汇意义。英语这类“量词”也可以分成三类： 1.以事物特征、状态来衡量的“量词”，如： a bar of chocolate 　 一条巧克力 a blanket of snow 　 一片白雪 a blast of wind 　　一阵风 a cake of soap 　　一块肥皂 a coat of paint 　　 一层油漆 a cut of pork 　　　一块肉 a drop of water 　　 一滴水 a speck of dust 　　 一粒灰尘 a sheet of skin 　　 一张皮 2.用以表示抽象名词数量单位的“量词”，如： an article of food 　一种食品 an Item of news 　　　一则消息 a period of time 　　一段时间 a bout of fighting 　 一场战斗 a chain of thought 　　 一连串想法 a flash of hope 　　　　 一线希望 a round of applause 　　 一阵掌声 a scene of great rejoicing 一片欢腾 a shower of criticism 　一阵批评 a wisp of smoke 　　　　一缕轻烟 http://www.thefreedictionary.com/wispa peal of thunder 　　　一阵雷声 a gleam / a ray of hope 一线希望 a plot of land 　　　一小块地 3．用以表示一群、群体或集合概念的量词，如： an army of workers 　　　 一大队工人 a batch of new cadres 　　 一批新干部 http://www.thefreedictionary.com/cadresa body of people 　　　　一大组人 a circle of friends 　　 一群朋友 a galaxy of talents 　　一大批英才 a file of soldiers 　　　一列士兵 a troop of scouts 　　　 一队童子军 a mob of gangsters 　　　一伙歹徒 上面是有关人群方面的集体量词。下面举一些其他方面的集 体量词，这些“量词”的用法，都带有生动的修辞色彩。如： a bouquet of flowers 　　　一束花 a bunch of grapes 　　　一串葡萄 a night of doves 　　　一群鸽子 a cluster of bees 　　　 一群蜜蜂 a little of kittens 　　 一窝小猫 a mountain of books 　　一大堆书 a series of articles 　　 一系列文章 a sea of flags 　　　　 一片旗海 a set of tools 　　　　一套工具 a spate of jokes 　　　 一串笑语 http://www.thefreedictionary.com/spate(三)在汉英“量词”互译时必须注意： 1．词的搭配不同，如“群”字是最活跃的汉语量词之一，表示“聚在一起的人或物”。在下列汉语词组里，都用“群”字，但在译成英语词组时，却用不同的字。如： (1)一群人　 a crowd of people 一群观众 a crowd of spectators (2)一群女学生 a group of girl students 一群旁观者 a group of onlookers (3)一群才子 a galaxy of talents 一群美女 a galaxy of beauties (4)一群欢迎者 a troop of welcomers 一群示威者 a troop of demonstrators (5)一群影迷 a throng of film fans 一群人 a throng of people (6)一群匪徒 a band of gangsters 一群劫匪 a gang of robbers (7)一群羊 a flock of sheep 一群鸭 a flock of ducks (8)一群牛 a herd of cattle． 一群马 a herd of horses (9)一群豺狼 a pack of wolves 一群猎犬 a pack of hounds (1o)一群建筑物 a cluster of buildings 一群海岛 a cluster of islands 为什么汉语的量词“群”,会翻译成那么多不同的英语单词呢?因为“群”字在汉语中是没有修辞色彩的，而在英语中，“群” 这个概念却是具有修辞色彩的。如：“crowd”通常指“无组织和无秩序的人群”；“group”通常指“有一定组织的”；“galaxy"常用于比喻“出色或著名的人物群”；“troop”常指“正常行进中的群”;“throng”却指“为数众多的挤在一处或向前涌去的群”;“band”有明显的轻蔑色彩，通指强盗、匪徒等的群(帮、伙)；“flock”通常指飞鸟家禽、牲畜的群，尤指羊群；“herd”通常指大动物的群；“pack”主要指野兽、猎犬等的群；“cluster”指集结物体的群(簇、堆)。(类似的还有swarm，如a swarm of bees等。) 反过来说，英语中piece是最活跃的一个“量词”，使用很广，可与许多不可数名词连用，但它没有什么修辞色彩。但翻译成汉语时却产生修辞色彩，在不同的词组里用不同的汉语量词。 a piece of wood 一块木头 a piece of paper 一张纸 a piece of coal 一块煤 a piece of clothing 一件衣服 a piece of furniture 一件家具 a piece of news 一条新闻 a piece of advice 一项忠告 a piece of information 一则消息 a piece of poetry 一首诗 a piece of music 一支乐曲 a piece of prose 一篇散文 a piece of good luck 一回好运气 a piece of kindness 一番好意 a piece of folly 一桩蠢事 http://www.thefreedictionary.com/follya piece of chalk 一枝粉笔 2．英语的“量词”还可以有复数形式，如: drops of tears 泪珠 two groups of children 两群小孩 streams of people 川流不息的人 multitudes of islands 大群大群的岛屿 myriads of stars 无数的星星 http://www.thefreedictionary.com/myriad3．许多英语“量词”可以有其修饰的成分；如：an increasing number of students，不断增加的学生；a rising flow of foreign visitors越来越多的外国来客；a large gathering of people，一大群人。 但是，英语中常常有这样的情况，从结构上看有些形容词(或具有形容词作用的词)是修饰“量词”的，可是从含义上看却是修饰后面的名词，如： a new generation 0f people一代新人 a stagnant pool 0f water 一潭死水http://www.thefreedictionary.com/stagnanta mere scrap of paper 一纸空文 http://www.thefreedictionary.com/scrapa rich assortment of goods一批各式各样的货物 a new round of talks 一轮新的会谈。 a thin coat of ice 一层薄冰 翻译这类结构时，注意英汉词序的调整，切不可硬套。 4．英语“名词+of+名词”这一形式，可以表示同位、所有、修饰等关系。所以翻译时必须注意英汉词序，以免误解。如： (1)表示同位关系 all of them他们大家，four of us我们四个，the city of Beijing北京城 在这些词组里，of可以不译。 (2)表示所有的 in the centre(heart)of Beijing在北京的中心，from the north of China从中国的北方 (3)表示修饰的 a young man of deep reflection深思熟虑的青年，a man of uncertain temper喜怒无常的人 (4)表示组成的 a lot of trouble许多麻烦，a cup of tea一杯茶，a drop of water一滴水 但是，droplets of water(小水滴)讲的并不是水的量，而是水的模样。这里的of water起修饰droplets的作用。 5．英语在表示某些特定的量的时候，使用表量的名词(在汉语是量词)，其组合方式同汉语数量结构一样。如： three-dozen pencils 三打铅笔 ten-metre yarn 十公尺的纱线 five-kilogram packs 五公斤包装 6．应注意许多名词，从汉语角度看是可数的，在英语中却不可数。例如：news消息，advice忠告，bread面包，furniture家具，在英语中是不可数的。如要表示“一件”、“一个”等概念，要加“a piece of”等这类短语。如： a piece of news 一条新闻 a piece of soap 一块肥皂 如要表示“几件”、“几条”等概念时，要加“pieces of”，或者“these articles of”等这类短语。如： two pieces of soap 两块肥皂 these articles of furniture 这几件家具 7.在下列词组里，of前后两个名词从语法上分析是同位语。因此，可以分别翻译如下： a red bald of a sun 一轮红日 a great mountain of wave 高山似的波涛 a park of a factory 公园般的工厂 a shell of a man 骨瘦如柴的人 a saint of a man 圣人似的人物 a palace of a house 宫殿似的房屋 a fairyland of a country 仙境似的国土 a whale of a scientist 一位了不起的科学家 但of前后的两个名词，不能随意颠倒。如将a park of a factory改为a factory of a park，那就变成了“工厂似的公园”。 8．有些英语特殊“量词”，在某种场合译成汉语时不一定要用量词。如： That was a quirk of fate． http://www.thefreedictionary.com/quirk 那是命运的作弄。 a sea of trouble 恨海无边 I detected a flicker of challenge in his eyes． 我觉察到他的眼神霎时间显出异议。 There was a note of pride in his voice． 他说话的口气带有自豪感。 又如： a store of oil 很多石油 a whale of a difference 天壤之别 a whale of a story 极妙的故事 have a whale of a goodtime 玩得极愉快 9．动量词中译时，需要借助副词或兼类的名词。 give a punch 打一拳 have a rest 休息一下 have a walk 走一走 fire a shot 放一枪 eat a bite 吃一口 give a kick 踢一脚 Let me have a look． 让我看一看。 For three whole days and nights he did not have a wink of sleep． 他三天三夜没睡一觉。 汉语动量词往往可译为英语同源宾语。如： sleep a sound sleep 睡了一大觉 dream a sweet dream 做了甜蜜的梦 fight a fight 打一仗 　 smile a smile 笑一笑 laugh a hearty laugh 放声大笑 die a heroic death 英勇牺牲了 10.汉语用表示集体的量词时，英语也用相似的集体表量词，但是可数名词应有复数形式。如： 一群猴子 a host of monkeys 一行白鹭 a file of egrets http://www.thefreedictionary.com/egret三盘饺子 three plates of dumplings 一连串问题 a volley of questions 一堆书 a heap of books 1l.汉语中有非常丰富的量词，应用广泛。它不仅是一种重要的修辞手段，而且具有十分显著的语法意义。我国古代诗人都喜欢用量词来增加语言的表现力。杜甫的绝句，就是一个突出的例子。 两个黄鹂鸣翠柳，一行白鹭上青天。 窗含西岭千秋雪，门泊东吴万里船。 王之涣的诗：“欲穷千里目，更上一层楼。”也是用量词作对偶的，以增加语言的声色。 现代诗人光未然的诗句：“一江离恨、一江愁”(《海边河畔》)，使人感到“离愁”、“别恨”，如滔滔江水那般深，那么多。 在现代汉语中量词用得更多了。有人拿六种期刊120页，共6912个字的不同类文章，进行了一次统计，发现其中仅物量词和动量词就用了1228个。在文学作品中比例就更高了。可见，量词在汉语中使用的频率是相当高的，离开了它，我们说话写文章都会有困难。汉语量词用得恰当，会使语言显得更加生动形象。如：“开了一树花”，“飘着一缕轻烟”，“还有一线希望”，“写得一手好字”。 但是，汉语量词却是外国学生经常用错的地方。如：“在果园里我们摘了五苹果。”“我们班上一学生病了。”把“我给你一把锄头”说成“我给你一锄头”。又如：把“一只鸟”说成“一条鸟”，把“一张纸”说成“一个纸”。 汉语英译也是中国学生感到头痛的问题。很多英语特殊量词富有修辞效果。如：a glimmer of hope，a spatter of rain，a flush of love，an agony of joy等就体现了英语的比喻(metaphor)、拟声(onomatopoeia)、着色(color scheme)、矛盾修饰法(oxymoron)等各种修辞功能。在汉语中，有相当一部分量词，往往必须用几个，十几个乃至几十个不同的英语词来表达。上面举了一个“群”字，现在再举一个“层”字为例。 一层岩石 　　　　 a layer of rock(指多层中的一层) 一层泥土　　　　 a layer of clay(earth) 一层（薄）云　 a veil of cloud(指轻纱似的一层) 一层(薄)雾 a veil of mist 一层新油漆 a new coat of paint(指涂层) 一层蜡 a coat of wax 一层油 a film of oil(指薄层) 一层薄塑料膜 a film of plastic 还可以再举一个“阵”字： 一阵笑声 a burst of laughter(指突然发生) 一阵雷声 a burst of thunder 一阵大雨 a flood of rain(强调大量的意思) 一阵眼泪 a flood of tears(指泪如泉涌) a burst of tears(指眼泪夺眶而出) 一阵咳嗽 a spell of coughing(指一段持续) 一阵寒流 a spell of cold Weather 一阵狂怒 a fit of rage(指感情突然发作) 一阵失望 a fit of despair 一阵暴雨 a gust of rain(指猛烈而突然发作) 一阵狂风 a gust of wind 一阵感冒 a bout of influenza(指疾病的发作) http://www.thefreedictionary.com/bout一阵高烧 a bout of high fever 　 从上述例子，可以看出，英汉量词的互译是错综复杂的。因此，不断地探讨英汉互译中如何正确翻译“量词”，是我们在外语教学中应重视的一个问题，也是翻译理论中应重视的一个课题。
-
-
-评论内容：
-评论id：92217747
-评论人id：manyishu
-发表时间：2009-12-08 12:33:00
-内容：
-a night of doves 一群鸽子a little of kittens 一窝小猫
-
-评论id：92238781
-评论人id：manyishu
-发表时间：2009-12-08 14:10:53
-内容：
-“一山树”？
-
-评论id：165990500
-评论人id：33456382
-发表时间：2010-10-11 22:27:33
-内容：
-山上长满了树
-
-评论id：166093134
-评论人id：manyishu
-发表时间：2010-10-12 10:53:41
-内容：
-啊。。是这样啊……
-
-评论id：175093811
-评论人id：4017541
-发表时间：2010-11-12 00:03:32
-内容：
-请教一下稍微文一点儿的话，一团云的话该怎么形容一团凝练而猛然涌动的云a bulk, gust, mass of cloud?暂时还真想不出谢谢
-
-评论id：175146356
-评论人id：manyishu
-发表时间：2010-11-12 10:12:12
-内容：
-瀑布汗。别说请教吧，我腿软。尝试翻译如下——a bulk of swarming clouds cramming and crushing inside未知这位先生意下如何？请多多指教!谢谢!
-
-评论id：175149694
-评论人id：manyishu
-发表时间：2010-11-12 10:25:47
-内容：
-求上下文。有两种可能——1.这猛然涌动的云是原地涌动；2.这凝练的云不但内部涌动不止，还整体较明显地游移，或快或慢，轨迹又是怎样?我已经给出的试译是针对第一种情况的。区区不才，冒昧处敬请海涵，若有不当失敬之处，敬请坦然示下。谢谢!
-
-评论id：175187967
-评论人id：manyishu
-发表时间：2010-11-12 12:43:33
-内容：
-因为想尝试，所以用了swarming，huddle怎么样呢？--------------------------------------------------------------------------比较低落，可能因为没睡够。这样的情况以后我不参与翻译了，底子太薄，水平太低。很多字典都很好用的，小组收藏里尽有好词典。我倾向于给自己一个安静的阅读空间，暂不译了。不想尝试了。谢谢理解。祝好。: )
-
-评论id：175188726
-评论人id：manyishu
-发表时间：2010-11-12 12:46:09
-内容：
-“一山树”很好理解，我只是感觉这么读来怎么看怎么别扭。说“满山……”或“漫山……”都觉得自然。一山树…… 还是不太能接受。
-
-评论id：175650698
-评论人id：4017541
-发表时间：2010-11-13 23:31:30
-内容：
-Looook above the sky a mass of cloudgusting turbulently我这样写是为了应和美式俳句，亦是为了简约你能想到用crushing是极好的swarming也不错，不过详查韦氏英英解释似有‘蜂拥’聚集吵吵嚷嚷之意味，用之于“云”多少有点烦乱不必谦虚，累了都是要休息的谢谢回复，我才看到，很少上这个网见谅
-
-评论id：175973679
-评论人id：manyishu
-发表时间：2010-11-15 09:28:56
-内容：
-Looook above the sky a mass of cloud gusting turbulently 我这样写是为了应和美式俳句，亦是为了简约 你能想到用crushing是极好的 swarming也不错，不过详查韦氏英英解释似有‘蜂拥’聚集吵吵嚷嚷之意味，用之于“云”多少有点烦乱 不必谦虚，累了都是要休息的 谢谢回复，我才看到，很少上这个网 见谅---------------------------------------------look above the sky是坐在飞机里看到的吗？gusting好。有人曾号称一本书写尽了雨的种种姿态，还没找来看。不知道有没人一本书写尽了云的姿态的……
-
-评论id：176539576
-评论人id：4017541
-发表时间：2010-11-17 01:23:19
-内容：
-呵呵呵，雨的姿态吗？若能得以一睹的话，想必是不错的呢
-
-评论id：176598056
-评论人id：manyishu
-发表时间：2010-11-17 11:18:06
-内容：
-曹文轩的《天瓢》。我还真有点不敢看。你如果感兴趣，我下次回家带本旧书来，一点点打出来赏玩啊，我以前也没静心细读，你一说，我想起来了。呵呵呵~ 真高兴~
-

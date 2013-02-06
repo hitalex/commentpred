@@ -1,707 +1,0 @@
-话题 id: 21903684
-小组 id: FLL
-楼主 id: manyishu 名号: 如果还有明天
-发表时间: 2011-08-24 09:30:36
-链接：http://www.douban.com/group/topic/21903684/
-标题: [术语]  路透金融词典每日一词
-帖子内容: 
-wordmoneymoneywordmoneyworworworwormoeny! ^ ^铸币税  指政府通过印发货币而获得的收入或支付能力。印发货币可以非常低的成本增加货币供应量，但不增加商品的供给，因此可视之为一种通货膨胀税。 Seignorage  ['si:njəridʒ]  Revenue, or spending power, which a government acquires by printing money. The act of printing money increases the money supply at very little cost without increasing the supply of goods, so it can be regarded as an inflation tax.  /////////【上行】//////////////////////////////每日一诵 money篇 http://www.douban.com/group/topic/17283049/英语积累 http://www.douban.com/group/topic/3974295/
-
-
-评论内容：
-评论id：270074464
-评论人id：manyishu
-发表时间：2011-08-24 12:30:42
-内容：
-注册机构  指负责记录公司股东情况的机构。当证券以簿记形式处理而不发行凭证时，具备准确的股东名册尤其重要。 Registrar  The body responsible for keeping a record of the company's shareholders. When securities are dealt in book entry form and no certificates are issued, it is particularly important to have an accurate list of shareholders.
-
-评论id：270119081
-评论人id：manyishu
-发表时间：2011-08-24 15:06:30
-内容：
-动用资本  指公司在经营中所动用的资本，可以指净资产(net assets)，但经常是指包含了银行贷款和透支的资本额。 Capital Employed  Capital used by a particular company in its business. It may refer to net assets but often includes bank loans and overdrafts.
-
-评论id：276640585
-评论人id：manyishu
-发表时间：2011-09-16 10:04:04
-内容：
-可展期的债券  可展期的债券在初次到期后，可再订未来一段时间的条件，将债券展期，通常债权人和债务人有权在重订条件时选择赎回。 Extendible Bond  A bond on which terms are reset for a further period beyond the initial maturity date. Typically both the borrower and the investor will have the right to redeem the bonds at these refixings.
-
-评论id：276818856
-评论人id：manyishu
-发表时间：2011-09-16 20:47:32
-内容：
-历史成本指公司资产的原始成本或取得成本，与重置成本(replacement cost)不同，后者是指现时重新购置能提供相同服务的资产所须付出的成本 。 Historical CostThe original cost of a company's assets, as distinct from replacement cost.
-
-评论id：276818945
-评论人id：manyishu
-发表时间：2011-09-16 20:47:49
-内容：
-经纪人 为市场上买卖双方提供中介服务从中收取佣金的人。经纪人可分交易商经纪(inter-dealer brokers)和代理经纪(client or agency brokers)两大类，前者只为专业的做市商服务，后者则为机构或个人投资者服务。 Broker Brokers act as agents for buyers and sellers, for which they charge a commission, or brokerage. There are two main categories of brokers: inter-dealer brokers, who only work with specialist market makers, and client or agency brokers, who deal on behalf of institutional or retail clients.
-
-评论id：276820400
-评论人id：manyishu
-发表时间：2011-09-16 20:52:00
-内容：
-商业票据英文Commercial Paper的缩写。商业票据是一种无担保的短期期票(promissory note)，有确定的金额及到期日。商业票据是一种可转让的金融工具，通常是不记名的。与存款单(CD)一样，商业票据是筹措流动资金的工具。从融资成本看，发行商业票据与存款单应没有什么区别，因为两者的收益率是相当的，但商业票据的期限通常在30天以内，以避免与存款单市场竞争。 CPThis is a short-term unsecured promissory note issued for a specified amount and maturing on a specified date. CP is a negotiable instrument, typically in bearer form. CP, like CDs, are a means of raising working capital. In terms of funding costs, the issue of one or another should make no difference since both will produce comparable yields. However, CP tends to be issued with maturities of 30 days or less, to avoid competing with the CD market.
-
-评论id：277777185
-评论人id：manyishu
-发表时间：2011-09-20 10:59:43
-内容：
-除息  指所购买的股票不附带获得股息的权利，即股票的卖方保留股息。 Ex-Dividend  This indicates shares that have been bought without the right to receive the dividend, i.e. the seller retains the dividend. 所在分类:金融,股票
-
-评论id：281059873
-评论人id：manyishu
-发表时间：2011-10-02 13:41:52
-内容：
-票据发行便利  票据发行便利是一种票据承销安排，借款人以自己的名义发行短期票据（通常为3-6个月），承销银行会购进未能售出的票据，或是提供备用信贷，藉此确保借款人可获得资金。 NIF  An NIF allows borrowers to offer short-term paper (usually three or six months) in their own names. Fund availability is guaranteed to the borrower by underwriting banks who buy any unsold notes at successive rollover dates or who provide a standby credit.
-
-评论id：281061048
-评论人id：manyishu
-发表时间：2011-10-02 13:48:45
-内容：
-未平仓合约  在期货或期权市场，未平仓合约是指市场结束一天交易时，未被“结束掉”的单边买或卖的合约数量。一张期货合约被“结束掉”，可以是因为合约到期、完成商品交割，或是以反向的操作结束责任，这称之为平仓。期权合约“结束”，则可以是因为合约到期、持有人执行权利或以反向操作结束责任。未平仓合约是分析期货及期权市场的重要参考数据之一。 Open Interest  A figure for the number of outstanding contracts on a futures contract which are not offset by an opposing futures transaction, or fulfilled by delivery. In most cases, the open interest is measured on a daily basis. The figure reflects the degree of liquidity in that contract. 期货期权
-
-评论id：283153221
-评论人id：manyishu
-发表时间：2011-10-10 09:32:31
-内容：
-可变利率  定期调整的利率，通常以某一市场基准利率为基础。 Variable Rate  A periodically adjusted rate, usually based on a standard market rate. 所在分类:金融
-
-评论id：283159329
-评论人id：manyishu
-发表时间：2011-10-10 09:57:50
-内容：
-场内经纪商  指交易所的交易大厅内负责接受买卖指令，将其转交特许经纪人(specialist)或交易商执行的人。 Floor Broker  The person responsible for accepting orders on an exchange floor and handing them on to a specialist or trader for execution. 所在分类:期货期权,外汇,债券,股票
-
-评论id：284175805
-评论人id：manyishu
-发表时间：2011-10-13 14:59:53
-内容：
-跨式期权组合  指一种包含相同的行使价和到期日的看涨期权和看跌期权的期权策略。这种策略通过在市场上涨时履行看涨期权，而在下跌时履行看跌期权，而使期权的购买者享受价格波动较大的好处。风险是如果价格只小幅波动，价格的变化过小，无法抵偿购买两份期权的成本。 Straddle  An option strategy involving one call and one put with the same strike and same expiry date. The strategy allows the buyer to take advantage of large price movements in either direction, by exercising the call in a rising market and the put in a falling market. The risk is that prices move only slightly and the change is not enough to cover the costs of the two options. 所在分类:期货期权
-
-评论id：284178968
-评论人id：manyishu
-发表时间：2011-10-13 15:09:56
-内容：
-正常收益率曲线  正常收益率曲线从左向右上升，显示长期证券的收益率高于短期证券，反映投资风险随年期拉长而升高、投资者进行长期投资需要较高的收益来补偿。也称“正收益率曲线”(positive yield curve)。相对的是“倒挂的收益率曲线”，这种曲线展示短期证券收益率高于长期证券。 Normal Yield Curve  A chart illustrating that yields on long-term securities are at higher rates than the rates on short-term securities, to reflect the extra risk of holding them for a longer period. Also known as a positive yield curve. The opposite of an inverted yield curve when short-term yields are above longer-term yields. 所在分类:债券
-
-评论id：284518709
-评论人id：manyishu
-发表时间：2011-10-14 17:11:26
-内容：
-已实现损失  指因平仓而造成的现金损失。 Realized Loss  The cash loss from liquidating a position 所在分类:金融
-
-评论id：285192530
-评论人id：manyishu
-发表时间：2011-10-17 10:34:04
-内容：
-赎回认股权证  指借款者提供持券人在认股权证不履行时的担保赎回价格。 Redemption Warrant  The borrower offers the holder a guaranteed redemption price if the warrant is not exercised. 所在分类:股票
-
-评论id：285480608
-评论人id：manyishu
-发表时间：2011-10-18 11:08:49
-内容：
-世界银行  世界银行是一家为贫困国家的中长期发展项目提供援助资金的国际金融机构。该行通过在国际资本市场上发行债券进行融资，亦动用自己的资金发放贷款。网址：www.worldbank.org  World Bank  The World Bank is an agency for channelling aid funds to poor countries for medium and long-term projects. The Bank raises funds by selling bonds on world capital markets and makes loans from its own resources.  所在分类:金融
-
-评论id：285746557
-评论人id：manyishu
-发表时间：2011-10-19 10:07:24
-内容：
-自动柜员机  英文Automated Teller Machine的缩写，是一种提供提款、存款及一些其他银行服务的机器。 ATM  Automated Teller Machine, or cash machine. An automated dispenser of cash and banking services. 所在分类:缩略语
-
-评论id：286397958
-评论人id：manyishu
-发表时间：2011-10-21 14:53:57
-内容：
-授权书  指股东授权别人在股东会议上代为行使表决权的文件。公司就重大事项进行表决时，与董事会意见相左的股东常会收集其他股东的投票授权书，试图集合足够的投票权来改变公司决策。 Proxy  A written authorization by a shareholder for another party, or a company's board of directors, to cast votes on their behalf at a shareholder meeting. Proxy votes are often gathered by dissident shareholders who wish to force the board of directors to change policy. 所在分类:金融,股票
-
-评论id：289145905
-评论人id：manyishu
-发表时间：2011-10-31 14:40:56
-内容：
-泡沫  指资产价格狂涨至预期将会大幅逆转或崩溃的程度。 Bubble  A ramping up of asset prices to such a degree that a major reversal or crash is expected. 所在分类:股票
-
-评论id：289149452
-评论人id：manyishu
-发表时间：2011-10-31 14:53:50
-内容：
-三格转向  在画点数图时，价格每上涨一格(box)即画一个“X”，每下跌一格即画一个“O”。点数图对价格变动的敏感度可通过改变格值(box size)来调整。例如，股价在20元至100元之间的股票，格值可设为1元; 若走势较为波动，可考虑设为2元。在分析中期走势时，为消除干扰性的短暂波动，可运用三格转向的方式，在价格由升转跌幅度达三个格值时才新画一栏“O”，或是价格由跌转升幅度达三个格值时，才新画一栏“X”。 Three Box Reversal  In technical analysis, a much used point and figure chart for intermediate analysis, which needs only the high and low prices for the day. 所在分类:技术分析
-
-评论id：289150659
-评论人id：manyishu
-发表时间：2011-10-31 14:58:07
-内容：
-交货价  期货合约进行实物交割的价格，由清算行确定。 Delivery Price  The settlement price set by a clearing house for deliveries of commodities against futures contracts. 所在分类:期货期权,金融
-
-评论id：289151866
-评论人id：manyishu
-发表时间：2011-10-31 15:02:11
-内容：
-隔日交易  在税务年度结束前卖出股票，随即在新税年开始后买回，借此在保留股票拥有权的同时，将资本利得或亏损入账以满足税务上的目的。 Bed and Breakfast Deal  The sale of a share and its repurchase shortly after the beginning of a new tax year. This allows shareholders to register a capital loss or profit for tax purposes while retaining ownership of the shares. 所在分类:金融,股票
-
-评论id：289152232
-评论人id：manyishu
-发表时间：2011-10-31 15:03:34
-内容：
-国际货币基金组织的贷款条件  国际货币基金组织的(IMF)对借款国施加的要求，通常涵盖经济政策、政府支出与税收及汇率政策等层面。 Conditionality  Economic conditions imposed on a country when it draws funds from the IMF (International Monetary Fund). The conditions often spell out requirements for economic policy, government spending and taxation and exchange rate policy. 所在分类:外汇,债券
-
-评论id：289399784
-评论人id：manyishu
-发表时间：2011-11-01 12:03:08
-内容：
-美国政府长期债券  指美国财政部发行的期限为10年或10年以上的长期债券。与中期债券一样，长期债券每半年付息一次，因此也称coupon securities（付息证券）。 US Treasury Bond  Long-term US Treasury securities with maturities of ten years or more. Like Treasury notes, they pay a semi-annual coupon, so they are also known as coupon securities. 所在分类:债券
-
-评论id：291152087
-评论人id：manyishu
-发表时间：2011-11-07 12:18:33
-内容：
-预测  指根据现有数据推测未来走势，广泛用于企业和财务规划、经济和金融市场预测。分析师预测的数据包括价格水平、公司盈利和经济指标。 Forecast  A projection of current trends using existing data. Forecasts are widely used by business and financial planners, economists and stock market analysts. Analysts' forecasts include price levels, company earnings and economic indicators. 所在分类:金融
-
-评论id：291152845
-评论人id：manyishu
-发表时间：2011-11-07 12:21:41
-内容：
-可卖回的  指债券持有人有权在债券到期前的某一约定时点将债券卖还给发行人，这种债券称为可卖回债券(put bond)。债券卖回的价格在发行时已约定，可以是债券的面值，亦可以高于或低于面值。 Puttable  A bond is described as puttable, or having a put feature, when the holder has the right to sell the bond back to the issuer at a specific date before maturity. The repurchase price, which may be at par, premium or discount, is specified at the time of issue.  所在分类:金融,债券
-
-评论id：291164662
-评论人id：manyishu
-发表时间：2011-11-07 13:01:58
-内容：
-无限责任  无限责任是相对于有限责任(limited liability)而言的。在一个有限责任的公司或是合伙企业中，股东或合伙人最大的损失限于其所投入的资本，而在无限责任的组织中，所有人不享有这种限制的保护，理论上损失可以无限大。 Unlimited Liability  Where no restriction applies to an owner's losses in a business. In contrast with limited liability where the loss to owners, or shareholders, is limited by law to the amount of capital they have invested.
-
-评论id：292082250
-评论人id：manyishu
-发表时间：2011-11-10 13:35:49
-内容：
-收购出价  指一家公司为收购另一家公司而开出的收购条件。出价可以是现金，也可以是股票，或两者混合的方式。收购条件通常会设定有效期。收购可以是敌意的（即没有获得收购目标的同意或合作），也可以是善意的（即已获收购目标接受）。 Takeover Bid  The initial offer by a predator company for another. The bid can be in cash, shares or a combination. Bids usually have a closing date for acceptance. The bid can be hostile (without the acceptance or cooperation of the target company), or friendly (accepted by the target). 所在分类:风险投资和新股发行
-
-评论id：292088377
-评论人id：manyishu
-发表时间：2011-11-10 13:58:42
-内容：
-河底摸鱼  指投资者因认为股价不太可能进一步显着下跌而买进股票。另外，亦指公司收购亏损的同业或是收购它们的资产。 Bottom Fishing  When an investor buys a company's shares at a time when he believes they are unlikely to fall much further. Also, when a company buys up loss-making competitors, or purchases their assets. 所在分类:风险投资和新股发行,股票
-
-评论id：293055099
-评论人id：manyishu
-发表时间：2011-11-14 09:18:30
-内容：
-美国证券集中保管结算公司 英文Depository Trust Clearing Corporation的缩写，美国提供各种证券的托管和结算服务的机构， 美国存管信托公司(DTC， Depository Trust Company)是其全资子公司。由代理人户头(nominee account，又称street name)持有的证券由DTCC提供托管服务。 网址：http：//www.dtcc.com DTCC A US central depository for securities certificates and registrations. Used for Street Name or Nominee Account holdings. 所在分类:缩略语,股票
-
-评论id：293055179
-评论人id：manyishu
-发表时间：2011-11-14 09:18:52
-内容：
-贷款损失准备金 指银行因预期贷款无法收回,在帐面上提列的坏帐损失准备. 坏帐损失在损益表上是一项经营费用. Loan Loss Provisions Funds set aside to cover anticipated loan losses. They appear on a bank's income statement as an operating expense 所在分类:金融
-
-评论id：293645935
-评论人id：manyishu
-发表时间：2011-11-16 09:50:16
-内容：
-资产组合  指投资者持有的一组资产。一个资产多元化的投资组合通常会包含股票、债券、货币市场资产、现金以及实物资产如黄金等。 Portfolio  An investor's collection, or holding, of financial instruments. 所在分类:基金,金融,风险投资和新股发行
-
-评论id：294567905
-评论人id：manyishu
-发表时间：2011-11-19 12:30:20
-内容：
-美国全国证券交易商协会  英文National Association of Securities Dealers的缩写，是美国证券业主要的非官方监管机构，负责维持经纪及交易商的职业操守。网址：www.nasd.com NASD  A US regulatory organization for brokers and dealers that enforces legal and ethical standards.www.nasd.com 所在分类:缩略语,股票
-
-评论id：295634179
-评论人id：manyishu
-发表时间：2011-11-23 10:00:50
-内容：
-汇率风险  因不利的汇率波动而导致损失的可能性。 Currency Risk  The potential for losses arising from adverse moves in exchange rates. 所在分类:外汇
-
-评论id：295635771
-评论人id：manyishu
-发表时间：2011-11-23 10:07:23
-内容：
-肮脏浮动汇率制  指一种官方不公开汇率目标的汇率制度。中央银行或货币当局通过干预外汇市场以使汇率维持在其不公开的目标水平，而目标水平可能会随环境的变化而改变。英文亦称managed float(有管理的浮动汇率制)。 Dirty Float  A system where no official parities for currencies are declared or maintained. The central bank or national monetary authority does not publish details of a fixed target, e.g. four francs to the dollar. Instead it intervenes in foreign exchange markets to achieve an undisclosed target exchange rate. The target may be changed according to circumstances. Also known as a managed float. 所在分类:外汇
-
-评论id：296306310
-评论人id：manyishu
-发表时间：2011-11-25 15:04:02
-内容：
-可变动资本额股份有限公司  墨西哥的公司名称中表示“可变动资本额股份有限公司”（Sociedad Anonima de Capital Varianle）词组的缩写。 SA de CV  Mexican company title. 所在分类:缩略语
-
-评论id：297115122
-评论人id：manyishu
-发表时间：2011-11-28 15:30:56
-内容：
-规格说明  对某一种原油或已炼制油品的特性所做的说明。由于这些产品的特性往往有很大的差异，即便是同等级的产品也是如此，因而需要具体的说明。这些特性影响原油或石油产品的价格及其最终用途。 Specifications  Refers to properties of a given crude oil or refined petroleum product. Properties are specified because they often vary widely, even within the same grade of product. The properties affect the price and end-use of the crude or petroleum product. 所在分类:期货期权
-
-评论id：298870920
-评论人id：manyishu
-发表时间：2011-12-04 18:52:46
-内容：
-伦敦国际金融期货期权交易所英文The London International Financial Futures and Options Exchange的缩写。该交易所买卖的产品包括货币、债券、短期利率、股票和商品的期货和期权合约,于2002年1月为Euronext所收购。网址：www.euronext.comLIFFEThe London International Financial Futures and Options Exchange, which trades futures and options contracts on currencies, bonds, short-term interest rates, equities and commodities.www.liffe.com所在分类:期货期权,缩略语
-
-评论id：299719697
-评论人id：manyishu
-发表时间：2011-12-07 16:37:14
-内容：
-参与证书  在美国，这种证书代表在抵押贷款中的权益。证书的买方获得现金流(来自借款人的还本付息)，但卖方仍是记录上的受抵押人。在瑞士，参与证书指由瑞士的公司发行的没有表决权的股票。 Participation Certificate  These US certificates represent an interest in mortgage loans. The buyer receives the cash flows and is the owner, but the seller remains the mortgagee of record. In Switzerland a participation certificate is a non-voting form of equity that is issued by Swiss companies. 所在分类:金融
-
-评论id：299720524
-评论人id：manyishu
-发表时间：2011-12-07 16:39:41
-内容：
-规格说明  对某一种原油或已炼制油品的特性所做的说明。由于这些产品的特性往往有很大的差异，即便是同等级的产品也是如此，因而需要具体的说明。这些特性影响原油或石油产品的价格及其最终用途。 Specifications  Refers to properties of a given crude oil or refined petroleum product. Properties are specified because they often vary widely, even within the same grade of product. The properties affect the price and end-use of the crude or petroleum product. 所在分类:期货期权
-
-评论id：299728847
-评论人id：manyishu
-发表时间：2011-12-07 17:05:16
-内容：
-首次付息  指对债券持有人首次支付的利息。 First Coupon  The date on which an initial interest payment is due to the holder of a bond. 所在分类:债券
-
-评论id：301313029
-评论人id：manyishu
-发表时间：2011-12-13 14:18:40
-内容：
-提前履约  指证券或期权在到期日之前行使权利。美式期权可在到期前任何时候履约，欧式期权则只能在到期日履约。 Early Exercise  When a security or option is exercised before its due maturity date. American-style options can be exercised at any time, allowing early exercise. European-style options can be exercised only at the maturity date. 所在分类:期货期权
-
-评论id：301314113
-评论人id：manyishu
-发表时间：2011-12-13 14:22:15
-内容：
-大型跨国银行  指跨国经营的大型银行. 这类银行借贷规模庞大,同时进行大规模的金融工具交易,在国际金融市场扮演重要的角色. Money Centre Bank  A large bank that lends to and borrows from governments, organizations and other banks, as opposed to consumers. 所在分类:金融
-
-评论id：301315027
-评论人id：manyishu
-发表时间：2011-12-13 14:25:24
-内容：
-德国政府债券  指为期二年的德国政府债券。 Schatz  German government debt with a two-year maturity. 所在分类:债券
-
-评论id：301315361
-评论人id：manyishu
-发表时间：2011-12-13 14:26:33
-内容：
-国际金融研究所  英文Institute for International Finance的缩写，是一家由主要银行和金融机构组成的全球性协会。这个组织是在1983年为回应国际债务危机而成立的，业务包括分析新兴市场经济体中的风险、提供关于新兴市场金融与管理的政策论坛、并促进成员与世界银行和区域性开发银行等机构之间的合作。网址：www.iif.com IIF  A global association of leading banks and financial institutions. Created in 1983 in response to an international debt crisis, the IIF analyses risks in emerging market economies, serves as a policy forum on emerging markets finance and regulation, and promotes collaboration between member firms and institutions such as the World Bank and regional development banks. www.iif.com 所在分类:缩略语
-
-评论id：301842071
-评论人id：manyishu
-发表时间：2011-12-15 11:17:35
-内容：
-风险  1. 指对某一借款人或国家的信贷总额，即借款人一旦违约银行可能损失的总金额。 为防止风险过度集中在单一借款人上，银行通常会制定避险措施。 2. 在交易上，此词指当前头寸因市场价格的波动而可能出现盈亏的程度。 Exposure  The total amount of credit committed to a borrower or a country. Effectively, the total amount at risk in the case of a default. Banks can set rules to prevent overexposure to any single borrower. In trading operations, exposure is the potential for running a profit or loss from fluctuations in market prices. 所在分类:金融,债券,风险投资和新股发行
-
-评论id：301843197
-评论人id：manyishu
-发表时间：2011-12-15 11:21:40
-内容：
-得尔塔值  期权价格对标的资产价格敏感度的指标，衡量标的资产价格每一单位的变动会导致期权价格多大幅度的变动。标的资产是指期权持有人行使权利可买进或卖出的金融工具或商品。 Delta  A measure of sensitivity derived from an option pricing model. It measures how much an option's price will change for one unit of change in the underlying price. 所在分类:期货期权
-
-评论id：302873430
-评论人id：manyishu
-发表时间：2011-12-19 05:56:19
-内容：
-热门股票指价格猛涨或大跌、交投活跃的股票。 Hot StockA stock whose price suddenly rises or falls sharply.所在分类:股票
-
-评论id：303166576
-评论人id：manyishu
-发表时间：2011-12-20 09:49:55
-内容：
-外资银行承兑票据  一种以美元计价的不付息短期票据，由在美国的外资银行或机构提供信用担保，其收益率通常高于一般的银行承兑汇票。 Foreign Acceptances  Foreign acceptances are short-term non-interest-bearing notes denominated in US dollars and backed by the credit of foreign banks or agencies domiciled in the USA. They usually trade at a yield premium over normal bankers' acceptances. 所在分类:金融,债券
-
-评论id：304068038
-评论人id：manyishu
-发表时间：2011-12-23 13:32:50
-内容：
-多种选择融资安排  英文Multi-option facilities的缩写，指允许借款人从多种长短期金融工具获得资金的融资方式，其中包括银行贷款、商业票据和欧洲票据等，还有多种货币可供选择。 MOFs  Multi-option facilities that allow a borrower to obtain funds from various short or long-term instruments. These may include bank advances, commercial paper and euronotes. A variety of currencies may also be available. 所在分类:缩略语
-
-评论id：304069794
-评论人id：manyishu
-发表时间：2011-12-23 13:39:23
-内容：
-领头羊  具指示意义的金融工具或指标，其表现被视为可反映市场、行业或经济的整体状况。此术语引申自羊群中被系上铃铛的领头羊，bellwether一字由bell(铃铛)和wether(阉羊)所构成。 Bellwether  An instrument or indicator that is generally seen to be an indicator of the overall market, economy or sector's performance. From the lead sheep of a flock, which is belled. 所在分类:金融,股票
-
-评论id：304125869
-评论人id：manyishu
-发表时间：2011-12-23 17:02:25
-内容：
-国际互换和衍生产品协会  英文The International Swap and Derivatives Association的缩写，是衍生产品场外交易(OTC)市场的国际性行业组织,为讨论业内问题和促进最佳作业方式的论坛。网址：www.isda.org ISDA  An international trade organization for the over the counter, or privately negotiated, derivatives markets. It acts as a forum to discuss industry issues and promotes best practice within the derivatives business.  所在分类:期货期权,缩略语
-
-评论id：308073608
-评论人id：manyishu
-发表时间：2012-01-07 02:28:13
-内容：
-美国参议院财政委员会美国参议院中，负责税赋和其他财政法案的重要委员会。Senate Finance CommitteeKey US Senate committee responsible for tax and other revenue bills.所在分类:金融
-
-评论id：308074125
-评论人id：manyishu
-发表时间：2012-01-07 02:35:21
-内容：
-资本不足指企业的所有人投入的资金不够，不足以支持业务的运作及必要的扩张。UndercapitalizedTerm used when a business is not supplied with enough funds by its owners to support its activities and provide for any needed expansion.所在分类:金融
-
-评论id：308075459
-评论人id：manyishu
-发表时间：2012-01-07 02:54:08
-内容：
-谷物指诸如小麦、燕麦、大麦、裸麦、大米、玉米、小米和高粱等普遍交易的农作物。CerealsCommonly traded crops such as wheat, oats, barley, rye, rice, maize (corn), millet and sorghum.所在分类:期货期权
-
-评论id：308075608
-评论人id：manyishu
-发表时间：2012-01-07 02:56:22
-内容：
-多种选择融资安排英文Multi-option facilities的缩写，指允许借款人从多种长短期金融工具获得资金的融资方式，其中包括银行贷款、商业票据和欧洲票据等，还有多种货币可供选择。MOFsMulti-option facilities that allow a borrower to obtain funds from various short or long-term instruments. These may include bank advances, commercial paper and euronotes. A variety of currencies may also be available.所在分类:缩略语
-
-评论id：308075858
-评论人id：manyishu
-发表时间：2012-01-07 03:00:36
-内容：
-外资银行承兑票据一种以美元计价的不付息短期票据，由在美国的外资银行或机构提供信用担保，其收益率通常高于一般的银行承兑汇票。Foreign AcceptancesForeign acceptances are short-term non-interest-bearing notes denominated in US dollars and backed by the credit of foreign banks or agencies domiciled in the USA. They usually trade at a yield premium over normal bankers' acceptances.所在分类:金融,债券
-
-评论id：308076049
-评论人id：manyishu
-发表时间：2012-01-07 03:03:26
-内容：
-少数股东权益在一家公司中,不为控股股东所持有的股权称为少数股东权益,通常合共不会超过股权的50%. 在集团财务报表上,资产负债表上的少数股东权益代表在集团的子公司中持少数股权的股东应占的净资产,损益表上的少数股东权益代表子公司中的少数股东应占的净利.Minority InterestAn important but non-controlling outside ownership stake in a company or subsidiary. Also used to describe the share of a parent company's net profits or net assets that are attributable to those minority shareholders in partially-owned subsidiaries.所在分类:股票
-
-评论id：308376275
-评论人id：manyishu
-发表时间：2012-01-08 12:49:28
-内容：
-汇票  一种历史悠久的国际贸易融资工具。汇票是向持票人支付指定金额的委托书。远期汇票(time draft)是指定在未来某一时间支付，而即期汇票(sight draft)则是见票即付。汇票也称合格票据(eligible bills)、商业票据(commercial bills)、商业汇票(trade bills)和银行承兑汇票(BAs)。 Bill of Exchange  Old financial instrument used to finance international trade. A bill of exchange is an order to pay a specified amount of money to the holder of the bill either at a set future date (a time draft) or on presentation of the bill (a sight draft). Also known as eligible bills, commercial bills, trade bills and BAs. 所在分类:金融,债券
-
-评论id：308376439
-评论人id：manyishu
-发表时间：2012-01-08 12:50:25
-内容：
-法国CAC-40股价指数  法国股价指数，由40只法国股票构成。较新的CAC-General指数由100只法国股票构成，使用更广泛，但CAC-40指数仍被视为基准指数。两种指数均以市值加权计算。CAC-40是法国国际期货交易所（MATIF）和巴黎期权交易所（MONEP）指数期权和期货的标的。 网址：www.euronext.com/。 CAC-40  The principal French stock index covering 40 French equities, although the newer CAC-General, which covers 100 stocks, is more widely used. Both of these indices are capitalization-weighted averages. The CAC-40 is the basis for index futures and options traded on the MATIF and MONEP exchanges in Paris.  所在分类:股票
-
-评论id：355042467
-评论人id：manyishu
-发表时间：2012-06-17 10:28:30
-内容：
-巴塞尔委员会  国际清算银行下属的一个委员会， 旨在促进国际间在银行监管事务上的合作，制定并提倡良好的银行监管准则。奠定银行最低资本国际标准的巴塞尔资本协议即为该委员会所制定。 Basel Committee  A committee of the Bank for International settlements that formulates broad supervisory standards for best banking practice and supervision, including setting the minimum capital standards for banks. 所在分类:金融
-
-评论id：357580794
-评论人id：manyishu
-发表时间：2012-06-25 23:48:39
-内容：
-职能与资料分隔制度指为防范价格敏感资料在同一金融机构内的交易、基金管理及企业融资部门之间传递的措施。例如，如果企业融资部门将即将进行的收购计划告知交易部门，会被视为不适当的行为，在一些国家甚至是非法的。Chinese WallRules designed to prevent price-sensitive information seeping between the dealing, fund management and corporate finance operations within the same investment house. For example, it would not be considered appropriate, and in some countries it is illegal, for a corporate finance team to notify its own in-house share dealing department of an impending takeover bid.所在分类:金融
-
-评论id：366571593
-评论人id：manyishu
-发表时间：2012-07-26 14:18:57
-内容：
-跨式期权组合  指一种包含相同的行使价和到期日的看涨期权和看跌期权的期权策略。这种策略通过在市场上涨时履行看涨期权，而在下跌时履行看跌期权，而使期权的购买者享受价格波动较大的好处。风险是如果价格只小幅波动，价格的变化过小，无法抵偿购买两份期权的成本。 Straddle  An option strategy involving one call and one put with the same strike and same expiry date. The strategy allows the buyer to take advantage of large price movements in either direction, by exercising the call in a rising market and the put in a falling market. The risk is that prices move only slightly and the change is not enough to cover the costs of the two options. 所在分类:期货期权
-
-评论id：366572448
-评论人id：manyishu
-发表时间：2012-07-26 14:21:35
-内容：
-▼ 风险是如果价格只小幅波动，价格的变化过小，无法抵偿购买两份期权的成本。The risk is that prices move only slightly and the change is not enough to cover the costs of the two options. ▲
-
-评论id：369782867
-评论人id：manyishu
-发表时间：2012-08-06 13:47:01
-内容：
-信贷风险  指债务工具的发行人违约不偿还本金或利息，或者破产的风险，也称“对手风险”（counter party risk）。 Credit Risk  The risk that an issuer might default on a payment or go into liquidation. Also known as counter party risk. 所在分类:债券
-
-评论id：370071617
-评论人id：manyishu
-发表时间：2012-08-07 12:16:08
-内容：
-隔日交易  在税务年度结束前卖出股票，随即在新税年开始后买回，借此在保留股票拥有权的同时，将资本利得或亏损入账以满足税务上的目的。 Bed and Breakfast Deal  The sale of a share and its repurchase shortly after the beginning of a new tax year. This allows shareholders to register a capital loss or profit for tax purposes while retaining ownership of the shares. 所在分类:金融,股票
-
-评论id：370801538
-评论人id：manyishu
-发表时间：2012-08-09 16:03:20
-内容：
-收益率缺口  英文亦称yield ratio，是通过比较股票的股息收益率与长期公债的收益率，来评估股票价值是否被高估或低估的一种方法。股息收益率是将年度股息除以股票市价得出，因此股价上升时，股息收益率会下滑，股价下跌时则会上升。 这种分析认为，若股息收益率高于公债收益率，那幺股价应是处于偏低水平。 Yield Gap  Also known as yield ratio. This ratio compares the dividend yield on equities with the yield on long-term government bonds. It s used to assess whether equities are under or over-priced compared with government bonds. The dividend yield on equities (expressed as a percentage of the share price) is usually higher than the yield on bonds, reflecting the higher risk of holding equities. When equity prices rise, their dividend yields fall as a percentage of their price, thus reducing the yield ratio. When equity prices fall their yield rises. The theory holds that if earnings yield is higher than bond yield then equities are cheap. 所在分类:债券
-
-评论id：372744590
-评论人id：manyishu
-发表时间：2012-08-15 20:36:45
-内容：
-摩根士丹利资本国际指数MSCI是英文Morgan Stanley Capital International的缩写. MSCI指数是指投资银行摩根士丹利所编制的一系列股价指数,涵盖不同的行业、国家以及区域. 很多机构投资者以MSCI指数为投资表现的参照基准,另外这些指数亦衍生出一般投资者可参与交易的投资工具,如MSCI指数期货以及上市交易基金(ETF)等.网址：www.msci.com MSCI IndicesA group of regional, national and industry performance benchmarks designed to help compare world equity markets. The indices are widely used by portfolio managers to compare the performance of their funds against those of the underlying markets. The MSCI indices are calculated using weighted arithmetic averages.所在分类:股票
-
-评论id：375445080
-评论人id：manyishu
-发表时间：2012-08-24 11:26:32
-内容：
-普通合伙公司  意大利的公司名称中表示“普通合伙公司”（Societ in Nome Collectivo）词组的缩写。 SNC  Italian company title 所在分类:缩略语
-
-评论id：376915725
-评论人id：manyishu
-发表时间：2012-08-29 08:50:00
-内容：
-二度衰退  指经济体或市场价格在经历一次衰退后复苏，但不久即再度陷入衰退。 Double Dip  A second and subsequent drop in a market or an economy. When an economy slows, then starts to recover, only to falter and slow once more. 所在分类:金融
-
-评论id：380149358
-评论人id：manyishu
-发表时间：2012-09-08 17:50:04
-内容：
-周期性的指事物的某些特征按一定的模式或规律周而复始地出现。 CyclicalA regular occurrence. Something that happens on a periodic basis.所在分类:金融
-
-评论id：381952639
-评论人id：manyishu
-发表时间：2012-09-14 13:46:56
-内容：
-参与权益  指在石油勘探或营运项目中，一家公司或政府所拥有的部分权益。也指对一笔抵押(或其它类型)贷款所拥有的部分权益，该笔贷款由两位或以上的放款人联合贷出。 Participation  Part ownership of an oil venture or operation, by a company or government. It can also refer to a mortgage loan made jointly by two or more lenders.
-
-评论id：383990481
-评论人id：manyishu
-发表时间：2012-09-21 12:50:53
-内容：
-再贴现  指中央银行在期限日之前，购买已在货币市场贴现过的政府债务或其他金融工具。 Rediscount  Purchase before maturity by a central bank of a government obligation or other financial instrument already discounted in the money market. 所在分类:金融,债券
-
-评论id：385092115
-评论人id：manyishu
-发表时间：2012-09-25 10:26:26
-内容：
-德国政府债券  指为期二年的德国政府债券。 Schatz  German government debt with a two-year maturity. 所在分类:债券
-
-评论id：388926241
-评论人id：manyishu
-发表时间：2012-10-09 05:26:00
-内容：
-预算盈余预算中收入超过支出的金额，通常是针对政府的收支而言。 Budget SurplusThe amount by which revenues exceed spending. It usually refers to government spending and revenues.所在分类:金融
-
-评论id：391103735
-评论人id：manyishu
-发表时间：2012-10-16 05:23:12
-内容：
-短期票据指见票或在很短时间内即付的票据。Short BillA bill of exchange that is payable on demand or within a very short time.所在分类:债券
-
-评论id：391877976
-评论人id：manyishu
-发表时间：2012-10-18 15:24:39
-内容：
-法国CAC-40股价指数  法国股价指数，由40只法国股票构成。较新的CAC-General指数由100只法国股票构成，使用更广泛，但CAC-40指数仍被视为基准指数。两种指数均以市值加权计算。CAC-40是法国国际期货交易所（MATIF）和巴黎期权交易所（MONEP）指数期权和期货的标的。 网址：www.euronext.com/。 CAC-40  The principal French stock index covering 40 French equities, although the newer CAC-General, which covers 100 stocks, is more widely used. Both of these indices are capitalization-weighted averages. The CAC-40 is the basis for index futures and options traded on the MATIF and MONEP exchanges in Paris.  所在分类:股票
-
-评论id：392158711
-评论人id：manyishu
-发表时间：2012-10-19 13:34:58
-内容：
-内在价值  1.期权处于价内状态,就称具有内在价值. 内在价值根据标的资产的市价与期权行使价之差计算得出. 举例,一张看涨期权(call)合约赋予持有人以每股25元买进100股某公司股票的权利,该股目前市价为30元,该期权的内在价值为(30-25) x 100 = 500元. 处于价外状态的期权,其内在价值为零. 参见In the Money（期权价内状态）, Option（期权）以及 Time Value(时间价值)。2.一项资产的内在价值,是指该资产理论上的真实价值,反映所有影响该资产价值的因素,比如一家公司的内在价值,必须反映诸如品牌、商标以及版权等不易准确估值的资产,而公司的市值未必准确反映公 ... Intrinsic Value  When an option is 'in the money' it is said to have intrinsic value. The value is calculated by taking the difference between the forward market value of the underlying instrument and the strike price of the option.  所在分类:期货期权
-
-评论id：393975773
-评论人id：manyishu
-发表时间：2012-10-25 10:31:04
-内容：
-资本增值  指以高于资产成本的价格出售或转让资产所获得的利润。通货膨胀和汇率波动均可能影响实质资本利得。 Capital Gain  Profit from selling or transferring assets at a higher price than their initial cost. Inflation and currency movements can affect the real capital gain. 所在分类:金融,风险投资和新股发行
-
-评论id：394403062
-评论人id：manyishu
-发表时间：2012-10-26 15:04:59
-内容：
-注册机构  指负责记录公司股东情况的机构。当证券以簿记形式处理而不发行凭证时，具备准确的股东名册尤其重要。 Registrar  The body responsible for keeping a record of the company's shareholders. When securities are dealt in book entry form and no certificates are issued, it is particularly important to have an accurate list of shareholders. 所在分类:金融,股票
-
-评论id：395548412
-评论人id：manyishu
-发表时间：2012-10-30 11:10:36
-内容：
-非洲开发银行  英文 African Development Bank的缩写，非洲开发银行是一家位于科特迪瓦(象牙海岸)首都阿比让的开发融资机构。其宗旨是减少成员国的贫困和促进成员国的社会发展。 网址：www.afdb.org AFDB  A development finance organization based in Abidjan, Ivory Coast. Its aim is to reduce poverty and promote social development among its regional members. www.afdb.org 所在分类:缩略语
-
-评论id：395549874
-评论人id：manyishu
-发表时间：2012-10-30 11:14:28
-内容：
-贸易壁垒  指妨碍商品和服务在国家之间自由交换的人为限制，常见的形式包括关税、补贴、配额和外汇管制等。 Trade Barrier  Artificial restraint on the free exchange of goods and services between countries, usually in the form of tariffs, subsidies, quotas or exchange controls. 所在分类:金融
-
-评论id：396676004
-评论人id：manyishu
-发表时间：2012-11-02 16:29:58
-内容：
-合成金融工具  指将两种或两种以上的金融工具组合在一起，创造出别具特色新资产的金融工具。例如，在购买一只股票的看涨期权的同时卖出相同股票的看跌期权，人为地创立一项与该股票具有相同特征、相同风险和潜在回报率的资产。 Synthetic  A financial instrument that is created by combining two or more instruments to create a new asset with distinct attributes. For example, the purchase of a call option on a share and the simultaneous sale of a put option on the same share artificially creates an asset which has the same characteristics as the underlying share and the same risks and potential rewards. 所在分类:期货期权,金融
-
-评论id：396680404
-评论人id：manyishu
-发表时间：2012-11-02 16:41:31
-内容：
-计划经济  指由政府决定资源配置的经济模式。在严格的计划经济下，政府决定了全部商品的生产规模与价格。与计划经济相对的是藉自由市场的需求与供给决定资源配置的经济模式，名为市场经济。 Planned Economy  An economy in which the government fixes prices and production. A planned economy contrasts with a free market economy. 所在分类:金融
-
-评论id：396681157
-评论人id：manyishu
-发表时间：2012-11-02 16:43:34
-内容：
-《美国破产法》第七章  《美国破产法》第七章是关于非自愿清盘的法规，债权人据此请求法庭颁令判决债务人破产。该章赋予由法庭指派的临时托管人经营债务人的业务，以避免资产流失的广泛权利。 Chapter 7  Under US insolvency laws Chapter 7 deals with involuntary liquidation, where creditors petition to have a debtor judged insolvent by a court. It gives wide powers to a court-appointed interim trustee to operate the debtor business to prevent loss.  所在分类:金融
-
-评论id：397786648
-评论人id：manyishu
-发表时间：2012-11-06 09:10:23
-内容：
-基准  作为参照的标准。在债券市场，基准债券通常指最新发行的、发行量较大的一期债券，其流动性往往是最高的。 Benchmark  A standard used for comparison. A benchmark security is usually the most recent security of its type issued in a large quantity. It sets the standard for the rest of the market. A benchmark issue is highly liquid. 所在分类:债券,股票
-
-评论id：398182419
-评论人id：manyishu
-发表时间：2012-11-07 12:24:53
-内容：
-德国长期债券指期限可长达30年的德国联邦政府债券。BundsGerman federal government bonds issued with maturities of up to 30 years.所在分类：债券
-
-评论id：398815095
-评论人id：manyishu
-发表时间：2012-11-09 10:13:32
-内容：
-官方允许的汇率波动区间指政府或央行允许本国货币汇率的波动区间，在此区间内，官方不会干预市场。亦称为“干预区间”（intervention band）。采用允许货币逐渐升值或贬值的的爬行钉住汇率制的国家有时也会定下这种汇率区间。Trading BandFormal exchange rate limits within which a government or central bank allows its currency to trade without intervention. Also known as an intervention band. It is sometimes coupled with a crawling peg system of gradual appreciation or depreciation.所在分类：外汇
-
-评论id：400115604
-评论人id：manyishu
-发表时间：2012-11-13 10:33:49
-内容：
-无面值无面值股票是指获准发行时没有指定面值的股票。股票的面值与其市场价值没有关系，而且也不反映其代表的资产值。发行无面值股票，对公司来说有一个好处，就是万一股价跌至面值以下，公司亦不会因此背上对股东的负债。No Par ValueShares with no par value assigned at the time the stock is authorized. Shares are authorized for issue as part of the legal process of setting up a company. Par value is the nominal face value of the shares and bears no relationship to the actual traded value of the shares or to the underlying assets which they represent. The advantage of issuing no par value is to avoid the situation of creating a liability to shareholders in the unlikely event of the traded share price falling below the par value of the shares.
-
-评论id：401230655
-评论人id：manyishu
-发表时间：2012-11-16 12:55:02
-内容：
-偿债次序指当借款人违约时，贷款人债券优先求偿顺序。如果贷款人必须收回资金，优先债务享有最优先的求偿权，则对借款人而言，该债券发行条件可能会负担较轻。次顺位债券中的偿债排序较后，借款人因而必须给予贷款人更优惠的条件。RankingDenotes where a bond stands in relation to priority claims from a lender upon default by the borrower. Senior debt earns high priority if lenders have to reclaim funds, hence the bond issue terms can be less onerous for the borrower. Subordinated debt ranks a bond lower down the scale, thus a borrower has to offer a lender more advantageous terms.所在分类:债券
-
-评论id：401231256
-评论人id：manyishu
-发表时间：2012-11-16 12:56:39
-内容：
-现金结算现金结算是金融期货最常用的结算方式。按照此方式，期货合约到期时不以标的资产如证券或实物商品进行交割，而是将未平仓合约的价值与交易所公布的结算价相比，折算成现金差额，由损失的一方支付现金给获利方以结清头寸。另外，该词也指那些在交易当天办理交割及结算的交易。Cash SettlementCash settlement is the most common method of settling financial futures. It involves closing out the position as opposed to physically delivering the underlying financial instrument or commodity. Also used to describe a transaction that settles on the same day as the trade day.所在分类:期货期权
-
-评论id：401231782
-评论人id：manyishu
-发表时间：2012-11-16 12:58:07
-内容：
-无表决权的股票股东权利受特别限制的一种股票，持有人无权参与公司决策的表决。Non-voting StockSecurities that do not allow the holder to vote on company resolutions.所在分类:股票
-
-评论id：403719873
-评论人id：manyishu
-发表时间：2012-11-23 16:35:28
-内容：
-斯德哥尔摩交易所瑞典的期货与期权市场，从事瑞典股票的期权，以及指数和利率相关衍生工具的交易。网址：www.se.omxgroup.comOM StockholmThe Swedish futures and options market which trades options on Swedish stocks as well as index and interest rate derivativeswww.stockholmsborsen.se
-
-评论id：403723758
-评论人id：manyishu
-发表时间：2012-11-23 16:45:21
-内容：
-外汇国际间交易的支付工具。Foreign ExchangeInstruments used to make payments between countries.所在分类:外汇
-
-评论id：404607842
-评论人id：manyishu
-发表时间：2012-11-26 12:54:31
-内容：
-美国财务会计准则委员会英文The Financial Accounting Standards Board的缩写。该委员会成立于1973年，目的是制定和监督美国的会计准则。 网址：www.fasb.orgFASBThe Financial Accounting Standards Board was established in 1973 to establish and supervise accounting rules in the United States.www.fasb.org所在分类:金融,缩略语
-
-评论id：405251567
-评论人id：manyishu
-发表时间：2012-11-28 09:00:03
-内容：
-法国国际期货及期权交易所法文Marchéà Terme International de France的缩写，是法国的金融期货及期权交易所，于1999年6月并入巴黎交易所,后者于2000年9月并入Euronext。网址：http://www.matif.fr/index_en.htmMATIFFrance's financial futures exchange.www.matif.fr/indexE4.htm所在分类:期货期权,缩略语
-
-评论id：406350303
-评论人id：manyishu
-发表时间：2012-12-01 11:23:22
-内容：
-联邦基金指美国的商业银行存放在联邦储备银行(即中央银行体系)的准备金，包括法定准备金及超过准备金要求的资金。这些资金可以借给其他成员银行，以满足他们对短期准备金的需求，拆借的利率称为联邦基金利率。该利率是美国两大基准利率之一，另一基准利率是贴现率。联邦基金也可指联邦储备委员会用以支付其购买美国政府证券的资金。Fed FundsReserve balances deposited at the Federal Reserve Bank by US commercial banks. These funds can be lent out to other member banks to meet short-term reserve requirements and the rate at which they are lent is known as the Fed Funds rate. This is one of two key US interest rates, the other being the discount rate. Fed Funds can also refer to the money used by the Federal Reserve to pay for its purchases of government securities所在分类:期货期权,债券
-
-评论id：408474772
-评论人id：manyishu
-发表时间：2012-12-07 16:09:02
-内容：
-外汇管制禁止或限制进行某些外汇交易的政府管制措施，限制的对象通常是本国国民，旨在维护国家的金融秩序和本国货币的币值。 Exchange ControlsRegulations to prevent or restrict certain foreign currency transactions, mostly by a country's nationals. Used to protect and maintain a country's financial position and the value of its currency.所在分类:外汇
-
-评论id：408475420
-评论人id：manyishu
-发表时间：2012-12-07 16:10:51
-内容：
-美国审计局负责稽查美国政府部门及审查公共部门资金运用的机构，其负责人称为“审计长”(the Controller General)。 网址：www.gao.govGeneral Accounting OfficeThis office audits US government departments and examines the use of public funds. It is headed by the Controller General.www.gao.gov所在分类:金融
-
-评论id：408486774
-评论人id：manyishu
-发表时间：2012-12-07 16:39:35
-内容：
-信用证英文Letter of Credit的缩写。信用证是银行替其公司客户开具的担保，保证在契约责任履行后付款。信用证可在二级市场上交易。 L/CA letter of credit is a guarantee by a bank on behalf of its corporate customer that a payment will be made if contractual obligations are met. Letters of credit can be traded on the secondary market.所在分类:金融,缩略语,债券
-
-评论id：409778569
-评论人id：manyishu
-发表时间：2012-12-11 15:38:29
-内容：
-限价指令限价单是相对于以当前市价马上成交的市价单(market order)而言. 客户发出限价单时会指定一个价格，成交价不得逊于所指定的价格：若是买进，成交价不得高于指定价；若是卖出，成交价不得低于指定价。限价单的有效期限视客户的指示而定,可以是在指定时段内有限,也可以在客户通知取消前保持有效.Limit OrderAn order that stipulates the price at which a market transaction can be executed. The maximum price is stipulated for a buy order and the minimum for a sell. Limit orders are normally valid for a certain time specified by the client. They can also be Good Till Cancelled (GTC), remaining valid until the limit is reached and the order is executed, or until the order is cancelled所在分类:期货期权,金融
-
-评论id：409782310
-评论人id：manyishu
-发表时间：2012-12-11 15:48:32
-内容：
-德国证券集中保管银行为德国的证券集中保管与结算机构。KassenvereinThe Central Depository Bank for Securities. Germany's central securities depository and clearing agent.所在分类:股票
-
-评论id：411480287
-评论人id：manyishu
-发表时间：2012-12-16 10:35:54
-内容：
-跨式期权组合指一种包含相同的行使价和到期日的看涨期权和看跌期权的期权策略。这种策略通过在市场上涨时履行看涨期权，而在下跌时履行看跌期权，而使期权的购买者享受价格波动较大的好处。风险是如果价格只小幅波动，价格的变化过小，无法抵偿购买两份期权的成本。StraddleAn option strategy involving one call and one put with the same strike and same expiry date. The strategy allows the buyer to take advantage of large price movements in either direction, by exercising the call in a rising market and the put in a falling market. The risk is that prices move only slightly and the change is not enough to cover the costs of the two options.所在分类:期货期权
-
-评论id：411480921
-评论人id：manyishu
-发表时间：2012-12-16 10:39:01
-内容：
-场内经纪商指交易所的交易大厅内负责接受买卖指令，将其转交特许经纪人(specialist)或交易商执行的人。Floor BrokerThe person responsible for accepting orders on an exchange floor and handing them on to a specialist or trader for execution.所在分类:期货期权,外汇,债券,股票
-
-评论id：414496296
-评论人id：manyishu
-发表时间：2012-12-24 15:04:15
-内容：
-信贷风险指债务工具的发行人违约不偿还本金或利息，或者破产的风险，也称“对手风险”（counter party risk）。Credit RiskThe risk that an issuer might default on a payment or go into liquidation. Also known as counter party risk.所在分类:债券
-
-评论id：414524075
-评论人id：manyishu
-发表时间：2012-12-24 16:20:50
-内容：
-逼仓指投资者急于减少他们的损失而迫使价格上升或下降。空头逼仓是指当投资者通过购买股票使空头头寸平仓，导致价格急剧上升。2.该词也用于指任何商品供给处于短缺状态，或指货币政策的紧缩期。SqueezeWhen prices are being forced up or down as investors rush to cut their losses. A short squeeze is when prices rise sharply as investors cover short positions by buying shares. A squeeze is also used to describe when any commodity is in short supply or a period when monetary policy is tight.
-
-评论id：415097352
-评论人id：manyishu
-发表时间：2012-12-26 09:25:30
-内容：
-国际货币基金组织的贷款条件国际货币基金组织的(IMF)对借款国施加的要求，通常涵盖经济政策、政府支出与税收及汇率政策等层面。ConditionalityEconomic conditions imposed on a country when it draws funds from the IMF (International Monetary Fund). The conditions often spell out requirements for economic policy, government spending and taxation and exchange rate policy.所在分类:外汇,债券
-
-评论id：415103683
-评论人id：manyishu
-发表时间：2012-12-26 09:49:43
-内容：
-赎回认股权证指借款者提供持券人在认股权证不履行时的担保赎回价格。Redemption WarrantThe borrower offers the holder a guaranteed redemption price if the warrant is not exercised.所在分类:股票
-
-评论id：415104431
-评论人id：manyishu
-发表时间：2012-12-26 09:52:35
-内容：
-波动性指数是技术分析上用于衡量每一特定时间内平均价格波动的一种跟踪趋势的分析方法。Volatility IndexUsed in technical analysis. A trend-following analysis that measures the average price movement in each set period of time.所在分类:技术分析
-
-评论id：415190908
-评论人id：manyishu
-发表时间：2012-12-26 14:05:04
-内容：
-股息派发比率亦作Dividend Payout Ratio，指公司的净利以现金股息派发给股东的比例，等于每股股息除以每股盈余。Payout RatioThe proportion of a company's net profits that is paid out to shareholders in cash dividends. The ratio is calculated by dividing the total cash dividends by the company's earnings in the same period.所在分类:股票
-
-评论id：415191501
-评论人id：manyishu
-发表时间：2012-12-26 14:06:35
-内容：
-已实现损失指因平仓而造成的现金损失。Realized LossThe cash loss from liquidating a position所在分类:金融
-
-评论id：419256577
-评论人id：manyishu
-发表时间：2013-01-07 08:45:22
-内容：
-丧失转换价值的可转换证券指因标的股票的市价跌至转换价下方，转换权的价值接近零的可转换证券。Busted ConvertibleA convertible issue of little value because the underlying stock has fallen below the conversion price.所在分类:债券,股票
-
-评论id：419256794
-评论人id：manyishu
-发表时间：2013-01-07 08:46:54
-内容：
-预测指根据现有数据推测未来走势，广泛用于企业和财务规划、经济和金融市场预测。分析师预测的数据包括价格水平、公司盈利和经济指标。ForecastA projection of current trends using existing data. Forecasts are widely used by business and financial planners, economists and stock market analysts. Analysts' forecasts include price levels, company earnings and economic indicators.所在分类:金融
-
-评论id：419257268
-评论人id：manyishu
-发表时间：2013-01-07 08:50:03
-内容：
-上涨生效期权一种触碰生效期权，在标的资产市价升至约定水平时才生效的期权。Up and InA trigger option that is activated when the price of the underlying instrument or commodity rises to a pre-determined level.所在分类:期货期权
-
-评论id：419257743
-评论人id：manyishu
-发表时间：2013-01-07 08:52:52
-内容：
-隔日交易在税务年度结束前卖出股票，随即在新税年开始后买回，借此在保留股票拥有权的同时，将资本利得或亏损入账以满足税务上的目的。Bed and Breakfast DealThe sale of a share and its repurchase shortly after the beginning of a new tax year. This allows shareholders to register a capital loss or profit for tax purposes while retaining ownership of the shares.所在分类:金融,股票
-
-评论id：419433729
-评论人id：manyishu
-发表时间：2013-01-07 17:03:18
-内容：
-确定的委托指无须进一步确认即可执行的买进或卖出股票的指令。也可指不可撤销的货物订单。Firm OrderAn order to buy or sell a share that can be executed without further confirmation. It can also mean a commercial order of goods which cannot be cancelled.所在分类:股票
-

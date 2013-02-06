@@ -1,41 +1,0 @@
-话题 id: 22877284
-小组 id: FLL
-楼主 id: manyishu 名号: 如果还有明天
-发表时间: 2011-10-13 14:29:55
-链接：http://www.douban.com/group/topic/22877284/
-标题: 一点点 NATURE
-帖子内容: 
-Thank you! Nature magazine. I love you so much!【相关】片段学习 一点点系列 http://www.douban.com/group/topic/22877312/[record atcl] A~L N~Z http://www.douban.com/group/topic/14766900/FLL主题 主题阅读 Nature http://www.douban.com/group/topic/33253607/
-
-
-评论内容：
-评论id：284166627
-评论人id：manyishu
-发表时间：2011-10-13 14:30:05
-内容：
-This week's highlightsPhysical SciencesMore Physical sciences ▼Ocean-like water in the Jupiter-family comet 103P/Hartley 2  The deuterium-to-hydrogen (D/H) ratio measured in the Kuiper-belt comet 103P/Hartley 2 is close to that seen in ocean waters here on Earth, fuelling the suspicion that some of 'our' water may have arrived in cometary impacts.Earth & Environmental SciencesMore Earth & Environmental sciences ▼Atmospheric oxygenation caused by a change in volcanic degassing pressure  Two and a half billion years ago Earth’s atmosphere was transformed in what is known as the Great Oxidation Event. Work with a model of volcanic degassing suggests that a shift of volcanic activity from a largely under-water affair to an open-air process may have been a key step towards the breathable atmosphere we have today.Earth & Environmental SciencesMore Earth & Environmental sciences ▼Strong contributors to network persistence are the most vulnerable to extinction  In cooperative networks - whether between plants and their pollinators or service providers and customers - it is the nodes that contribute to the nestedness of the network that improve its stability. But strangely, a study of 20 plant-pollinator partnerships and various socioeconomic networks, shows that these same nodes are also the most vulnerable to extinction.
-
-评论id：375254803
-评论人id：manyishu
-发表时间：2012-08-23 17:28:12
-内容：
-[Investigation]“Dirty electricity”: what, where, and should we care?  by Frank de Vochta ABSTRACT Environmental exposure to high-frequency voltage transients (HFVT), also termed dirty electricity, has been advocated among electro(hyper)sensitive interest groups as an important biological active component of standard electromagnetic pollution. A literature search was conducted in PubMed, in which only seven articles were identified. Exposure to HFVT was associated with increased cancer risks, while preferential removal of 4–100kHz HFVT from 50–60Hz ELF circuits was linked to a variety of improvements in health (plasma glucose levels in diabetic patients, symptoms of multiple sclerosis, asthma and other respiratory illnesses, and insomnia), well-being (tiredness, frustration, general health, irritation, sense of satisfaction, mood), and student behavior. However, all these published studies were subject to significant methodological flaws in the design of the studies, the assessment of exposure, and the statistical analysis, which prevented valid assessment of a causal link between this exposure metric and adverse effects. Environmental exposure to HFVT is an interesting EMF exposure metric, which might explain the spurious results from epidemiological studies using ‘standard’ ELF and RF exposure metrics. However, at present, methodological problems in published studies prohibit the valid assessment of its biological activity. Keywords: high-frequency voltage transients; EMF; RF; electromagnetic fields; health effects; dirty electricity http://www.nature.com/jes/journal/v20/n5/full/jes20108a.html>KC组搬来的2009年的老帖。20120823 17:28
-
-评论id：394798412
-评论人id：manyishu
-发表时间：2012-10-27 21:38:16
-内容：
-Three-dimensional imaging of solvent-cleared organs using 3DISCO Abstract The examination of tissue histology by light microscopy is a fundamental tool for investigating the structure and function of organs under normal and disease states. Many current techniques for tissue sectioning, imaging and analysis are time-consuming, and they present major limitations for 3D tissue reconstruction. The introduction of methods to achieve the optical clearing and subsequent light-sheet laser scanning of entire transparent organs without sectioning represents a major advance in the field. We recently developed a highly reproducible and versatile clearing procedure called 3D imaging of solvent-cleared organs, or 3DISCO, which is applicable to diverse tissues including brain, spinal cord, immune organs and tumors. Here we describe a detailed protocol for performing 3DISCO and present its application to various microscopy techniques, including example results from various mouse tissues. The tissue clearing takes as little as 3 h, and imaging can be completed in ∼45 min. 3DISCO is a powerful technique that offers 3D histological views of tissues in a fraction of the time and labor required to complete standard histology studies. Subject terms: Imaging http://www.nature.com/nprot/journal/v7/n11/pdf/nprot.2012.119.pdf
-
-评论id：394800890
-评论人id：manyishu
-发表时间：2012-10-27 21:45:19
-内容：
-One-step 18F-labeling of peptides for positron emission tomography imaging using the SiFA methodologyAbstractHere we present a procedure to label peptides with the positron-emitting radioisotope fluorine-18 (18F) using the silicon-fluoride acceptor (SiFA) labeling methodology. Positron emission tomography (PET) has gained high importance in noninvasive imaging of various diseases over the past decades, and thus new specific imaging probes for PET imaging, especially those labeled with 18F, because of the advantageous properties of this nuclide, are highly sought after. N-terminally SiFA–modified peptides can be labeled with 18F− in one step at room temperature (20–25 °C) or below without forming side products, thereby producing satisfactory radiochemical yields of 46 ± 1.5% (n = 10). The degree of chemoselectivity of the 18F-introduction, which is based on simple isotopic exchange, allows for a facile cartridge-based purification fully devoid of HPLC implementation, thereby yielding peptides with specific activities between 44.4 and 62.9 GBq μmol−1 (1,200–1,700 Ci mmol−1) within 25 min.http://www.nature.com/nprot/journal/v7/n11/pdf/nprot.2012.109.pdf
-
-评论id：417899400
-评论人id：manyishu
-发表时间：2013-01-03 16:15:46
-内容：
-Safety survey reveals lab risksQuestionnaire suggests researchers not as safe as they feel.Richard Van Noorden02 January 2013http://www.nature.com/news/safety-survey-reveals-lab-risks-1.12121
-
