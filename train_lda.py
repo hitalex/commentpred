@@ -84,7 +84,6 @@ def build_dict_corpus(source_text_path, corpus_path, dict_path):
     log.info('Done.')
     
     log.info('Remove one time words...')
-    print 'Remove one time words...'
     texts = [[word for word in document.lower().split(' ') if word not in stoplist]
         for document in documents]
     # remove words that appear only once
@@ -119,7 +118,7 @@ def build_dict_corpus(source_text_path, corpus_path, dict_path):
 
 def main(argv):
     if len(argv) < 4:
-        print 'Group ID not provided.'
+        print 'python train_lda.py group_id num_topics passes'
         sys.exit(1)
         
     group_id = argv[1]
@@ -132,12 +131,13 @@ def main(argv):
     
     # buid dict and corpus
     #now = datetime.now()
-    indicator = 'title-comment-new'
+    indicator = 'title-comment'
     source_path = base_path + 'corpus-topic-comment'
     
     corpus_path = model_base_path + 'corpus-'+ indicator + '-' + group_id + '.mm'
     dict_path = model_base_path + 'dict-' + indicator + '-' + group_id + '.dict'
     
+    log.info('Building the dict...')
     build_dict_corpus(source_path, corpus_path, dict_path)
     
     log.info('Loading dict from pre-saved file...')

@@ -4,6 +4,7 @@
 该脚本检查采用Logistic Regression by LIBLINEAR的概率输出，得到precision@K
 """
 import logging
+import sys
 
 from operator import itemgetter
 from logconfig import congifLogger
@@ -36,53 +37,64 @@ def load_test_topic(filepath):
             topic_list.append((topic_id, set()))
         else:
             comment_user_set = set((seg_list[1]).split(','))
-            topic_list.append((topic_id, comment_user_set))
+            candidate_user_list = seg_list[2].split(',')
+            topic_list.append((topic_id, comment_user_set, candidate_user_list))
                 
     return topic_list
     
-def get_precision_at_K(predict_result_path, user_list, topic_list, K):
+def get_precision_at_K(predict_result_path, topic_list, K):
     """
     计算每个topic在K位置的precison
     """
-    precision = [-1] * len(topic_list)
-    total_user = len(user_list)
-    if K > total_user:
-        print 'K should be larger than the total number of users.'
-        return
+    assert(K > 0)
+    precision = []
         
     f = open(predict_result_path)
-    f.readline() # omit the header: labels -1 1
+    header = f.readline()
+    label, pos, neg = header.split()
+    if pos == '1':
+        flag = True
+    else:
+        flag = False
     count = 0
-    prob_list = [] # 记录对应每个用户的概率
-    for line in f:
-        if count >0 and (count % total_user == 0):
-            # 得到当前的topic index
-            topic_index = count / total_user - 1
-            topic_id = topic_list[topic_index][0]
-            true_comment_users = topic_list[topic_index][1]
-            # 从大到小排列
-            prob_list = sorted(prob_list, key=itemgetter(1), reverse=True)
-            predict_users = set() # 预测得到的用户集合
-            for i in range(K):
-                user_index = prob_list[i][0]
-                predict_users.add(user_list[user_index])
-            if len(true_comment_users) == 0:
-                log.info('Topic %s has no comments.' % topic_id)
+    
+    for topic_id, true_comment_user_set, candidate_user_list in topic_list:
+        prob_list = [] # 记录对应每个用户的概率
+        n = len(candidate_user_list)
+        # 读入所有的测试用户的评论概率
+        for i in range(n):
+            line = f.readline()
+            line = line.strip()
+            seg_list = line.split(' ')
+            label = int(seg_list[0])
+            if flag:
+                negative_prob = float(seg_list[2])
+                positive_prob = float(seg_list[1])
             else:
-                p = len(predict_users & true_comment_users) * 1.0 / len(true_comment_users)
-                log.info('Precision@%d for topic: %s is %f (%d out of %d)' % (K, topic_id, p, \
-                    len(predict_users & true_comment_users), len(true_comment_users)))
-                precision[topic_index] = p
+                negative_prob = float(seg_list[1])
+                positive_prob = float(seg_list[2])
+            uid = candidate_user_list[i]
+            prob_list.append((uid, positive_prob))
+        # 按照概率排序
+        prob_list = sorted(prob_list, key=itemgetter(1), reverse=True)
+        predict_users = set() # 预测得到的用户集合
+        
+        if K >= len(prob_list):
+            K = len(prob_list)
             
-            prob_list = []
-        line = line.strip() # it looks like this: -1 0.99952 0.000480238
-        seg_list = line.split(' ')
-        label = int(seg_list[0])
-        negative_prob = float(seg_list[1])
-        positive_prob = float(seg_list[2])
-        user_index = count % total_user
-        prob_list.append((user_index, positive_prob))
-        count += 1
+        for i in range(K):
+            uid = prob_list[i][0]
+            predict_users.add(uid)
+            
+        if len(true_comment_user_set) == 0:
+            log.info('Topic %s has no comments.' % topic_id)
+            p = 0
+        else:
+            p = len(predict_users & true_comment_user_set) * 1.0 / K
+            log.info('Precision@%d for topic: %s is %f (%d out of %d)' % (K, topic_id, p, \
+                len(predict_users & true_comment_user_set), len(true_comment_user_set)))
+        
+        precision.append(p)
         
     return precision
     
@@ -148,19 +160,24 @@ def get_precision_one_class(predict_result_one_class_path, user_list, topic_list
     return statics
 
 if __name__ == '__main__':
-    group_id = 'ustv'
+    if len(sys.argv) < 3:
+        print 'python prediction_statics.py group_id K'
+        sys.exit(0)
+    
+    group_id = sys.argv[1]
+    K = int(sys.argv[2])
     # index files
-    user_index_path = 'svm/' + group_id + '/users-index'
-    user_list = load_user(user_index_path)
+    #user_index_path = 'svm/' + group_id + '/users-index'
+    #user_list = load_user(user_index_path)
     
     test_topic_index_path = 'svm/' + group_id + '/test-topic-index-' + group_id
     topic_list = load_test_topic(test_topic_index_path)
     
     print 'Statics of LR...'
     predict_result_path = 'svm/' + group_id + '/predict-result'
-    K = 50
-    precison = get_precision_at_K(predict_result_path, user_list, topic_list, K)
+    #predict_result_path = 'features/ustv/output'
+    precison = get_precision_at_K(predict_result_path, topic_list, K)
     
     print 'Statics of one class SVM...'
     predict_result_one_class_path = 'svm/' + group_id + '/predict-result-one-class'
-    statics_one_class = get_precision_one_class(predict_result_one_class_path, user_list, topic_list)
+    #statics_one_class = get_precision_one_class(predict_result_one_class_path, user_list, topic_list)

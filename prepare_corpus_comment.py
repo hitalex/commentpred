@@ -5,6 +5,7 @@
 这里的训练文本包括：所有topic的title、content内容以及每个topic下的comment,时间范围是所有的讨论贴
 主要方法：
 依次调入不同的topicinfo和对应的comment info，分别进行处理
+需要注意的是：在这里将topic内容以及所属的comment作为一个document来处理。
 """
 
 import sys
@@ -47,24 +48,34 @@ def load_comment_text(path, topic_dict):
             topic_dict[topic_id] += (' ' + seg_chinese(content))
 
     f.close()
-    return topic_dict
+    
+def load_group_info(path, topic_dict):
+    """ 将小组的介绍作为一个文档
+    """
+    f = codecs.open(path, 'r', 'utf-8')
+    row = f.readline()
+    desc = (row.split('[=]'))[3]
+    desc = remove_url(desc)
+    
+    topic_dict['0'] = seg_chinese(desc)
+    
+    f.close()
     
 if __name__ == '__main__':
-    num = 9
-    topic_base_path = 'tables/ustv/sep/TopicInfo-ustv-raw-'
-    comment_base_path = 'tables/ustv/sep/CommentInfo-ustv-raw-'
-    outf = codecs.open('tables/ustv/corpus-topic-comment', 'w', 'utf-8')
-    # remove line feeds
-    """
-    from remove_line_feed import remove
-    for index in range(1, num):
-        topic_path = topic_base_path + str(index)
-        comment_path = comment_base_path + str(index)
-        remove(topic_path, topic_path + '-new')
-        remove(comment_path, comment_path + '-new')
+    if len(sys.argv) < 2:
+        print 'Group ID not provided.'
+        sys.exit(1)
         
-    sys.exit(0)
+    group_id = sys.argv[1]
+    log.info('Prepare corpus with comment for group: %s' % group_id)
+    
+    outf = codecs.open('tables/' + group_id + '/corpus-topic-comment', 'w', 'utf-8')
+    
     """
+    num = 9
+    topic_base_path = 'tables/' + group_id + 'ustv/sep/TopicInfo-ustv-raw-'
+    comment_base_path = 'tables/ustv/sep/CommentInfo-ustv-raw-'
+    
     for index in range(0, num):
         topic_path = topic_base_path + str(index)
         comment_path = comment_base_path + str(index)
@@ -78,6 +89,25 @@ if __name__ == '__main__':
         for topic_id in text_dict:
             text = text_dict[topic_id]
             outf.write(text + '\n')
-            
+    """
+    topic_path = 'tables/' + group_id + '/TopicInfo-raw-all-' + group_id
+    comment_path = 'tables/' + group_id + '/CommentInfo-raw-all-' + group_id
+    group_info_path = 'tables/' + group_id + '/GroupInfo-' + group_id
+    
+    print 'Loading topic dict ...'
+    topic_dict = load_topic_text(topic_path)
+    log.info('Number of topics: %d' % len(topic_dict))
+    
+    print 'Loading topic comments...'
+    load_comment_text(comment_path, topic_dict)
+    
+    print 'Loading group info...'
+    load_group_info(group_info_path, topic_dict)
+    
+    print 'Saving whole document...'
+    for topic_id in topic_dict:
+        text = topic_dict[topic_id]
+        outf.write(text + '\n')
+        
     outf.close()
     log.info('Done')

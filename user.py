@@ -5,6 +5,7 @@
 并找到他们所有的关注和被关注信息，存放与文件中
 
 """
+import sys
 from datetime import datetime
 import time
 import logging
@@ -15,6 +16,7 @@ from douban_client.api.error import DoubanError
 
 from logconfig import congifLogger
 from prepare import load_user_list
+import stacktracer
 
 # config logging
 log = logging.getLogger('Main.user')
@@ -43,7 +45,7 @@ def inTraining(strtime):
 API_KEY = '0c0cb6f7df695ce1242624e79e3c16a3'
 API_SECRET = 'b73d7a87176fbd16'
 your_redirect_uri = 'http://alexkong.net'
-code = 'd47ef98a926249bc'
+code = '4c4708d2802303f9'
 SCOPE = 'douban_basic_common,shuo_basic_r,shuo_basic_w'
 
 """
@@ -98,7 +100,7 @@ def find_followers(user_id, start, count, followers_path, user_info, failed_set)
     else:
         save_result(followers_path, user_id, user_info[user_id])
         log.info('Number of followers for %s: %d' % (user_id, len(user_info[user_id])))
-        user_info[user_id] = None # release memory
+        #user_info[user_id] = None # release memory
     
 def find_following(user_id, start, count, following_path, user_info, failed_set):
     """ 找到所有的关注
@@ -121,7 +123,7 @@ def find_following(user_id, start, count, following_path, user_info, failed_set)
     else:
         save_result(following_path, user_id, user_info[user_id])
         log.info('Number of followings for %s: %d' % (user_id, len(user_info[user_id])))
-        user_info[user_id] = None # release memory
+        #user_info[user_id] = None # release memory
     
 def save_result(filepath, user_id, uid_set):
     """ 将抓取结果存入文件
@@ -138,15 +140,23 @@ def load_new_user_set(old_user_path, new_user_path):
     
     return new_user_set - old_user_set
 
-def main():    
+def main(argv):
+    if len(argv) < 2:
+        print 'Group ID not provided.'
+        sys.exit(1)
+        
+    group_id = argv[1]
+    log.info('Prepare user followings and followers for group: %s' % group_id)
+    
     global max_tasks_per_period, current_period_tasks, period_start_time
-
+    
     # 指定group
     print 'Loading users...'
-    group_id = 'ustv'
-    old_user_path = 'social/' + group_id + '/all-users-' + group_id
-    new_user_path = 'social/' + group_id + '/all-users-' + group_id + '-new'
-    user_set = load_new_user_set(old_user_path, new_user_path)
+    #old_user_path = 'social/' + group_id + '/all-users-' + group_id + '-new'
+    #new_user_path = 'social/' + group_id + '/filtered-user-behavior-' + group_id
+    #user_set = load_new_user_set(old_user_path, new_user_path)
+    path = 'social/' + group_id + '/filtered-user-behavior-' + group_id
+    user_set = set(load_user_list(path))
     # uid ==> following or followers
     user_info = dict() # 保存所有的uid
     failed_set = set() # 抓取失败的uid
@@ -163,11 +173,11 @@ def main():
     print '抽取用户的关注列表... '
     for uid in user_info:
         find_following(uid, 0, 100, following_path, user_info, failed_set)
-        
+        pass
     # 记录抽取失败的用户
     log.info('抽取关注列表失败的用户id：')
-    for uid in failed_set:
-        log.info(uid)
+    log.info('\n' + '\n'.join(failed_set))
+    
     log.info('抽取完成.')
     
     #####
@@ -179,15 +189,18 @@ def main():
     current_period_tasks = 0
 
     print '抽取用户的粉丝列表... '
+    log.info('抽取用户的粉丝列表... ')
     for uid in user_info:
-        find_followers(uid, 0, 100)
+        find_followers(uid, 0, 100, followers_path, user_info, failed_set)
         
     # 记录抽取失败的用户
     log.info('抽取用户粉丝失败的用户id：')
-    for uid in failed_set:
-        log.info(uid)
-    log.info('抽取完成.')
+    log.info('\n' + '\n'.join(failed_set))
+
+    log.info('Group %s 抽取完成.' % group_id)
     print 'Done.'
     
 if __name__ == '__main__':
-    main()
+    #stacktracer.trace_start("trace.html",interval=5,auto=True) # Set auto flag to always update file!
+    main(sys.argv)
+    #stacktracer.trace_stop()

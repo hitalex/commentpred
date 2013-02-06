@@ -16,10 +16,10 @@ log = logging.getLogger('Main.prepare')
 congifLogger("prepare.log", 5)
 
 # 训练集的起止时间
-TRAIN_START_DATE = datetime(2012, 10, 1)
-TRAIN_END_DATE = datetime(2012, 12, 1)
+TRAIN_START_DATE = datetime(2012, 8, 1)
+TRAIN_END_DATE = datetime(2012, 11, 1)
 
-TEST_START_DATE = datetime(2012, 12, 1)
+TEST_START_DATE = datetime(2012, 11, 1)
 TEST_END_DATE = datetime(2013, 1, 1)
 
 # 设置最早和最晚的年限
@@ -39,7 +39,7 @@ def load_topic_user(filepath, start_date = VERY_EARLY_TIME, end_date = VERY_LATE
     for line in f:
         line = line.strip()
         seg_list = line.split('[=]')
-        if len(seg_list) != 7:
+        if len(seg_list) < 6:
             log.info('Bad formatted topic: %s' % line)
             count += 1
             continue
