@@ -309,6 +309,12 @@ def gen_content_feature(topic_path, ldamodel, dictionary):
         creator = seg_list[2]
         title = seg_list[4]
         content = seg_list[5]
+        # 记录每个topic的评论数量
+        if seg_list[6] == '':
+            comment_count = 0
+        else:
+            comment_count = len(seg_list[6].split(','))
+        # 记录每个topic下参与评论的用户
         if seg_list[7] == '':
             uid_list = []
         else:
@@ -335,7 +341,7 @@ def gen_content_feature(topic_path, ldamodel, dictionary):
         # 保证doc_lda中是按照topic的顺序排列
         doc_lda = [topicvalue for topicindex, topicvalue in doc_lda]
         content_features.append((topic_id, creator, title_count, content_count, num_img, num_out_link, doc_lda))
-        comment_user_list.append((topic_id, uid_list))
+        comment_user_list.append((topic_id, uid_list, comment_count))
         
     return content_features, comment_user_list
     
@@ -347,10 +353,10 @@ def get_euclidean_distance(a, b):
     b = np.array(b)
     return np.linalg.norm(a-b)
     
-def get_candidate_comment_user(topic_id, commenting_user_set, K, index2uid, uid2index):
-    """ 根据真正的评论用户和比例K，找到评论用户的候选集
+def get_candidate_comment_user(topic_id, commenting_user_set, R, index2uid, uid2index):
+    """ 根据真正的评论用户和比例R，找到评论用户的候选集
     """
-    assert(K > 1)
+    assert(R > 1)
     # 返回找到的user的index
     result = set()
     # 加入所有的真正评论的用户
@@ -358,7 +364,7 @@ def get_candidate_comment_user(topic_id, commenting_user_set, K, index2uid, uid2
         result.add(uid2index[uid])
     
     total_user = len(index2uid)
-    count = int((K - 1) * len(commenting_user_set))
+    count = int((R - 1) * len(commenting_user_set))
     # 如果所需要的用户数大于或者等于总用户数
     if count + len(commenting_user_set) >= len(index2uid):
         log.info('Maximum user used in topic: %s' % topic_id)
@@ -382,7 +388,7 @@ def get_candidate_comment_user(topic_id, commenting_user_set, K, index2uid, uid2
     return list(result)
 
 def combine_feature(binary_path, feature_path, topic_index_path, index2uid, uid2index, comment_user_list, \
-        content_feature, user_interest, user_behavior, friendship, following_count, followers_count, mutual_following, K):
+        content_feature, user_interest, user_behavior, friendship, following_count, followers_count, mutual_following, R):
     """ 生成最终的feature训练文件
     `binary_path` 用来预测某个topic下是否会有评论
     `feature_path` 预测会有哪些用户进行评论。注意：这里会产生两个feature文件，分别用户存放positive和negative的训练样本
@@ -392,15 +398,18 @@ def combine_feature(binary_path, feature_path, topic_index_path, index2uid, uid2
     fpositive = codecs.open(feature_path + '-positive', 'w', 'utf-8') # 存放正样本
     fnegative = codecs.open(feature_path + '-negative', 'w', 'utf-8') # 存放负样本
     ft = codecs.open(topic_index_path, 'w', 'utf-8')
+
     topic_count = len(comment_user_list)
     topic_count_used = 0 # 真正使用的topic的个数
-    comment_user_count = 0 # 一共参与评论的user
+    total_user_set = set() # 一共参与评论和发表帖子的user集合
+    total_comments_count = 0 # 一共出现的评论的个数
+    
     creator_set = set() # 保存所有的未在总用户中的creator
     num_topic_without_comment = 0 # 没有评论的topic数量
     num_topic_with_comment = 0    # 有评论的topic数量
     for topic_index in range(topic_count):
         topic_id = comment_user_list[topic_index][0]
-        print 'Combine topic features for topic: %s' % topic_id
+        #print 'Combine topic features for topic: %s' % topic_id
         
         topic_content_feature = content_feature[topic_index]
         #assert(topic_content_feature[0] == topic_id)        # check
@@ -416,7 +425,8 @@ def combine_feature(binary_path, feature_path, topic_index_path, index2uid, uid2
         for user_id in commenting_user_set:
             if not user_id in uid2index:
                 to_be_removed.add(user_id)
-        # 在预测时，并不考虑帖子的作者是否会回复
+        # 在预测时，并不考虑帖子的作者是否会回复 
+        #TODO: 缺少解释，为什么不考虑帖子作者本身是否参与回复？
         to_be_removed.add(creator_id)
         commenting_user_set = commenting_user_set - to_be_removed
         # 不考虑没有评论的情况
@@ -440,8 +450,11 @@ def combine_feature(binary_path, feature_path, topic_index_path, index2uid, uid2
         creator_interest = user_interest[creator_id]
         creator_num_following = following_count[creator_index]      # feature 7: number of follwwing of the creator
         creator_num_followers = followers_count[creator_index]      # feature 8: number of followers of the creator
+        
         topic_count_used += 1
-        comment_user_count += len(commenting_user_set)
+        total_user_set.add(creator_id)
+        total_user_set = total_user_set | commenting_user_set # 参与讨论和发帖的人的总数
+        total_comments_count += comment_user_list[topic_index][2] # 记录总的评论数
         
         # 写入binary classification的feature文件
         if len(commenting_user_set) == 0:
@@ -453,9 +466,9 @@ def combine_feature(binary_path, feature_path, topic_index_path, index2uid, uid2
         bf.write('%d 1:%d 2:%d 3:%d 4:%d 5:%d 6:%d 7:%d 8:%d\n' % \
             (label, title_count, content_count, num_img, num_out_link, \
             creator_num_topics, creator_num_comments, creator_num_following, creator_num_followers))
-        # 如果一个topic有n条评论用户，那么需要找到k*n个（k>1）用户作为候选集，这个候选集中
+        # 如果一个topic有n条评论用户，那么需要找到R*n个（R>1）用户作为候选集，这个候选集中
         # 将包括真正评论的用户，也包括其他没有参与讨论的用户
-        candidate_comment_user = get_candidate_comment_user(topic_id, commenting_user_set, K, index2uid, uid2index)
+        candidate_comment_user = get_candidate_comment_user(topic_id, commenting_user_set, R, index2uid, uid2index)
         # 记录topic id以及对应的comment user 列表: topic_id[=]true_comment_user[=]candidate comment user
         tmp = [index2uid[index] for index in candidate_comment_user] # 记录uid
         ft.write(topic_id + '[=]' + ','.join(commenting_user_set) + '[=]' + ','.join(tmp) + '\n')
@@ -486,17 +499,16 @@ def combine_feature(binary_path, feature_path, topic_index_path, index2uid, uid2
                     creator_num_following, creator_num_followers, num_topics, num_comments, content_sim, topic_sim, \
                     user_num_following, user_num_followers, is_following, num_mutual_following))
                     
-    log.info('Total topics: %d' % topic_count)
-    log.info('Topics used: %d' % topic_count_used)
-    log.info('Total number of comments: %d' % comment_user_count)
+    log.info('Total threads: %d' % topic_count)
+    log.info('Number of threads used: %d' % topic_count_used)
+    log.info('Total number of participating users: %d' % len(total_user_set))
+    log.info('Total number of comments: %d' % total_comments_count)
+    
     log.info('Number of topics with comment: %d' % num_topic_with_comment)
     log.info('Number of topics without comment: %d' % num_topic_without_comment)
     
-    alist = []
-    for creator_id in creator_set:
-        alist.append(creator_id)
     log.info('Number of creators not in all users set: %d.' % len(creator_set))
-    log.info('The creator that not in all_user_set: %s' % ','.join(alist))
+    log.info('The creator that not in all_user_set: %s' % ','.join(creator_set))
     
     bf.close()
     fpositive.close()
@@ -509,7 +521,12 @@ if __name__ == '__main__':
         sys.exit(1)
         
     group_id = sys.argv[1]
-    log.info('Generate instance for group: %s' % group_id)
+    print 'Generating instance for group: %s' % group_id
+    log.info('****************************************************************')
+    log.info('*                                                              *')
+    log.info('* Generating training and test instances for group: %s*' % group_id)
+    log.info('*                                                              *')
+    log.info('****************************************************************')
     
     # 在这里只考虑根据训练集和测试集中出现的用户
     # 而在social/文件夹中的用户信息只是作为一个数据库，它们包含了所有的用户social信息
@@ -563,9 +580,9 @@ if __name__ == '__main__':
     # 用稀疏矩阵存储用户的关注信息
     friendship, following_count, followers_count = get_following_info(uid2index, following_path, followers_path)
     # 保存friendship信息
-    following_info_path = 'social/' + group_id + '/following-info-' + group_id
-    print 'Saving following info to file: %s' % following_info_path
-    save_following_info(following_info_path, friendship, index2uid)
+    #following_info_path = 'social/' + group_id + '/following-info-' + group_id
+    #print 'Saving following info to file: %s' % following_info_path
+    #save_following_info(following_info_path, friendship, index2uid)
     
     # 关注的统计信息
     nonzero_count = len((friendship.nonzero())[0])
@@ -613,19 +630,31 @@ if __name__ == '__main__':
     train_topic_index_path = 'svm/' + group_id + '/train-topic-index-' + group_id
     test_topic_index_path = 'svm/' + group_id + '/test-topic-index-' + group_id
     
-    # candidate set的容量是真正评论用户的K倍
-    K = 10
-    # prepare training set
-    # 需要保证这里的每个user都有所有的信息
-    print 'Combine all features...'
-    log.info('Combine training features all together...')
-    combine_feature(binary_train_feature_path, train_feature_path, train_topic_index_path, index2uid, uid2index, \
-        train_comment_user_list, train_content_feature, user_interest, user_behavior, friendship, following_count, \
-        followers_count, mutual_following, K)
+    # target user set的容量是真正评论用户的R倍
+    R = 10
+    for experiment_index in range(5):
+        print 'Experiment index: %d' % experiment_index
+        # prepare training set
+        # 需要保证这里的每个user都有所有的信息
+        print 'Combine all features...'
+        log.info('Combine training features all together...')
+        combine_feature(binary_train_feature_path, train_feature_path, train_topic_index_path, index2uid, uid2index, \
+            train_comment_user_list, train_content_feature, user_interest, user_behavior, friendship, following_count, \
+            followers_count, mutual_following, R)
+        
+        # prepare test set
+        log.info('Combine testing features all together...')
+        combine_feature(binary_test_feature_path, test_feature_path, test_topic_index_path, index2uid, uid2index, \
+            test_comment_user_list, test_content_feature, user_interest, user_behavior, friendship, following_count, \
+            followers_count, mutual_following, R)
     
-    # prepare test set
-    log.info('Combine testing features all together...')
-    combine_feature(binary_test_feature_path, test_feature_path, test_topic_index_path, index2uid, uid2index, \
-        test_comment_user_list, test_content_feature, user_interest, user_behavior, friendship, following_count, \
-        followers_count, mutual_following, K)
-    log.info('All done. Good luck!')
+        print 'SVM training...'
+        from svm_training import svm_training
+        svm_training(group_id)
+        print 'Predicting ...'
+        from prediction_statics import evaluation, save_prediction_result
+        prediction_result = evaluation(group_id)
+        print 'Saving prediction result...'
+        save_prediction_result(group_id, prediction_result, R, experiment_index)
+        
+    log.info('All done. Good luck!\n\n\n\n\n')

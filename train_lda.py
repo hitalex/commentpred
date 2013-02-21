@@ -153,7 +153,7 @@ def main(argv):
     
     log.info('Training lda model...')
     model = LdaModel(mmcorpus, num_topics=num_topics, id2word = dictionary, passes = passes)
-    model_path = model_base_path + '-' + indicator + '-' + group_id + '.ldamodel'
+    model_path = model_base_path + indicator + '-' + group_id + '.ldamodel'
     model.save(model_path)
     log.info('Done.')
     
